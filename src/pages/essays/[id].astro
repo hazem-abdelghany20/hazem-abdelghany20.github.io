@@ -1,0 +1,102 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import EssayRow from '../../components/EssayRow.astro';
+import { threadLabel, formatDate } from '../../lib/threads';
+
+export async function getStaticPaths() {
+  const essays = await getCollection('essays', ({ data }) => !data.draft);
+  return essays.map((essay) => ({ params: { id: essay.id }, props: { essay, all: essays } }));
+}
+
+const { essay, all } = Astro.props;
+const { Content } = await render(essay);
+const isAr = essay.data.lang === 'ar';
+const thread = threadLabel(essay.data.thread);
+const translation = essay.data.translationOf ? all.find((e) => e.id === essay.data.translationOf) : undefined;
+const readNext = all
+  .filter((e) => e.id !== essay.id && e.id !== essay.data.translationOf)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 2);
+---
+
+<Base title={`${essay.data.title} — Hazem Abdelghany`} description={essay.data.description}>
+  <Nav />
+
+  <header class="essay-head">
+    <div class="essay-kicker">
+      <span dir="rtl" lang="ar" style="font-size: 17px; color: var(--accent);">{thread.ar}</span>
+      <span class="tag">{thread.en}</span>
+    </div>
+    <h1 class="essay-title" dir={isAr ? 'rtl' : undefined} lang={isAr ? 'ar' : undefined}>
+      {essay.data.title}
+    </h1>
+    <div class="essay-meta">
+      <span class="meta">{formatDate(essay.data.date)}</span>
+      {essay.data.minutes && (
+        <>
+          <span class="dot">·</span>
+          {isAr ? (
+            <span dir="rtl" lang="ar" style="font-size: 15px; color: var(--muted);">{essay.data.minutes} دقايق قراءة</span>
+          ) : (
+            <span class="meta">{essay.data.minutes} min read</span>
+          )}
+        </>
+      )}
+      {translation && (
+        <>
+          <span class="dot">·</span>
+          <a href={`/essays/${translation.id}`} class="meta">
+            {isAr ? 'Read in English →' : 'اقراها بالعربي →'}
+          </a>
+        </>
+      )}
+    </div>
+  </header>
+
+  <article
+    class:list={['prose', isAr && 'prose-ar']}
+    dir={isAr ? 'rtl' : undefined}
+    lang={isAr ? 'ar' : 'en'}
+  >
+    <Content />
+  </article>
+
+  {readNext.length > 0 && (
+    <section class="read-next">
+      <div class="section-head">
+        <span class="kicker">Read Next</span>
+        <span dir="rtl" lang="ar" style="font-size: 16px; color: var(--muted);">اقرا كمان</span>
+      </div>
+      <div class="row-list">
+        {readNext.map((e) => <EssayRow essay={e} />)}
+      </div>
+    </section>
+  )}
+
+  <Footer />
+</Base>
+
+<style>
+  .essay-head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    text-align: center;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 84px 0 52px 0;
+  }
+  .essay-kicker { display: flex; align-items: baseline; gap: 12px; }
+  .essay-title { font-size: clamp(30px, 3.6vw, 44px); line-height: 1.5; font-weight: 500; }
+  .essay-title[lang='ar'] { font-weight: 700; }
+  .essay-meta { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; justify-content: center; }
+
+  article { max-width: 680px; margin: 0 auto; }
+
+  .read-next { max-width: 880px; margin: 88px auto 0 auto; }
+  .section-head { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 14px; }
+</style>

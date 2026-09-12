@@ -1,0 +1,39 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base title="About · عنّي — Hazem Abdelghany">
+  <Nav />
+
+  <header class="page-head">
+    <h1 class="page-title">About</h1>
+    <span dir="rtl" lang="ar" class="page-title-ar">عنّي</span>
+  </header>
+
+  <div class="prose" style="max-width: 680px;">
+    <p>
+      I'm Hazem — from Cairo. I run <em>Catalyst</em>, an AI and software company, and co-build
+      <em>Mental Diet</em> with a psychiatrist. I code everything with agentic AI, train around a
+      rebuilt ACL, memorize Qur'an on Mondays, and keep my whole life in one system.
+    </p>
+    <p>
+      The essays here are how I think — drafted with AI, but the thinking is mine. Some are in
+      Egyptian Arabic, some in English; each one lives in the language of its natural reader.
+    </p>
+  </div>
+
+  <Footer />
+</Base>
+
+<style>
+  .page-head {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    padding: 88px 0 44px 0;
+  }
+  .page-title { font-size: 44px; font-weight: 400; }
+  .page-title-ar { font-size: 34px; font-weight: 700; color: var(--muted); }
+</style>
