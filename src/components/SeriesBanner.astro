@@ -4,9 +4,8 @@ import { seriesDef, type SeriesKey } from '../lib/series';
 interface Props {
   series: SeriesKey;
   partLabel: string;
-  total: number;
 }
-const { series, partLabel, total } = Astro.props;
+const { series, partLabel } = Astro.props;
 const s = seriesDef(series);
 ---
 
@@ -15,7 +14,7 @@ const s = seriesDef(series);
   <span class="series-banner-sep">·</span>
   <span class="series-banner-part">{partLabel}</span>
   <span class="series-banner-sep">of</span>
-  <span class="series-banner-part">{total}</span>
+  <span class="series-banner-part">{s.parts}</span>
 </a>
 
 <style>

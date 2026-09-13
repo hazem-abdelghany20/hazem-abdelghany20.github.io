@@ -1,18 +1,15 @@
 ---
-import { getCollection } from 'astro:content';
+import { publishedEssays } from '../lib/essays';
 import Base from '../layouts/Base.astro';
-import Nav from '../components/Nav.astro';
-import Footer from '../components/Footer.astro';
 import { seriesDef } from '../lib/series';
 
 const s = seriesDef('bedrock-and-weather');
-const parts = (await getCollection('essays', ({ data }) => !data.draft && data.series === s.key)).sort(
-  (a, b) => (a.data.part ?? 0) - (b.data.part ?? 0)
-);
+const parts = (await publishedEssays())
+  .filter((e) => e.data.series === s.key)
+  .sort((a, b) => (a.data.part ?? 0) - (b.data.part ?? 0));
 ---
 
 <Base title={`${s.title} — Hazem Abdelghany`} description={s.blurb}>
-  <Nav />
 
   <header class="bw-head">
     <span class="kicker">{s.subtitle}</span>
@@ -81,7 +78,7 @@ const parts = (await getCollection('essays', ({ data }) => !data.draft && data.s
 
   <section class="bw-toc">
     <div class="section-head">
-      <span class="kicker">The parts</span>
+      <h2 class="kicker">The parts</h2>
       <span class="meta">{parts.length} published</span>
     </div>
     {parts.length === 0 ? (
@@ -90,7 +87,7 @@ const parts = (await getCollection('essays', ({ data }) => !data.draft && data.s
       <ol class="bw-list">
         {parts.map((p) => (
           <li>
-            <a href={`/essays/${p.id}`}>
+            <a href={`/essays/${p.id}/`}>
               <span class="bw-part">{p.data.partLabel}</span>
               <span class="bw-part-title">{p.data.title}</span>
               <span class="bw-part-desc">{p.data.description}</span>
@@ -100,8 +97,6 @@ const parts = (await getCollection('essays', ({ data }) => !data.draft && data.s
       </ol>
     )}
   </section>
-
-  <Footer />
 </Base>
 
 <style>

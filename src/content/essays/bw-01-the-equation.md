@@ -1,6 +1,6 @@
 ---
 title: "The equation"
-date: 2026-09-20
+date: 2026-09-13
 lang: en
 thread: building
 minutes: 6

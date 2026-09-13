@@ -11,13 +11,13 @@ const isAr = essay.data.lang === 'ar';
 const thread = threadLabel(essay.data.thread);
 ---
 
-<a class="row" href={`/essays/${essay.id}`}>
+<a class="row" href={`/essays/${essay.id}/`} dir={isAr ? 'rtl' : 'ltr'}>
   <div class="row-left">
     {num && <span class="row-num">{num}</span>}
-    <span class="row-title" dir={isAr ? 'rtl' : undefined} lang={isAr ? 'ar' : undefined}>{essay.data.title}</span>
+    <span class="row-title" lang={isAr ? 'ar' : 'en'}>{essay.data.title}</span>
   </div>
   <div class="row-right">
-    <span class="tag">{thread.en}</span>
+    <span class="tag">{essay.data.partLabel ?? thread.en}</span>
     <span class="meta">{formatDate(essay.data.date)}</span>
   </div>
 </a>

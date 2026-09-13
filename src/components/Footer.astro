@@ -1,14 +1,85 @@
 ---
+import { THREADS } from '../lib/threads';
+import { liveLinks } from '../lib/site';
+
+const links = liveLinks();
+const year = new Date().getFullYear();
 ---
+
 <footer class="footer">
-  <div style="display: flex; align-items: baseline; gap: 10px;">
-    <span class="meta">Cairo, Egypt</span>
-    <span class="dot">·</span>
-    <span dir="rtl" lang="ar" style="font-size: 15px; color: var(--muted);">القاهرة</span>
+  <div class="footer-top">
+    <nav class="footer-threads" aria-label="Threads">
+      <span class="kicker">Threads</span>
+      <ul>
+        {THREADS.map((t) => (
+          <li>
+            <a href={`/threads/${t.key}/`}>
+              {t.en} <span class="ar" dir="rtl" lang="ar">{t.ar}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <nav class="footer-site" aria-label="Site">
+      <span class="kicker">Site</span>
+      <ul>
+        <li><a href="/essays/">All essays</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+
+    {links.length > 0 && (
+      <nav class="footer-elsewhere" aria-label="Elsewhere">
+        <span class="kicker">Elsewhere</span>
+        <ul>
+          {links.map((l) => (
+            <li>
+              <a href={l.href} target={l.href.startsWith('http') ? '_blank' : undefined} rel="noopener">
+                {l.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    )}
   </div>
-  <div class="links">
-    <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
-    <a href="https://www.tiktok.com/" target="_blank" rel="noopener">TikTok</a>
-    <a href="mailto:hello@hazemabdelghany.com">Email</a>
+
+  <div class="footer-base">
+    <div style="display: flex; align-items: baseline; gap: 10px;">
+      <span class="meta">Cairo, Egypt</span>
+      <span class="dot">·</span>
+      <span dir="rtl" lang="ar" style="font-size: 15px; color: var(--muted);">القاهرة</span>
+    </div>
+    <span class="meta">© {year} Hazem Abdelghany</span>
   </div>
 </footer>
+
+<style>
+  .footer-top {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 40px;
+    border-top: 1px solid var(--line);
+    padding: 44px 0 36px 0;
+  }
+  .footer-top nav { display: flex; flex-direction: column; gap: 16px; }
+  .footer-top ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+  /* inline-block + padding so each row is a real tap target, not a 16px line */
+  .footer-top a { display: inline-block; padding: 9px 0; font-size: 16px; color: var(--ink-2); }
+  .footer-top a:hover { color: var(--accent); }
+  .footer-top .ar { color: var(--faint); font-size: 15px; }
+  .footer-base {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 12px;
+    border-top: 1px solid var(--line);
+    padding: 22px 0 44px 0;
+  }
+  @media (max-width: 680px) {
+    .footer-top { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px; }
+  }
+</style>

@@ -14,8 +14,8 @@ const s = seriesDef(series);
 <nav class="series-nav">
   <div class="series-nav-side">
     {prev && (
-      <a href={`/essays/${prev.id}`}>
-        <span class="series-nav-dir">← {prev.data.partLabel}</span>
+      <a href={`/essays/${prev.id}/`}>
+        <span class="series-nav-dir"><span class="arrow" aria-hidden="true">‹</span> {prev.data.partLabel}</span>
         <span class="series-nav-title">{prev.data.title}</span>
       </a>
     )}
@@ -23,8 +23,8 @@ const s = seriesDef(series);
   <a class="series-nav-home" href={s.href}>All parts</a>
   <div class="series-nav-side series-nav-right">
     {next && (
-      <a href={`/essays/${next.id}`}>
-        <span class="series-nav-dir">{next.data.partLabel} →</span>
+      <a href={`/essays/${next.id}/`}>
+        <span class="series-nav-dir">{next.data.partLabel} <span class="arrow" aria-hidden="true">›</span></span>
         <span class="series-nav-title">{next.data.title}</span>
       </a>
     )}
@@ -43,7 +43,7 @@ const s = seriesDef(series);
     border-top: 1px solid var(--line);
   }
   .series-nav-side a { display: flex; flex-direction: column; gap: 5px; }
-  .series-nav-right { text-align: right; }
+  .series-nav-right { text-align: end; }
   .series-nav-dir {
     font-size: 11px;
     font-weight: 500;
@@ -55,6 +55,8 @@ const s = seriesDef(series);
   .series-nav-title { font-size: 16px; color: var(--ink); line-height: 1.35; }
   .series-nav-side a:hover .series-nav-title { color: var(--accent); }
   .series-nav-home {
+    display: inline-block;
+    padding: 10px 0;
     font-size: 11px;
     font-weight: 500;
     letter-spacing: 1.8px;
@@ -66,7 +68,7 @@ const s = seriesDef(series);
   .series-nav-home:hover { color: var(--accent); }
   @media (max-width: 640px) {
     .series-nav { grid-template-columns: 1fr; gap: 20px; }
-    .series-nav-right { text-align: left; }
+    .series-nav-right { text-align: start; }
     .series-nav-home { order: 3; }
   }
 </style>

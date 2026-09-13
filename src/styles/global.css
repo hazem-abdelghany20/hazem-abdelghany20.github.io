@@ -2,11 +2,13 @@
    Light = Warm Editorial (paper + oxblood)
    Dark  = Black Card (warm black + burnt orange) */
 :root {
+  color-scheme: light;
   --bg: #faf7f1;
   --ink: #26221b;
   --ink-2: #4a443a;
   --muted: #6e675c;
-  --faint: #b8ae9e;
+  --faint: #6b6255;   /* text-bearing: 5.6:1 on --bg */
+  --hairline: #b8ae9e; /* decoration only: rules, dots, borders */
   --line: #e8e2d6;
   --accent: #7d3b2a;
 
@@ -16,21 +18,25 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
+    color-scheme: dark;
     --bg: #0e0d0b;
     --ink: #f5f2ec;
     --ink-2: #c9c3b8;
     --muted: #8a857c;
-    --faint: #3a3730;
+    --faint: #9a9388;   /* text-bearing: 6.0:1 on --bg */
+    --hairline: #3a3730;
     --line: #2a2822;
     --accent: #d96b3b;
   }
 }
 :root[data-theme='dark'] {
+  color-scheme: dark;
   --bg: #0e0d0b;
   --ink: #f5f2ec;
   --ink-2: #c9c3b8;
   --muted: #8a857c;
-  --faint: #3a3730;
+  --faint: #9a9388;
+  --hairline: #3a3730;
   --line: #2a2822;
   --accent: #d96b3b;
 }
@@ -38,6 +44,14 @@
 /* ---------- base ---------- */
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
 body {
   margin: 0;
   background: var(--bg);
@@ -55,6 +69,7 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
 
 .wrap { max-width: 1160px; margin: 0 auto; padding: 0 32px; }
 
+h2.kicker { font-size: 12px; }
 .kicker {
   font-size: 12px;
   font-weight: 500;
@@ -71,22 +86,24 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
   white-space: nowrap;
 }
 .meta { font-size: 13px; font-style: italic; color: var(--muted); }
-.dot { color: var(--faint); }
-.rule { width: 48px; height: 1px; background: var(--faint); border: 0; margin: 0; }
+/* A standalone text link needs a tappable box, not just a line of text. */
+a.meta, a.back { display: inline-block; padding: 11px 0; }
+.dot { color: var(--hairline); }
+.rule { width: 48px; height: 1px; background: var(--hairline); border: 0; margin: 0; }
 
 /* ---------- nav ---------- */
-.nav { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 36px 0 0 0; }
+.nav { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 36px 0 0 0; flex-wrap: wrap; }
 .nav-name { display: flex; align-items: baseline; gap: 12px; color: var(--ink); }
 .nav-name:hover { color: var(--ink); }
 .nav-name .ar { font-weight: 700; font-size: 20px; }
 .nav-name .en { font-size: 11px; font-weight: 500; letter-spacing: 2.5px; color: var(--muted); }
-.nav-links { display: flex; align-items: center; gap: 28px; }
+.nav-links { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
 .nav-links a { font-size: 15px; color: var(--ink); }
 .nav-links a:hover { color: var(--accent); }
 .nav-links a .ar { color: var(--muted); font-size: 15px; }
 .theme-toggle {
   display: inline-flex; align-items: center; justify-content: center;
-  width: 34px; height: 34px; border: 1px solid var(--line); border-radius: 999px;
+  width: 34px; height: 34px; flex: none; border: 1px solid var(--line); border-radius: 999px;
   background: none; color: var(--muted); cursor: pointer; padding: 0;
 }
 .theme-toggle:hover { color: var(--accent); border-color: var(--faint); }
@@ -134,12 +151,7 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
 }
 
 /* ---------- footer ---------- */
-.footer {
-  display: flex; justify-content: space-between; align-items: baseline; gap: 24px;
-  border-top: 1px solid var(--line); margin-top: 96px; padding: 28px 0 44px 0;
-}
-.footer .links { display: flex; gap: 24px; }
-.footer .links a { font-size: 14px; font-style: italic; }
+.footer { margin-top: 96px; }
 
 /* ---------- responsive ---------- */
 @media (max-width: 900px) {
@@ -148,6 +160,19 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
   .row { flex-direction: column; align-items: flex-start; gap: 6px; }
   .row[dir='rtl'] { align-items: flex-end; }
 }
+
+/* Everything else an essay can contain. Without these an image, table or code
+   block in the next essay overflows the column with a clean build. */
+.prose :is(img, video, svg) { max-width: 100%; height: auto; }
+.prose pre { overflow-x: auto; padding: 14px 16px; background: var(--fig-surface); border: 1px solid var(--line); }
+.prose :not(pre) > code { font-size: 0.9em; background: var(--fig-surface); padding: 1px 5px; border-radius: 3px; }
+.prose table { display: block; overflow-x: auto; width: 100%; border-collapse: collapse; }
+.prose th, .prose td { border-bottom: 1px solid var(--line); padding: 9px 12px; text-align: start; }
+.prose h3 { font-size: 20px; font-weight: 500; margin: 32px 0 10px 0; }
+.prose ul, .prose ol { padding-inline-start: 22px; margin: 0 0 18px 0; line-height: 1.75; }
+.prose li { margin-bottom: 9px; }
+.prose li::marker { color: var(--faint); }
+.prose hr { border: 0; border-top: 1px solid var(--line); margin: 36px 0; }
 
 /* ---------- figures & charts ----------
    Chart hues are their own scale, not the UI accent: each set was validated
@@ -205,8 +230,13 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
 .fig-axis  { stroke: var(--grid); stroke-width: 1; }
 .fig-note  { font-family: var(--font-en); font-size: 12px; font-style: italic; fill: var(--muted); }
 
-/* full-bleed past the 680px prose column, for wide figures */
-.fig-wide { width: min(920px, 92vw); margin-left: 50%; transform: translateX(-50%); }
+/* full-bleed past the 680px prose column, for wide figures.
+   Symmetric inline margins rather than margin-left + translateX, which are
+   physical properties and push the figure off-screen in an RTL document. */
+.fig-wide {
+  width: min(920px, 92vw);
+  margin-inline: calc((100% - min(920px, 92vw)) / 2);
+}
 
 /* legend */
 .fig-legend {
@@ -219,7 +249,7 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
 /* Narrow screens: a figure scaled to 345px renders its 13px labels at ~5px.
    Scroll it at a legible width instead of shrinking it into illegibility. */
 @media (max-width: 860px) {
-  .fig-wide { width: auto; margin-left: 0; transform: none; }
+  .fig-wide { width: auto; margin-inline: 0; }
   .fig {
     overflow-x: auto;
     overscroll-behavior-x: contain;
@@ -227,5 +257,45 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
   }
   .fig > svg { min-width: 620px; }
   .fig-wide > svg { min-width: 820px; }
-  .fig figcaption, .fig .fig-legend { position: sticky; left: 0; }
+  .fig figcaption, .fig .fig-legend { position: sticky; inset-inline-start: 0; }
+  /* Say the figure scrolls — otherwise a clipped chart reads as a broken one. */
+  .fig::after {
+    content: 'Scroll the figure sideways →';
+    display: block;
+    position: sticky;
+    inset-inline-start: 0;
+    margin-top: 8px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+  [dir='rtl'] .fig::after { content: '← اسحب الرسم جنب'; }
+}
+
+/* ---------- skip link ---------- */
+.skip-link {
+  /* Clipped rather than pushed off-screen: a negative `left` would extend the
+     scrollable area by that distance in an RTL document. */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  z-index: 100;
+  background: var(--bg);
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 12px 20px;
+  font-size: 14px;
+}
+.skip-link:focus {
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip-path: none;
+  inset-inline-start: 16px;
+  top: 16px;
 }

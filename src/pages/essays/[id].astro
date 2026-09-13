@@ -1,15 +1,14 @@
 ---
-import { getCollection, render } from 'astro:content';
+import { render } from 'astro:content';
+import { publishedEssays } from '../../lib/essays';
 import Base from '../../layouts/Base.astro';
-import Nav from '../../components/Nav.astro';
-import Footer from '../../components/Footer.astro';
 import EssayRow from '../../components/EssayRow.astro';
 import { threadLabel, formatDate } from '../../lib/threads';
 import SeriesBanner from '../../components/SeriesBanner.astro';
 import SeriesNav from '../../components/SeriesNav.astro';
 
 export async function getStaticPaths() {
-  const essays = await getCollection('essays', ({ data }) => !data.draft);
+  const essays = await publishedEssays();
   return essays.map((essay) => ({ params: { id: essay.id }, props: { essay, all: essays } }));
 }
 
@@ -28,26 +27,33 @@ const idx = siblings.findIndex((e) => e.id === essay.id);
 const prevPart = idx > 0 ? siblings[idx - 1] : undefined;
 const nextPart = idx >= 0 && idx < siblings.length - 1 ? siblings[idx + 1] : undefined;
 
-// A part's "read next" is its own series; a standalone essay's is the latest writing.
-const readNext = series
-  ? []
-  : all
-      .filter((e) => e.id !== essay.id && e.id !== essay.data.translationOf && !e.data.series)
-      .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-      .slice(0, 2);
+// Never leave a reader with nowhere to go. A series part already has prev/next,
+// so it only needs a fallback when it is the last one; a standalone essay may be
+// offered a series part, labelled as such.
+const pool = all
+  .filter((e) => e.id !== essay.id && e.id !== essay.data.translationOf)
+  .filter((e) => e.data.series !== series || !series)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const readNext = series && (prevPart || nextPart) ? [] : pool.slice(0, 2);
 ---
 
-<Base title={`${essay.data.title} — Hazem Abdelghany`} description={essay.data.description}>
-  <Nav />
+<Base
+  title={`${essay.data.title} — Hazem Abdelghany`}
+  description={essay.data.description}
+  lang={essay.data.lang}
+  published={essay.data.date}
+  type="article"
+  section={thread.en}
+>
 
   <header class="essay-head">
     {series && essay.data.partLabel && (
-      <SeriesBanner series={series} partLabel={essay.data.partLabel} total={siblings.length} />
+      <SeriesBanner series={series} partLabel={essay.data.partLabel} />
     )}
-    <div class="essay-kicker">
+    <a class="essay-kicker" href={`/threads/${essay.data.thread}/`}>
       <span dir="rtl" lang="ar" style="font-size: 17px; color: var(--accent);">{thread.ar}</span>
       <span class="tag">{thread.en}</span>
-    </div>
+    </a>
     <h1 class="essay-title" dir={isAr ? 'rtl' : undefined} lang={isAr ? 'ar' : undefined}>
       {essay.data.title}
     </h1>
@@ -66,8 +72,14 @@ const readNext = series
       {translation && (
         <>
           <span class="dot">·</span>
-          <a href={`/essays/${translation.id}`} class="meta">
-            {isAr ? 'Read in English →' : 'اقراها بالعربي →'}
+          <a
+            href={`/essays/${translation.id}/`}
+            class="meta"
+            dir={isAr ? 'ltr' : 'rtl'}
+            lang={isAr ? 'en' : 'ar'}
+            hreflang={isAr ? 'en' : 'ar'}
+          >
+            {isAr ? 'Read in English' : 'اقراها بالعربي'}
           </a>
         </>
       )}
@@ -87,7 +99,7 @@ const readNext = series
   {readNext.length > 0 && (
     <section class="read-next">
       <div class="section-head">
-        <span class="kicker">Read Next</span>
+        <h2 class="kicker">Read Next</h2>
         <span dir="rtl" lang="ar" style="font-size: 16px; color: var(--muted);">اقرا كمان</span>
       </div>
       <div class="row-list">
@@ -95,8 +107,6 @@ const readNext = series
       </div>
     </section>
   )}
-
-  <Footer />
 </Base>
 
 <style>
@@ -111,6 +121,7 @@ const readNext = series
     padding: 84px 0 52px 0;
   }
   .essay-kicker { display: flex; align-items: baseline; gap: 12px; }
+  .essay-kicker:hover .tag { color: var(--ink); }
   .essay-title { font-size: clamp(30px, 3.6vw, 44px); line-height: 1.5; font-weight: 500; }
   .essay-title[lang='ar'] { font-weight: 700; }
   .essay-meta { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; justify-content: center; }

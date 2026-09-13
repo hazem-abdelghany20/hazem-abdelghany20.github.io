@@ -1,26 +1,100 @@
 ---
 import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
 
 interface Props {
   title?: string;
   description?: string;
+  /** 'ar' switches the document language and direction for Arabic essays. */
+  lang?: 'en' | 'ar';
+  /** Article metadata, when the page is one. */
+  published?: Date;
+  type?: 'website' | 'article';
+  /** Keep a page out of the index and out of canonical/og:url. */
+  noindex?: boolean;
+  /** Thread name, for article structured data. */
+  section?: string;
 }
-const { title = 'Hazem Abdelghany · حازم عبدالغني', description = 'Essays on building, faith, the body, and the mind. In Arabic and English.' } = Astro.props;
+
+const {
+  title = 'Hazem Abdelghany · حازم عبدالغني',
+  description = 'Essays on building, faith, the body, and the mind. In Arabic and English.',
+  lang = 'en',
+  published,
+  type = 'website',
+  noindex = false,
+  section,
+} = Astro.props;
+
+const site = Astro.site ?? new URL('https://hazemabdelghany.com');
+const canonical = new URL(Astro.url.pathname, site).href;
+const ogImage = new URL('/og.png', site).href;
+
+const article =
+  type === 'article' && published
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: title.replace(' — Hazem Abdelghany', ''),
+        datePublished: published.toISOString(),
+        inLanguage: lang === 'ar' ? 'ar-EG' : 'en',
+        ...(section ? { articleSection: section } : {}),
+        ...(description ? { description } : {}),
+        mainEntityOfPage: canonical,
+        author: { '@type': 'Person', name: 'Hazem Abdelghany', url: site.href },
+      }
+    : null;
+
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Hazem Abdelghany',
+  alternateName: 'حازم عبدالغني',
+  url: site.href,
+  jobTitle: 'Founder',
+  address: { '@type': 'PostalAddress', addressLocality: 'Cairo', addressCountry: 'EG' },
+};
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang} dir={lang === 'ar' ? 'rtl' : 'ltr'}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {noindex ? <meta name="robots" content="noindex, follow" /> : <link rel="canonical" href={canonical} />}
+    <meta name="theme-color" content="#faf7f1" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0e0d0b" media="(prefers-color-scheme: dark)" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate" type="application/rss+xml" title="Hazem Abdelghany — Essays" href="/rss.xml" />
+
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {!noindex && <meta property="og:url" content={canonical} />}
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="Hazem Abdelghany" />
+    <meta property="og:locale" content={lang === 'ar' ? 'ar_EG' : 'en_US'} />
+    {published && <meta property="article:published_time" content={published.toISOString()} />}
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap"
     />
+
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(person)} />
+    {article && <script type="application/ld+json" is:inline set:html={JSON.stringify(article)} />}
+
     <script is:inline>
       // stamp the theme before first paint: saved choice wins, else system
       (function () {
@@ -32,8 +106,13 @@ const { title = 'Hazem Abdelghany · حازم عبدالغني', description = '
     </script>
   </head>
   <body>
+    <a class="skip-link" href="#main">Skip to content</a>
     <div class="wrap">
-      <slot />
+      <Nav />
+      <main id="main">
+        <slot />
+      </main>
+      <Footer />
     </div>
   </body>
 </html>

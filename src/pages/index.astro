@@ -1,18 +1,29 @@
 ---
-import { getCollection } from 'astro:content';
+import { publishedEssays } from '../lib/essays';
 import Base from '../layouts/Base.astro';
-import Nav from '../components/Nav.astro';
-import Footer from '../components/Footer.astro';
 import EssayRow from '../components/EssayRow.astro';
 import { THREADS } from '../lib/threads';
+import { SERIES } from '../lib/series';
 
-const essays = (await getCollection('essays', ({ data }) => !data.draft))
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-  .slice(0, 4);
+const published = await publishedEssays();
+
+// Series parts are represented by their series card, not as individual rows —
+// otherwise one multi-part book occupies the entire homepage.
+const essays = published.filter((e) => !e.data.series).slice(0, 4);
+const seriesCards = Object.values(SERIES)
+  .map((s) => ({ s, count: published.filter((e) => e.data.series === s.key).length }))
+  .filter((c) => c.count > 0);
+
+// Each thread advertises how much is actually behind it.
+const threadCount = (key) => {
+  const inThread = published.filter((e) => e.data.thread === key);
+  const standalone = inThread.filter((e) => !e.data.series).length;
+  const series = new Set(inThread.filter((e) => e.data.series).map((e) => e.data.series)).size;
+  return standalone + series;
+};
 ---
 
 <Base>
-  <Nav />
 
   <section class="hero">
     <div class="hero-mark" dir="rtl" lang="ar">إزاي؟</div>
@@ -29,17 +40,20 @@ const essays = (await getCollection('essays', ({ data }) => !data.draft))
 
   <section class="threads">
     <div class="section-head">
-      <span class="kicker">The Five Threads</span>
+      <h2 class="kicker">The Five Threads</h2>
       <span dir="rtl" lang="ar" class="section-head-ar">الخيوط الخمسة</span>
     </div>
     <div class="threads-grid">
       {THREADS.map((t, i) => (
-        <div class="thread">
+        <a class="thread" href={`/threads/${t.key}/`}>
           <span class="row-num">{String(i + 1).padStart(2, '0')}</span>
           <span class="thread-ar" dir="rtl" lang="ar">{t.ar}</span>
           <span class="tag">{t.en}</span>
           <span class="thread-blurb">{t.blurb}</span>
-        </div>
+          <span class="thread-count">
+            {threadCount(t.key) === 0 ? 'Nothing yet' : `${threadCount(t.key)} to read →`}
+          </span>
+        </a>
       ))}
     </div>
   </section>
@@ -47,11 +61,21 @@ const essays = (await getCollection('essays', ({ data }) => !data.draft))
   <section class="essays">
     <div class="section-head">
       <div style="display: flex; align-items: baseline; gap: 14px;">
-        <span class="kicker">Selected Essays</span>
+        <h2 class="kicker">Selected Essays</h2>
         <span dir="rtl" lang="ar" class="section-head-ar">مقالات مختارة</span>
       </div>
-      <a href="/essays" class="meta">All essays →</a>
+      <a href="/essays/" class="meta">All essays →</a>
     </div>
+    {seriesCards.map(({ s, count }) => (
+      <a class="home-series" href={s.href}>
+        <div class="home-series-top">
+          <span class="tag">Series in progress</span>
+          <span class="meta">{count} {count === 1 ? 'part' : 'parts'}</span>
+        </div>
+        <h3 class="home-series-title">{s.title}</h3>
+        <p class="home-series-sub">{s.subtitle}</p>
+      </a>
+    ))}
     <div class="row-list">
       {essays.map((e, i) => <EssayRow essay={e} num={String(i + 1).padStart(2, '0')} />)}
     </div>
@@ -60,7 +84,7 @@ const essays = (await getCollection('essays', ({ data }) => !data.draft))
   <section class="about">
     <div class="about-head">
       <span class="about-ar" dir="rtl" lang="ar">عنّي</span>
-      <span class="kicker">About</span>
+      <h2 class="kicker">About</h2>
     </div>
     <div class="about-body">
       <p>
@@ -69,11 +93,9 @@ const essays = (await getCollection('essays', ({ data }) => !data.draft))
         rebuilt ACL, memorize Qur'an on Mondays, and keep my whole life in one system. The essays
         here are how I think — drafted with AI, but the thinking is mine.
       </p>
-      <a href="/about" class="meta">More about me →</a>
+      <a href="/about/" class="meta">More about me →</a>
     </div>
   </section>
-
-  <Footer />
 </Base>
 
 <style>
@@ -116,8 +138,25 @@ const essays = (await getCollection('essays', ({ data }) => !data.draft))
     gap: 36px;
   }
   .thread { display: flex; flex-direction: column; gap: 12px; }
-  .thread-ar { font-weight: 700; font-size: 30px; }
+  .thread .thread-ar, .thread .thread-blurb { transition: color 0.18s ease; }
+  .thread:hover .thread-ar { color: var(--accent); }
+  .thread-count {
+    font-size: 11px; font-weight: 500; letter-spacing: 1.6px;
+    text-transform: uppercase; color: var(--faint); margin-top: 2px;
+  }
+  .thread:hover .thread-count { color: var(--accent); }
+  .thread-ar { font-weight: 700; font-size: 30px; color: var(--ink); align-self: start; }
   .thread-blurb { font-size: 15px; font-style: italic; line-height: 1.55; color: var(--muted); }
+
+  .home-series {
+    display: block; border: 1px solid var(--line); background: var(--fig-surface);
+    padding: 24px 26px; margin-bottom: 26px;
+  }
+  .home-series:hover { border-color: var(--accent); }
+  .home-series-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
+  .home-series-title { font-size: 25px; font-weight: 500; color: var(--ink); }
+  .home-series:hover .home-series-title { color: var(--accent); }
+  .home-series-sub { margin: 6px 0 0 0; font-size: 15px; font-style: italic; color: var(--muted); }
 
   .about { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 64px; }
   .about-head { display: flex; flex-direction: column; gap: 10px; }

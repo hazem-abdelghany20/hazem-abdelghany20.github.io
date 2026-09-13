@@ -1,14 +1,10 @@
 ---
-import { getCollection } from 'astro:content';
+import { publishedEssays } from '../../lib/essays';
 import Base from '../../layouts/Base.astro';
-import Nav from '../../components/Nav.astro';
-import Footer from '../../components/Footer.astro';
 import EssayRow from '../../components/EssayRow.astro';
 import { SERIES } from '../../lib/series';
 
-const all = (await getCollection('essays', ({ data }) => !data.draft)).sort(
-  (a, b) => b.data.date.getTime() - a.data.date.getTime()
-);
+const all = await publishedEssays();
 
 // A series collapses to a single row. Otherwise nineteen parts of one book
 // bury everything else on the page.
@@ -21,8 +17,10 @@ const seriesCards = Object.values(SERIES)
   .filter((c) => c.count > 0);
 ---
 
-<Base title="Essays · مقالات — Hazem Abdelghany">
-  <Nav />
+<Base
+  title="Essays · مقالات — Hazem Abdelghany"
+  description="Everything Hazem Abdelghany has published, across five threads — building, faith, the body, the mind, and perspective. In Egyptian Arabic and English."
+>
 
   <header class="page-head">
     <h1 class="page-title">Essays</h1>
@@ -45,8 +43,6 @@ const seriesCards = Object.values(SERIES)
   <div class="row-list">
     {standalone.map((e, i) => <EssayRow essay={e} num={String(i + 1).padStart(2, '0')} />)}
   </div>
-
-  <Footer />
 </Base>
 
 <style>
