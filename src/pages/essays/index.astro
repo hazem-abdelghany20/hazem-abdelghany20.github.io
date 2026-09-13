@@ -2,7 +2,7 @@
 import { publishedEssays } from '../../lib/essays';
 import Base from '../../layouts/Base.astro';
 import EssayRow from '../../components/EssayRow.astro';
-import { SERIES } from '../../lib/series';
+import { SERIES, seriesHref } from '../../lib/series';
 
 const all = await publishedEssays();
 
@@ -28,7 +28,7 @@ const seriesCards = Object.values(SERIES)
   </header>
 
   {seriesCards.map(({ s, count }) => (
-    <a class="series-card" href={s.href}>
+    <a class="series-card" href={seriesHref(s.key)}>
       <div class="series-card-top">
         <span class="tag">Series</span>
         <span class="meta">{count} {count === 1 ? 'part' : 'parts'}</span>

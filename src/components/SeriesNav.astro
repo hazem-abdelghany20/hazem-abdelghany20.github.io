@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { seriesDef, type SeriesKey } from '../lib/series';
+import { seriesDef, seriesHref, type SeriesKey } from '../lib/series';
 
 interface Props {
   series: SeriesKey;
@@ -20,7 +20,7 @@ const s = seriesDef(series);
       </a>
     )}
   </div>
-  <a class="series-nav-home" href={s.href}>All parts</a>
+  <a class="series-nav-home" href={seriesHref(s.key)}>All parts</a>
   <div class="series-nav-side series-nav-right">
     {next && (
       <a href={`/essays/${next.id}/`}>

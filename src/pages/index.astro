@@ -3,7 +3,7 @@ import { publishedEssays } from '../lib/essays';
 import Base from '../layouts/Base.astro';
 import EssayRow from '../components/EssayRow.astro';
 import { THREADS } from '../lib/threads';
-import { SERIES } from '../lib/series';
+import { SERIES, seriesHref } from '../lib/series';
 
 const published = await publishedEssays();
 
@@ -67,7 +67,7 @@ const threadCount = (key) => {
       <a href="/essays/" class="meta">All essays →</a>
     </div>
     {seriesCards.map(({ s, count }) => (
-      <a class="home-series" href={s.href}>
+      <a class="home-series" href={seriesHref(s.key)}>
         <div class="home-series-top">
           <span class="tag">Series in progress</span>
           <span class="meta">{count} {count === 1 ? 'part' : 'parts'}</span>

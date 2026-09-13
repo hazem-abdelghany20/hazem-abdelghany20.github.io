@@ -1,6 +1,6 @@
 import { publishedEssays } from '../lib/essays';
 import { THREADS } from '../lib/threads';
-import { SERIES } from '../lib/series';
+import { SERIES, seriesHref } from '../lib/series';
 
 export async function GET({ site }: { site: URL }) {
   const base = site ?? new URL('https://hazemabdelghany.com');
@@ -10,7 +10,7 @@ export async function GET({ site }: { site: URL }) {
     { loc: '/', pri: '1.0' },
     { loc: '/essays/', pri: '0.9' },
     { loc: '/about/', pri: '0.7' },
-    ...Object.values(SERIES).map((s) => ({ loc: `${s.href}/`, pri: '0.9' })),
+    ...Object.values(SERIES).map((s) => ({ loc: seriesHref(s.key), pri: '0.9' })),
     ...THREADS.map((t) => ({ loc: `/threads/${t.key}/`, pri: '0.6' })),
     ...essays.map((e) => ({
       loc: `/essays/${e.id}/`,

@@ -1,5 +1,5 @@
 ---
-import { seriesDef, type SeriesKey } from '../lib/series';
+import { seriesDef, seriesHref, type SeriesKey } from '../lib/series';
 
 interface Props {
   series: SeriesKey;
@@ -9,7 +9,7 @@ const { series, partLabel } = Astro.props;
 const s = seriesDef(series);
 ---
 
-<a class="series-banner" href={s.href}>
+<a class="series-banner" href={seriesHref(s.key)}>
   <span class="series-banner-title">{s.title}</span>
   <span class="series-banner-sep">·</span>
   <span class="series-banner-part">{partLabel}</span>

@@ -3,7 +3,7 @@ import { publishedEssays } from '../../lib/essays';
 import Base from '../../layouts/Base.astro';
 import EssayRow from '../../components/EssayRow.astro';
 import { THREADS, threadLabel } from '../../lib/threads';
-import { SERIES } from '../../lib/series';
+import { SERIES, seriesHref } from '../../lib/series';
 
 export async function getStaticPaths() {
   return THREADS.map((t) => ({ params: { thread: t.key } }));
@@ -47,7 +47,7 @@ const total = standalone.length + seriesHere.length;
   ) : (
     <div class="thread-body">
       {seriesHere.map(({ s, count }) => (
-        <a class="thread-series" href={s.href}>
+        <a class="thread-series" href={seriesHref(s.key)}>
           <div class="thread-series-top">
             <span class="tag">Series</span>
             <span class="meta">{count} {count === 1 ? 'part' : 'parts'}</span>
