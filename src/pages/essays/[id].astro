@@ -5,6 +5,8 @@ import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
 import EssayRow from '../../components/EssayRow.astro';
 import { threadLabel, formatDate } from '../../lib/threads';
+import SeriesBanner from '../../components/SeriesBanner.astro';
+import SeriesNav from '../../components/SeriesNav.astro';
 
 export async function getStaticPaths() {
   const essays = await getCollection('essays', ({ data }) => !data.draft);
@@ -16,16 +18,32 @@ const { Content } = await render(essay);
 const isAr = essay.data.lang === 'ar';
 const thread = threadLabel(essay.data.thread);
 const translation = essay.data.translationOf ? all.find((e) => e.id === essay.data.translationOf) : undefined;
-const readNext = all
-  .filter((e) => e.id !== essay.id && e.id !== essay.data.translationOf)
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-  .slice(0, 2);
+
+// Series context: siblings in reading order, so a part knows where it sits.
+const series = essay.data.series;
+const siblings = series
+  ? all.filter((e) => e.data.series === series).sort((a, b) => (a.data.part ?? 0) - (b.data.part ?? 0))
+  : [];
+const idx = siblings.findIndex((e) => e.id === essay.id);
+const prevPart = idx > 0 ? siblings[idx - 1] : undefined;
+const nextPart = idx >= 0 && idx < siblings.length - 1 ? siblings[idx + 1] : undefined;
+
+// A part's "read next" is its own series; a standalone essay's is the latest writing.
+const readNext = series
+  ? []
+  : all
+      .filter((e) => e.id !== essay.id && e.id !== essay.data.translationOf && !e.data.series)
+      .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+      .slice(0, 2);
 ---
 
 <Base title={`${essay.data.title} — Hazem Abdelghany`} description={essay.data.description}>
   <Nav />
 
   <header class="essay-head">
+    {series && essay.data.partLabel && (
+      <SeriesBanner series={series} partLabel={essay.data.partLabel} total={siblings.length} />
+    )}
     <div class="essay-kicker">
       <span dir="rtl" lang="ar" style="font-size: 17px; color: var(--accent);">{thread.ar}</span>
       <span class="tag">{thread.en}</span>
@@ -63,6 +81,8 @@ const readNext = all
   >
     <Content />
   </article>
+
+  {series && <SeriesNav series={series} prev={prevPart} next={nextPart} />}
 
   {readNext.length > 0 && (
     <section class="read-next">

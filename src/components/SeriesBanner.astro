@@ -1,0 +1,41 @@
+---
+import { seriesDef, type SeriesKey } from '../lib/series';
+
+interface Props {
+  series: SeriesKey;
+  partLabel: string;
+  total: number;
+}
+const { series, partLabel, total } = Astro.props;
+const s = seriesDef(series);
+---
+
+<a class="series-banner" href={s.href}>
+  <span class="series-banner-title">{s.title}</span>
+  <span class="series-banner-sep">·</span>
+  <span class="series-banner-part">{partLabel}</span>
+  <span class="series-banner-sep">of</span>
+  <span class="series-banner-part">{total}</span>
+</a>
+
+<style>
+  .series-banner {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 9px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 7px 16px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .series-banner:hover { border-color: var(--accent); color: var(--accent); }
+  .series-banner-title { color: var(--accent); }
+  .series-banner:hover .series-banner-title { color: var(--accent); }
+  .series-banner-sep { color: var(--faint); text-transform: none; letter-spacing: 0; }
+</style>

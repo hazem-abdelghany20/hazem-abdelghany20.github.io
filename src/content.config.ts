@@ -13,6 +13,14 @@ const essays = defineCollection({
     draft: z.boolean().default(false),
     // id of this essay's version in the other language, when one exists
     translationOf: z.string().optional(),
+    // --- series ---
+    // `series` names the collection this piece belongs to (see src/lib/series.ts);
+    // `part` orders it; `partLabel` is what the reader is shown ("Part Three",
+    // "Part Two · Engine 04"). The label is spelled out rather than derived,
+    // because the book's own numbering is not a straight sequence.
+    series: z.enum(['bedrock-and-weather']).optional(),
+    part: z.number().optional(),
+    partLabel: z.string().optional(),
   }),
 });
 

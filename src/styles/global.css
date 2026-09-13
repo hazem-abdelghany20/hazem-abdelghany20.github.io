@@ -148,3 +148,84 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
   .row { flex-direction: column; align-items: flex-start; gap: 6px; }
   .row[dir='rtl'] { align-items: flex-end; }
 }
+
+/* ---------- figures & charts ----------
+   Chart hues are their own scale, not the UI accent: each set was validated
+   for lightness band, chroma floor, CVD separation, normal-vision separation
+   and contrast against its own surface. Light and dark are separately chosen
+   steps, not a flip. */
+:root {
+  --c1: #c05a2e;  /* terracotta */
+  --c2: #00809b;  /* teal */
+  --c3: #a8832a;  /* gold */
+  --grid: #e8e2d6;
+  --fig-surface: #f4efe6;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --c1: #d2673a;
+    --c2: #1f9fbc;
+    --c3: #b38e2e;
+    --grid: #2a2822;
+    --fig-surface: #16150f;
+  }
+}
+:root[data-theme='dark'] {
+  --c1: #d2673a;
+  --c2: #1f9fbc;
+  --c3: #b38e2e;
+  --grid: #2a2822;
+  --fig-surface: #16150f;
+}
+
+.fig {
+  margin: 44px 0;
+  padding: 0;
+}
+.fig svg { display: block; width: 100%; height: auto; overflow: visible; }
+.fig figcaption {
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--muted);
+  font-style: italic;
+}
+.fig-label {
+  font-family: var(--font-en);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  fill: var(--muted);
+}
+.fig-value { font-family: var(--font-en); font-size: 13px; fill: var(--ink-2); }
+.fig-name  { font-family: var(--font-en); font-size: 14px; fill: var(--ink); }
+.fig-axis  { stroke: var(--grid); stroke-width: 1; }
+.fig-note  { font-family: var(--font-en); font-size: 12px; font-style: italic; fill: var(--muted); }
+
+/* full-bleed past the 680px prose column, for wide figures */
+.fig-wide { width: min(920px, 92vw); margin-left: 50%; transform: translateX(-50%); }
+
+/* legend */
+.fig-legend {
+  display: flex; flex-wrap: wrap; gap: 8px 22px;
+  margin-top: 16px; font-size: 12.5px; color: var(--muted);
+}
+.fig-legend span { display: inline-flex; align-items: center; gap: 8px; }
+.fig-legend i { width: 11px; height: 11px; border-radius: 2px; flex: none; }
+
+/* Narrow screens: a figure scaled to 345px renders its 13px labels at ~5px.
+   Scroll it at a legible width instead of shrinking it into illegibility. */
+@media (max-width: 860px) {
+  .fig-wide { width: auto; margin-left: 0; transform: none; }
+  .fig {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+  .fig > svg { min-width: 620px; }
+  .fig-wide > svg { min-width: 820px; }
+  .fig figcaption, .fig .fig-legend { position: sticky; left: 0; }
+}

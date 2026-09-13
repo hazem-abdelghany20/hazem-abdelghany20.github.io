@@ -4,10 +4,21 @@ import Base from '../../layouts/Base.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
 import EssayRow from '../../components/EssayRow.astro';
+import { SERIES } from '../../lib/series';
 
-const essays = (await getCollection('essays', ({ data }) => !data.draft)).sort(
+const all = (await getCollection('essays', ({ data }) => !data.draft)).sort(
   (a, b) => b.data.date.getTime() - a.data.date.getTime()
 );
+
+// A series collapses to a single row. Otherwise nineteen parts of one book
+// bury everything else on the page.
+const standalone = all.filter((e) => !e.data.series);
+const seriesCards = Object.values(SERIES)
+  .map((s) => {
+    const parts = all.filter((e) => e.data.series === s.key);
+    return { s, count: parts.length, latest: parts[0]?.data.date };
+  })
+  .filter((c) => c.count > 0);
 ---
 
 <Base title="Essays · مقالات — Hazem Abdelghany">
@@ -18,8 +29,21 @@ const essays = (await getCollection('essays', ({ data }) => !data.draft)).sort(
     <span dir="rtl" lang="ar" class="page-title-ar">مقالات</span>
   </header>
 
+  {seriesCards.map(({ s, count }) => (
+    <a class="series-card" href={s.href}>
+      <div class="series-card-top">
+        <span class="tag">Series</span>
+        <span class="meta">{count} {count === 1 ? 'part' : 'parts'}</span>
+      </div>
+      <h2 class="series-card-title">{s.title}</h2>
+      <p class="series-card-sub">{s.subtitle}</p>
+      <p class="series-card-blurb">{s.blurb}</p>
+      <span class="series-card-cta">Start reading →</span>
+    </a>
+  ))}
+
   <div class="row-list">
-    {essays.map((e, i) => <EssayRow essay={e} num={String(i + 1).padStart(2, '0')} />)}
+    {standalone.map((e, i) => <EssayRow essay={e} num={String(i + 1).padStart(2, '0')} />)}
   </div>
 
   <Footer />
@@ -34,4 +58,22 @@ const essays = (await getCollection('essays', ({ data }) => !data.draft)).sort(
   }
   .page-title { font-size: 44px; font-weight: 400; }
   .page-title-ar { font-size: 34px; font-weight: 700; color: var(--muted); }
+
+  .series-card {
+    display: block;
+    border: 1px solid var(--line);
+    padding: 30px 32px 28px 32px;
+    margin-bottom: 40px;
+    background: var(--fig-surface);
+  }
+  .series-card:hover { border-color: var(--accent); }
+  .series-card-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 14px; }
+  .series-card-title { font-size: 32px; font-weight: 500; color: var(--ink); line-height: 1.15; }
+  .series-card:hover .series-card-title { color: var(--accent); }
+  .series-card-sub { margin: 8px 0 0 0; font-size: 15px; font-style: italic; color: var(--muted); }
+  .series-card-blurb { margin: 16px 0 0 0; font-size: 16px; line-height: 1.6; color: var(--ink-2); max-width: 62ch; }
+  .series-card-cta {
+    display: inline-block; margin-top: 20px;
+    font-size: 11px; font-weight: 500; letter-spacing: 1.8px; text-transform: uppercase; color: var(--accent);
+  }
 </style>
