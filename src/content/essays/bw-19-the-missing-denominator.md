@@ -5,6 +5,7 @@ lang: en
 thread: building
 minutes: 5
 description: "Base rates for every lane. How many tried, and how many you never heard of."
+translationOf: "bw-19-the-missing-denominator-ar"
 series: bedrock-and-weather
 part: 19
 partLabel: "Coda"
