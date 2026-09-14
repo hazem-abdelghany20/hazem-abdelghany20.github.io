@@ -11,7 +11,7 @@ const published = await publishedEssays();
 // otherwise one multi-part book occupies the entire homepage.
 const essays = published.filter((e) => !e.data.series).slice(0, 4);
 const seriesCards = Object.values(SERIES)
-  .map((s) => ({ s, count: published.filter((e) => e.data.series === s.key).length }))
+  .map((s) => ({ s, count: published.filter((e) => e.data.series === s.key && e.data.lang === 'en').length }))
   .filter((c) => c.count > 0);
 
 // Each thread advertises how much is actually behind it.

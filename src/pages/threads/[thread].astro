@@ -18,7 +18,7 @@ const all = (await publishedEssays()).filter((e) => e.data.thread === thread);
 // nineteen-part book is the entire thread page.
 const standalone = all.filter((e) => !e.data.series);
 const seriesHere = Object.values(SERIES)
-  .map((s) => ({ s, count: all.filter((e) => e.data.series === s.key).length }))
+  .map((s) => ({ s, count: all.filter((e) => e.data.series === s.key && e.data.lang === 'en').length }))
   .filter((c) => c.count > 0);
 
 const others = THREADS.filter((x) => x.key !== thread);

@@ -11,7 +11,7 @@ const all = await publishedEssays();
 // lives at /books/, otherwise nineteen parts of one book bury everything else.
 const standalone = all.filter((e) => !e.data.series);
 const books = Object.values(SERIES)
-  .map((s) => ({ s, count: all.filter((e) => e.data.series === s.key).length }))
+  .map((s) => ({ s, count: all.filter((e) => e.data.series === s.key && e.data.lang === 'en').length }))
   .filter((b) => b.count > 0);
 ---
 

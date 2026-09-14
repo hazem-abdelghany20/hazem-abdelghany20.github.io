@@ -21,8 +21,12 @@ const translation = essay.data.translationOf ? all.find((e) => e.id === essay.da
 
 // Series context: siblings in reading order, so a part knows where it sits.
 const series = essay.data.series;
+// Siblings are scoped to this part's own language: the Arabic edition is its
+// own reading order, not an interleaving of the two.
 const siblings = series
-  ? all.filter((e) => e.data.series === series).sort((a, b) => (a.data.part ?? 0) - (b.data.part ?? 0))
+  ? all
+      .filter((e) => e.data.series === series && e.data.lang === essay.data.lang)
+      .sort((a, b) => (a.data.part ?? 0) - (b.data.part ?? 0))
   : [];
 const idx = siblings.findIndex((e) => e.id === essay.id);
 const prevPart = idx > 0 ? siblings[idx - 1] : undefined;
@@ -34,6 +38,7 @@ const nextPart = idx >= 0 && idx < siblings.length - 1 ? siblings[idx + 1] : und
 const pool = all
   .filter((e) => e.id !== essay.id && e.id !== essay.data.translationOf)
   .filter((e) => e.data.series !== series || !series)
+  .filter((e) => e.data.lang === essay.data.lang)
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 const readNext = series && (prevPart || nextPart) ? [] : pool.slice(0, 2);
 ---

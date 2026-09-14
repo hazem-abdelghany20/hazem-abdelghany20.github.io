@@ -9,9 +9,17 @@ export async function getStaticPaths() {
 
 const { key } = Astro.props as { key: SeriesKey };
 const s = SERIES[key];
-const parts = (await publishedEssays())
-  .filter((e) => e.data.series === key)
-  .sort((a, b) => (a.data.part ?? 0) - (b.data.part ?? 0));
+const all = await publishedEssays();
+const inSeries = (lang: 'en' | 'ar') =>
+  all
+    .filter((e) => e.data.series === key && e.data.lang === lang)
+    .sort((a, b) => (a.data.part ?? 0) - (b.data.part ?? 0));
+
+// The book exists twice. The English list is the default; the Arabic edition
+// is the same book, so it lives on the same page behind a toggle rather than
+// at a second URL.
+const parts = inSeries('en');
+const partsAr = inSeries('ar');
 const md = (t: string) => t.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
 ---
 
@@ -25,6 +33,7 @@ const md = (t: string) => t.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
     <div class="bw-meta">
       {s.facts.map((f) => <span>{f}</span>)}
       <span>{parts.length} of {s.parts} published</span>
+      {partsAr.length > 0 && <span dir="rtl" lang="ar">متوفر بالعربي</span>}
     </div>
   </header>
 
@@ -46,12 +55,19 @@ const md = (t: string) => t.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
   <section class="bw-toc">
     <div class="section-head">
       <h2 class="kicker">The parts</h2>
-      <span class="meta">{parts.length} {parts.length === 1 ? 'part' : 'parts'}</span>
+      {partsAr.length > 0 ? (
+        <div class="lang-switch" role="group" aria-label="Edition">
+          <button type="button" class="lang-btn is-on" data-lang="en">English</button>
+          <button type="button" class="lang-btn" data-lang="ar" dir="rtl" lang="ar">بالعربي</button>
+        </div>
+      ) : (
+        <span class="meta">{parts.length} {parts.length === 1 ? 'part' : 'parts'}</span>
+      )}
     </div>
     {parts.length === 0 ? (
       <p class="bw-empty">The first part goes up shortly.</p>
     ) : (
-      <ol class="bw-list">
+      <ol class="bw-list" data-list="en">
         {parts.map((p) => (
           <li>
             <a href={`/essays/${p.id}/`}>
@@ -63,7 +79,36 @@ const md = (t: string) => t.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
         ))}
       </ol>
     )}
+    {partsAr.length > 0 && (
+      <ol class="bw-list bw-list-ar" data-list="ar" dir="rtl" lang="ar" hidden>
+        {partsAr.map((p) => (
+          <li>
+            <a href={`/essays/${p.id}/`}>
+              <span class="bw-part">{p.data.partLabel}</span>
+              <span class="bw-part-title">{p.data.title}</span>
+              <span class="bw-part-desc">{p.data.description}</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    )}
   </section>
+
+  <script is:inline>
+    (function () {
+      var btns = document.querySelectorAll('.lang-btn');
+      if (!btns.length) return;
+      btns.forEach(function (b) {
+        b.addEventListener('click', function () {
+          var lang = b.getAttribute('data-lang');
+          btns.forEach(function (x) { x.classList.toggle('is-on', x === b); });
+          document.querySelectorAll('[data-list]').forEach(function (l) {
+            l.hidden = l.getAttribute('data-list') !== lang;
+          });
+        });
+      });
+    })();
+  </script>
 
   <nav class="bw-other">
     {Object.values(SERIES)
