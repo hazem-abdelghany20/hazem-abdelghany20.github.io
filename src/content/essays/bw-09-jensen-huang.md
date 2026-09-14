@@ -5,6 +5,7 @@ lang: en
 thread: building
 minutes: 6
 description: "Code, compounded across three decades — and a bet on a computing shape the market did not want yet."
+translationOf: "bw-09-jensen-huang-ar"
 series: bedrock-and-weather
 part: 9
 partLabel: "Part Two · Engine 08"

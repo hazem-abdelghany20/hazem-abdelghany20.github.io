@@ -5,6 +5,7 @@ lang: en
 thread: building
 minutes: 7
 description: "What the record supports, and what the genre repeats that nobody in this book actually did."
+translationOf: "bw-17-dos-and-don-ts-ar"
 series: bedrock-and-weather
 part: 17
 partLabel: "Part Eight"

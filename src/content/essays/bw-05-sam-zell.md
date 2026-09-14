@@ -5,6 +5,7 @@ lang: en
 thread: building
 minutes: 6
 description: "He bought over-levered American real estate from desperate lenders, paid almost entirely with debt, and sold the largest one weeks before the credit market shut."
+translationOf: "bw-05-sam-zell-ar"
 series: bedrock-and-weather
 part: 5
 partLabel: "Part Two · Engine 04"

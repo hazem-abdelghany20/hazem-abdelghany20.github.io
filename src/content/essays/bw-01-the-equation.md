@@ -5,6 +5,7 @@ lang: en
 thread: building
 minutes: 6
 description: "Three terms, multiplied. Miss any one and the answer is zero, no matter how large the others."
+translationOf: "bw-01-the-equation-ar"
 series: bedrock-and-weather
 part: 1
 partLabel: "Part One"

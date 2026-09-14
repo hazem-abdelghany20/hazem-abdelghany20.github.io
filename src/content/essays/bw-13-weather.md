@@ -5,6 +5,7 @@ lang: en
 thread: building
 minutes: 5
 description: "Inherited money, technical skill, investors, a degree, a product, an audience. Each is disproved as a requirement by at least one person on this list."
+translationOf: "bw-13-weather-ar"
 series: bedrock-and-weather
 part: 13
 partLabel: "Part Four"

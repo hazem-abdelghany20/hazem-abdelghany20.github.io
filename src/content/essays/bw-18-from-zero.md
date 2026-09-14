@@ -5,6 +5,7 @@ lang: en
 thread: building
 minutes: 4
 description: "If you own nothing today — the order of operations, and the first move."
+translationOf: "bw-18-from-zero-ar"
 series: bedrock-and-weather
 part: 18
 partLabel: "Part Nine"

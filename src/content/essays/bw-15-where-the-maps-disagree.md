@@ -5,6 +5,7 @@ lang: en
 thread: building
 minutes: 4
 description: "The places the frameworks contradict each other, and which one the record backs."
+translationOf: "bw-15-where-the-maps-disagree-ar"
 series: bedrock-and-weather
 part: 15
 partLabel: "Part Six"

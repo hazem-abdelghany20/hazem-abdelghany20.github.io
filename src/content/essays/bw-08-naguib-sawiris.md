@@ -5,6 +5,7 @@ lang: en
 thread: building
 minutes: 6
 description: "Position as the engine: a licence, an approval, a concession — the leverage Western wealth literature barely mentions and emerging markets run on."
+translationOf: "bw-08-naguib-sawiris-ar"
 series: bedrock-and-weather
 part: 8
 partLabel: "Part Two · Engine 07"

@@ -5,6 +5,7 @@ lang: en
 thread: building
 minutes: 7
 description: "Currency that loses value, capital controls, thin local credit, courts you cannot rely on. Which roads are actually open to you."
+translationOf: "bw-16-the-ground-you-are-standing-on-ar"
 series: bedrock-and-weather
 part: 16
 partLabel: "Part Seven"

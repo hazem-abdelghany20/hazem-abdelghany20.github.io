@@ -5,6 +5,7 @@ lang: en
 thread: building
 minutes: 6
 description: "He bought insurance companies to invest their customers' unpaid premiums as permanent leverage that cost him less than nothing — then never sold anything for sixty years."
+translationOf: "bw-02-warren-buffett-ar"
 series: bedrock-and-weather
 part: 2
 partLabel: "Part Two · Engine 01"

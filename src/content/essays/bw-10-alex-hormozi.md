@@ -5,6 +5,7 @@ lang: en
 thread: building
 minutes: 6
 description: "He inverted the advice: stopped owning gyms and started charging fees. Media as the engine, and the one case where equity was the wrong call."
+translationOf: "bw-10-alex-hormozi-ar"
 series: bedrock-and-weather
 part: 10
 partLabel: "Part Two · Engine 09"

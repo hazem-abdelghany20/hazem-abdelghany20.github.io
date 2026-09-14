@@ -5,6 +5,7 @@ lang: en
 thread: building
 minutes: 10
 description: "Eight things present in every single case, without exception — and the one that is deeply uncomfortable."
+translationOf: "bw-12-bedrock-ar"
 series: bedrock-and-weather
 part: 12
 partLabel: "Part Three"

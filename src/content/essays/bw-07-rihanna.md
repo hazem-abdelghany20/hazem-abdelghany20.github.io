@@ -5,6 +5,7 @@ lang: en
 thread: building
 minutes: 6
 description: "Twelve years of music built the one asset nobody could take. Then she stopped renting it out for fees and traded it for half the equity instead."
+translationOf: "bw-07-rihanna-ar"
 series: bedrock-and-weather
 part: 7
 partLabel: "Part Two · Engine 06"

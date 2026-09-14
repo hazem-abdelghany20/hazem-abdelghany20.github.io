@@ -5,6 +5,7 @@ lang: en
 thread: building
 minutes: 6
 description: "Badly burned learning how venture financing actually works, he published that knowledge free for three years — and converted it into deal flow and a regulated platform."
+translationOf: "bw-06-naval-ravikant-ar"
 series: bedrock-and-weather
 part: 6
 partLabel: "Part Two · Engine 05"

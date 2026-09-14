@@ -5,6 +5,7 @@ lang: en
 thread: building
 minutes: 6
 description: "Brand from nothing — no investors, no inherited money, no technical skill, profitable in year one. The case that breaks the humiliation myth."
+translationOf: "bw-11-sara-blakely-ar"
 series: bedrock-and-weather
 part: 11
 partLabel: "Part Two · Engine 10"

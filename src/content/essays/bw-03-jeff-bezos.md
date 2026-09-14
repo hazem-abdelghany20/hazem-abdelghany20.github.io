@@ -5,6 +5,7 @@ lang: en
 thread: building
 minutes: 6
 description: "Roughly 41% of a company he deliberately ran at near-zero profit for two decades, financed with customers' cash and suppliers' payment terms rather than his own."
+translationOf: "bw-03-jeff-bezos-ar"
 series: bedrock-and-weather
 part: 3
 partLabel: "Part Two · Engine 02"

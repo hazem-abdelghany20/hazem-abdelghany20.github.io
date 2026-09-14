@@ -5,6 +5,7 @@ lang: en
 thread: building
 minutes: 6
 description: "Other people's capital and a state privatisation bought century-old names their owners could no longer value. He threw away everything except the name."
+translationOf: "bw-04-bernard-arnault-ar"
 series: bedrock-and-weather
 part: 4
 partLabel: "Part Two · Engine 03"

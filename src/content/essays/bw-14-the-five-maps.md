@@ -5,6 +5,7 @@ lang: en
 thread: building
 minutes: 10
 description: "Five canonical frameworks, each put through the ten cases until it broke — and what survived of it."
+translationOf: "bw-14-the-five-maps-ar"
 series: bedrock-and-weather
 part: 14
 partLabel: "Part Five"
