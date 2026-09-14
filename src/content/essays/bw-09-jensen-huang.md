@@ -3,7 +3,7 @@ title: "Jensen Huang"
 date: 2026-09-13
 lang: en
 thread: building
-minutes: 3
+minutes: 6
 description: "Code, compounded across three decades — and a bet on a computing shape the market did not want yet."
 series: bedrock-and-weather
 part: 9
@@ -13,6 +13,13 @@ partLabel: "Part Two · Engine 08"
 <div class="bw">
 <article class="station">
 <div class="station-head"><span class="station-n">08</span><span class="tag">Code</span></div>
+<div class="station-intro">
+<span class="eyebrow muted">Who he is</span>
+<p>Jensen Huang founded Nvidia and has run it for more than thirty years. Nvidia makes the chips that artificial intelligence runs on — essentially all of it, at almost every serious lab and cloud provider — which is why a company most people had never heard of in 2020 became the most valuable company on earth.</p>
+<p>He was born in Tainan, Taiwan in 1963, moved with his family to Thailand, and at nine was put on a plane to the United States with his older brother, alone, to live with relatives in Kentucky. The relatives enrolled them at a boarding school that turned out to be a reform school; his roommate was seventeen, covered in stab scars and unable to read. Huang taught him to read; the roommate taught him to lift weights. He cleaned the toilets. He has described those years without self-pity and says he liked it.</p>
+<p>The family reunited in Oregon. He was a nationally ranked table tennis player at fifteen, bussed tables and washed dishes at a Denny's, studied electrical engineering at Oregon State — where he was the youngest in the class and met his wife by asking to be her lab partner — and went to work designing chips. In 1993, at thirty, he sat in a Denny's booth with two other engineers and started a company to make graphics chips for video games. He has said he would not have started it had he known what it would take.</p>
+<p>It nearly died twice in the first four years: once from a product that bet on the wrong technical standard, once from a redesign so expensive they had to send the chip to manufacture untested, with about thirty days of payroll left. It worked. Then came the decision that matters: from 2006 he spent a decade and a great deal of margin making gaming chips programmable for general scientific work, with no customers asking for it and investors complaining about the cost. When researchers discovered that neural networks train best on exactly that hardware, the groundwork was already fifteen years old. He still wears the same jacket, has around sixty people reporting directly to him, holds no one-to-one meetings, and tells his staff the company is thirty days from going out of business.</p>
+</div>
 <p class="engine">He kept a founder's stake in one company for thirty-three straight years while quietly taxing every chip he shipped to fund a software platform that, sixteen years later, made his hardware the only practical substrate for deep learning — so when the AI boom arrived, he owned the toll booth.</p>
 <dl class="fields">
 <div class="field"><dt>Started with</dt><dd>A professional Taiwanese family who bought their sons an American education via a relative. Real hardship in the middle of it — sent at nine to a rural school for troubled kids, cleaning restrooms daily. Then an engineering degree and <strong>ten years of paid apprenticeship</strong> inside the industry he would later disrupt.</dd></div>

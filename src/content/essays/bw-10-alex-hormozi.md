@@ -3,7 +3,7 @@ title: "Alex Hormozi"
 date: 2026-09-13
 lang: en
 thread: building
-minutes: 4
+minutes: 6
 description: "He inverted the advice: stopped owning gyms and started charging fees. Media as the engine, and the one case where equity was the wrong call."
 series: bedrock-and-weather
 part: 10
@@ -13,6 +13,13 @@ partLabel: "Part Two · Engine 09"
 <div class="bw">
 <article class="station">
 <div class="station-head"><span class="station-n">09</span><span class="tag">Media</span></div>
+<div class="station-intro">
+<span class="eyebrow muted">Who he is</span>
+<p>Alex Hormozi is an American entrepreneur, born in 1989 to an Iranian immigrant father, who made his money in gyms — first owning them, then fixing other people's — and now runs a holding company that buys small businesses. He is far smaller than everyone else in this book and is here for exactly that reason: his numbers are the only ones in the sample that are reachable from where most readers stand.</p>
+<p>He graduated from Vanderbilt and took a management consulting job with a good salary, which he quit after eighteen months to open a gym in California, to his father's considerable displeasure. He slept on the gym floor. He got to six locations, and then found something more scalable than owning gyms: flying into a struggling gym, running its marketing and sales for six weeks, and splitting the cash it produced. He did thirty-three of those in three years.</p>
+<p>Then he stopped doing it himself and sold the instructions. Gym Launch licensed the whole system — the offer, the ads, the scripts, the pricing — to gym owners for a fee, which turned a service business into a business that copies itself. He added a supplements company selling to those same gyms and an agency running their ads. He has also been close to zero twice, once down to about a thousand dollars in the bank, and once when a payment processor froze his money and nearly ended the company overnight.</p>
+<p>In 2021 he and his wife Leila sold most of the group to a private equity firm for around $46m and used the proceeds to start Acquisition.com, which buys stakes in small businesses. The unusual part is the marketing: he gives away the material that other people in his industry charge thousands for — two books sold at cost, thousands of hours of free video — and the audience it builds is what brings him deals. The content is not the business. The content is the top of the funnel for the business.</p>
+</div>
 <p class="engine">He ran six gyms badly, extracted one repeatable cash-front-loaded offer from the wreckage, and then sold the <em>instructions</em> — not the service — to thousands of near-identical American gym owners at $6,000 to $16,000 each, at almost no marginal cost.</p>
 <dl class="fields">
 <div class="field"><dt>Started with</dt><dd>A physician father, a top-twenty American university, and two years of saved management-consulting salary. No inherited business, no fund, and — genuinely unusual, genuinely to his credit — <strong>zero outside capital, ever</strong>. Also: US citizenship, dollar savings, and customers backed by American consumer credit.</dd></div>

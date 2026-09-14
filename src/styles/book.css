@@ -244,3 +244,14 @@
 .bw .legend,
 .bw .verdict .ex { font-size: 11.5px; }
 .bw .eyebrow { font-size: 11.5px; }
+
+/* ---------- Station intro: who the person is ----------
+   The engine line assumes you already know the name. This doesn't. It runs
+   above it, in plain narrative, for a reader meeting the person cold. */
+.bw .station-intro{
+  max-width:var(--col);margin:1rem 0 1.9rem;
+  padding-left:1.15rem;border-left:1px solid var(--rule);
+}
+.bw .station-intro p{font-size:1.01rem;line-height:1.74;color:var(--ink-soft);margin-bottom:.95em}
+.bw .station-intro p:last-child{margin-bottom:0}
+.bw .station-intro .eyebrow{color:var(--muted);margin-bottom:.85rem}

@@ -3,7 +3,7 @@ title: "Naguib Sawiris"
 date: 2026-09-13
 lang: en
 thread: building
-minutes: 3
+minutes: 6
 description: "Position as the engine: a licence, an approval, a concession — the leverage Western wealth literature barely mentions and emerging markets run on."
 series: bedrock-and-weather
 part: 8
@@ -13,6 +13,13 @@ partLabel: "Part Two · Engine 07"
 <div class="bw">
 <article class="station">
 <div class="station-head"><span class="station-n">07</span><span class="tag">Position</span></div>
+<div class="station-intro">
+<span class="eyebrow muted">Who he is</span>
+<p>Naguib Sawiris is an Egyptian businessman who built a mobile phone network across the countries nobody else would enter — Algeria, Pakistan, Bangladesh, Iraq, Zimbabwe, North Korea — and sold it for about six billion dollars. In Egypt he is also a television owner, a political party founder, and a Coptic Christian who says loudly what most people there say quietly.</p>
+<p>The family history is the part that explains the man. His father Onsi started a business in the 1950s; Nasser's government nationalised it in 1961 and took everything. The family went to Libya to rebuild, and Gaddafi took that too. They came back to Egypt in the 1970s when Sadat reopened the economy and started again, for the third time, with a construction contractor called Orascom. Naguib — born in Cairo in 1954, schooled in German, trained as an engineer at ETH Zurich — joined it and was handed the piece nobody wanted: technology.</p>
+<p>He turned it into Orascom Telecom. The strategy was simple and required a stomach: go where the risk is priced as infinite and the competition is therefore zero. He bought the Algerian licence and built Djezzy into the country's dominant network. He ran a network in Iraq during the war. He built the only mobile network in North Korea, in a joint venture with the state, and was photographed in Pyongyang for his trouble. In 2011 he sold the group into VimpelCom in a deal that valued it at roughly six billion dollars — and then spent years fighting the Algerian government, which expropriated Djezzy, and the Egyptian tax authority, which came after him for the proceeds.</p>
+<p>After the 2011 revolution he founded a liberal political party and a television channel, both of which cost him money and neither of which he treats as a business. Two of his brothers are also billionaires. Since then he has moved into gold mining in Africa, property on the Egyptian coast, and a European news network.</p>
+</div>
 <p class="engine">He bought state-granted mobile licences in countries global operators refused to underwrite — Algeria, Iraq, Pakistan, Bangladesh, North Korea — built cheap prepaid networks fast enough to lock in the subscriber base, then sold the whole bundle to a global consolidator at the moment the political risk he had absorbed was about to be repriced against him.</p>
 <dl class="fields">
 <div class="field"><dt>Started with</dt><dd>Son of one of the richest men in Egypt. ETH Zurich, paid for by the family. Eighteen years inside the family conglomerate before founding his own vehicle — which was not a startup but a holding company consolidating telecom assets the family already owned. After the IPO the family still held around 60%.</dd></div>

@@ -3,7 +3,7 @@ title: "Rihanna"
 date: 2026-09-13
 lang: en
 thread: building
-minutes: 3
+minutes: 6
 description: "Twelve years of music built the one asset nobody could take. Then she stopped renting it out for fees and traded it for half the equity instead."
 series: bedrock-and-weather
 part: 7
@@ -13,6 +13,13 @@ partLabel: "Part Two · Engine 06"
 <div class="bw">
 <article class="station">
 <div class="station-head"><span class="station-n">06</span><span class="tag">Media → Brand</span></div>
+<div class="station-intro">
+<span class="eyebrow muted">Who she is</span>
+<p>Robyn Rihanna Fenty is a Barbadian singer who became, briefly, the richest musician in the world — and did it from cosmetics rather than music. Fourteen number-one singles, and the money is in foundation and lingerie.</p>
+<p>She grew up in a three-bedroom bungalow in Bridgetown, on an island of under three hundred thousand people with no music industry to speak of. Her father sold clothes from a stall and was addicted to crack; there was violence in the house; her parents separated when she was fourteen. As a teenager she had headaches so severe that doctors scanned her for a brain tumour. She sold clothes with her father on the street and joined the army cadets.</p>
+<p>What happened next cannot be replicated and she is honest about it. In 2003 an American record producer was in Barbados visiting his wife's family, a mutual acquaintance arranged for a fifteen-year-old to sing for him in a hotel room, and he flew her to Connecticut to record a demo. Jay-Z signed her at Def Jam at seventeen. "Pon de Replay" charted, "Umbrella" made her global in 2007, and for a decade she released an album almost every year while touring behind them.</p>
+<p>The turn came in 2017. Every famous person at her level was renting their name to a beauty brand for a royalty. She refused that deal and took half the company instead, partnering with the luxury conglomerate LVMH, which supplied the capital, the chemistry, the factories and shelf space in seventeen countries on the first day. Fenty Beauty launched with forty foundation shades when the industry norm was a dozen pale ones, and made something like a hundred million dollars in its first forty days. A lingerie company on the same model followed. In 2021 she was declared a billionaire — on paper, in shares she has never sold.</p>
+</div>
 <p class="engine">She spent twelve years using music to build the one asset that could not be taken from her — a global audience — then stopped renting that audience to other people's brands for fees and traded it instead for half the equity in two companies other people financed and operated.</p>
 <dl class="fields">
 <div class="field"><dt>Started with</dt><dd><strong>Genuinely nothing.</strong> A three-bedroom bungalow in Bridgetown, a father with a crack addiction, domestic violence in the house, no capital, no network, no elite education, and a home market of roughly 280,000 people with no music industry. Of the ten, she is the only one where "self-made" survives scrutiny of the starting line.</dd></div>

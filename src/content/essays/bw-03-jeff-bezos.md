@@ -3,7 +3,7 @@ title: "Jeff Bezos"
 date: 2026-09-13
 lang: en
 thread: building
-minutes: 3
+minutes: 6
 description: "Roughly 41% of a company he deliberately ran at near-zero profit for two decades, financed with customers' cash and suppliers' payment terms rather than his own."
 series: bedrock-and-weather
 part: 3
@@ -13,6 +13,13 @@ partLabel: "Part Two · Engine 02"
 <div class="bw">
 <article class="station">
 <div class="station-head"><span class="station-n">02</span><span class="tag">Capital</span></div>
+<div class="station-intro">
+<span class="eyebrow muted">Who he is</span>
+<p>Jeff Bezos founded Amazon, the company that sells nearly everything and, less visibly, rents out most of the internet's computing power. He was born in Albuquerque in 1964 to a seventeen-year-old mother and a father who left; the man whose name he carries is Mike Bezos, a Cuban who arrived in the United States alone at sixteen and adopted him at four. He spent his childhood summers on his grandfather's ranch in south Texas, castrating cattle and fixing windmills.</p>
+<p>He studied electrical engineering and computer science at Princeton, then went to Wall Street, ending up as a young vice-president at D. E. Shaw, a quantitative hedge fund that hired physicists to find patterns in markets. In 1994 he read that web usage was growing 2,300% a year, and decided that a number like that only happens once. He quit a job most people would consider the destination, drove west with his wife while writing the business plan in the passenger seat, and started selling books out of a garage in a Seattle suburb. His parents put in about $245,000 — most of their savings — and he told them to their faces there was a 70% chance they would lose it.</p>
+<p>The first order shipped in July 1995. The company went public in 1997 at $18 a share. Then the dot-com crash took the stock from over $100 to about $6, magazines ran the headline "Amazon.bomb", and analysts spent 2001 arguing over whether it would survive the year. It did, on razor-thin retail margins and a refusal to price for profit. The part that made the fortune came later and from an unexpected direction: in 2006 the company started renting out its own internal computing infrastructure to other businesses. Amazon Web Services now earns most of the group's operating profit, and a large share of the websites you use run on it.</p>
+<p>He stepped back from running the company in 2021, keeping the chairman's seat. What he does with the proceeds is the rocket company Blue Origin, <em>The Washington Post</em>, and a ten-thousand-year clock inside a mountain in Texas. In the 2019 divorce, a quarter of his Amazon stake went to MacKenzie Scott, who has been giving it away faster than he has.</p>
+</div>
 <p class="engine">He took roughly 41% of a company he then deliberately ran at near-zero profit for two decades — financing its growth with customers' cash and suppliers' payment terms rather than his own money — and never sold, so the entire fortune is an unrealised mark on shares he still holds.</p>
 <dl class="fields">
 <div class="field"><dt>Started with</dt><dd>A professional household — adoptive father an Exxon engineer, grandfather a regional director of the US Atomic Energy Commission. Princeton, then senior vice-president at a Wall Street quant fund by his late twenties. He was walking away from a large guaranteed bonus, not from poverty. His parents put <strong>$245,573</strong> into Amazon; siblings added $10,000 each.</dd></div>

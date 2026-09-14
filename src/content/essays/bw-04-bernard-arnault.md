@@ -3,7 +3,7 @@ title: "Bernard Arnault"
 date: 2026-09-13
 lang: en
 thread: building
-minutes: 3
+minutes: 6
 description: "Other people's capital and a state privatisation bought century-old names their owners could no longer value. He threw away everything except the name."
 series: bedrock-and-weather
 part: 4
@@ -13,6 +13,13 @@ partLabel: "Part Two · Engine 03"
 <div class="bw">
 <article class="station">
 <div class="station-head"><span class="station-n">03</span><span class="tag">Capital → Brand</span></div>
+<div class="station-intro">
+<span class="eyebrow muted">Who he is</span>
+<p>Bernard Arnault owns the world's luxury industry, or near enough. LVMH — the group he controls — holds Louis Vuitton, Dior, Fendi, Celine, Givenchy, Bulgari, Tiffany, TAG Heuer, Moët, Hennessy, Dom Pérignon and Sephora, around seventy-five houses in all. If you have bought a handbag, a bottle of champagne or a bottle of perfume at a price that made you pause, there is a good chance he was paid.</p>
+<p>He was not born into any of it. He was born in 1949 in Roubaix, a cold industrial town in the north of France, into a family that owned a construction company. He trained as an engineer at the École Polytechnique, France's most selective school, and went into the family business, where his first significant act was to persuade his father to sell the construction arm and move into property. When the socialists won the 1981 election he moved the family to Florida and built condominiums for three years, waiting.</p>
+<p>The move that made him came in 1984, and it is worth understanding because everything after is a repeat of it. The French government was looking for someone to take over Boussac, a bankrupt textile conglomerate with fifteen thousand employees. Buried inside it was Christian Dior. He put in about fifteen million dollars of family money, with the investment bank Lazard supplying the rest and the credibility, won the auction against a better-funded rival, and then sold off almost everything the conglomerate owned except Dior and the Paris department store Le Bon Marché. Thousands lost their jobs. The French press named him <em>le loup en cachemire</em> — the wolf in cashmere — and the name stuck because it fit.</p>
+<p>Then he did it again at a larger scale. Invited in as a friendly investor to settle a boardroom war between the Vuitton and Moët Hennessy factions of the newly merged LVMH, he bought shares from both sides and, by 1989, controlled the company neither of them would let the other have. He has spent the thirty-five years since buying heritage brands, restoring their prices and their scarcity, and handing them to his five children. The holding structure above it all is family-owned and unusually hard to dislodge.</p>
+</div>
 <p class="engine">He used other people's capital and a state privatisation to buy century-old European luxury names their owners no longer knew how to value, threw away everything except the name, then made that name permanently scarce and permanently expensive by owning the shops it was sold in.</p>
 <dl class="fields">
 <div class="field"><dt>Started with</dt><dd>A wealthy industrial family and a degree from the École Polytechnique — the single most powerful credential in French business and state life. Family fortune at the time of the decisive deal: roughly FF 90m, about $10m.</dd></div>

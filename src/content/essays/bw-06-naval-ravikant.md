@@ -3,7 +3,7 @@ title: "Naval Ravikant"
 date: 2026-09-13
 lang: en
 thread: building
-minutes: 3
+minutes: 6
 description: "Badly burned learning how venture financing actually works, he published that knowledge free for three years — and converted it into deal flow and a regulated platform."
 series: bedrock-and-weather
 part: 6
@@ -13,6 +13,13 @@ partLabel: "Part Two · Engine 05"
 <div class="bw">
 <article class="station">
 <div class="station-head"><span class="station-n">05</span><span class="tag">Capital + Position</span></div>
+<div class="station-intro">
+<span class="eyebrow muted">Who he is</span>
+<p>Naval Ravikant is a Silicon Valley investor, and the person most responsible for how a generation of people online now talk about wealth. If you have ever heard the phrase "specific knowledge", or the argument that the real leverage is code and media because both work while you sleep, you have heard him, whether or not you knew the source.</p>
+<p>He was born in Delhi in 1974 and brought to Queens, New York at nine. His parents separated soon after; his mother raised two boys alone while retraining, and the boys let themselves into an empty apartment after school. He has said the public library was the babysitter. He tested into Stuyvesant, the city's hardest selective high school, and went from there to Dartmouth.</p>
+<p>His first real company was Epinions, a consumer-review site from the 1999 boom. It survived the crash by merging into a shopping comparison site that then went public — and he and his co-founders discovered they had been manoeuvred out of shares they believed were theirs. They sued their own venture-capital backers, which in that industry is close to professional suicide. The case settled. What came out of it was a blog called VentureHacks, written to tell founders exactly what the people on the other side of the table already knew, and then AngelList, a platform that let ordinary rich people put small cheques into startups without a fund. He was early in Uber, Twitter, Postmates, Notion and Stack Overflow.</p>
+<p>The second act is the one most people have met. In 2018 he posted a numbered thread called "How to Get Rich (without getting lucky)" — a few dozen lines, no course, nothing for sale. It was turned into a book by a reader, given away free as a download, and it has done more to shape how young people think about ownership and leverage than anything published by a business school. He is the least wealthy person in this book by a wide margin, and the only one whose main output is the idea rather than the company.</p>
+</div>
 <p class="engine">He was badly burned learning how venture financing actually works, published that hard-won insider knowledge free for three years to build trust and deal flow, and converted it into two assets: a high-volume seed portfolio and founder equity in the regulated plumbing other people's angel money now runs through.</p>
 <dl class="fields">
 <div class="field"><dt>Started with</dt><dd>A genuinely poor start — New Delhi, then Queens, a single mother, a $3,000 student loan for his first computer that took a decade to repay. But an extraordinary <em>position</em>: a US green card, English as a first language, an elite public high school, Dartmouth computer science, and Silicon Valley at twenty-one. By twenty-five he was CEO of a company that had raised $45m from top-tier firms.</dd></div>

@@ -3,7 +3,7 @@ title: "Warren Buffett"
 date: 2026-09-13
 lang: en
 thread: building
-minutes: 3
+minutes: 6
 description: "He bought insurance companies to invest their customers' unpaid premiums as permanent leverage that cost him less than nothing — then never sold anything for sixty years."
 series: bedrock-and-weather
 part: 2
@@ -13,6 +13,13 @@ partLabel: "Part Two · Engine 01"
 <div class="bw">
 <article class="station">
 <div class="station-head"><span class="station-n">01</span><span class="tag">Capital</span></div>
+<div class="station-intro">
+<span class="eyebrow muted">Who he is</span>
+<p>Warren Buffett is an American investor, born in Omaha, Nebraska in 1930, who spent sixty years running a company called Berkshire Hathaway and became for a long stretch the richest person alive without ever founding a product, writing a line of code, or selling anything you have heard of. What he sells, mostly, is car insurance.</p>
+<p>He was a strange child in the way that gets written about later. He delivered newspapers, sold chewing gum and bottles of Coca-Cola door to door, put pinball machines in barbershops and split the takings, and filed his first tax return at fourteen to deduct his bicycle. His father was a stockbroker who became a congressman, which meant the boy had a brokerage office to loiter in and a house with the ticker tape running through it. Harvard Business School turned him down. He went to Columbia instead, specifically to study under Benjamin Graham, the man who had written the book on buying companies for less than the cash in their drawers, and then went to work for him.</p>
+<p>Back in Omaha at twenty-five, he ran investment partnerships out of a bedroom, then a small office, taking a quarter of the profits above a threshold and no fee at all below it. In the 1960s he bought control of a failing New England textile mill called Berkshire Hathaway — partly out of irritation at its chief executive, who tried to shave an eighth of a dollar off an agreed price — and he later called it the dumbest investment he ever made. The mills closed. The shell stayed. He fed insurance companies into it, then a railroad, a candy company, an ice-cream chain, and about a tenth of Apple, and never took the money out.</p>
+<p>He still lives in the house he bought in 1958 for $31,500, has paid himself $100,000 a year for decades, and has pledged to give almost all of it away. At the 2025 annual meeting — the one people fly to Omaha for, forty thousand of them — he announced he would hand the chief executive job to his deputy at the end of the year. He was ninety-four.</p>
+</div>
 <p class="engine">He bought insurance companies in order to invest their customers' unpaid premiums — money he holds but does not own — as permanent leverage that cost him less than nothing, then ran it through a concentrated portfolio for sixty years inside a vehicle that never paid a dividend and never sold.</p>
 <dl class="fields">
 <div class="field"><dt>Started with</dt><dd>A father who owned a stock brokerage and sat in the US Congress. About $9,800 of his own at twenty. Studied under Benjamin Graham at Columbia, then worked for him — arguably the best apprenticeship that has ever existed in the field, available to roughly twenty people on earth. His first fund opened at $105,100, of which <strong>his own contribution was $100</strong>; the rest came from his mother, sister, aunt and father-in-law.</dd></div>
