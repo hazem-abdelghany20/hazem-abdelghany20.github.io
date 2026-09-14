@@ -3,18 +3,18 @@ title: "Attention"
 date: 2026-09-13
 lang: en
 thread: mind
-minutes: 2
+minutes: 3
 description: "Disorder in consciousness is the real enemy, not suffering. Disorganized attention can't be spent on anything."
 series: riding-out
 part: 3
 partLabel: "Part I · Chapter 2"
 ---
 
-Here is the most useful sentence I know, and it comes from a Hungarian psychologist who spent fifty years studying happiness: the enemy of a good life is not suffering. It is **disorder in consciousness**.
+Here is the most useful sentence I know. It comes from <button class="ref" data-ref="csikszentmihalyi">Mihaly Csikszentmihalyi</button> — a Hungarian psychologist, born in 1934, who lost two brothers to the war and then spent fifty years handing people pagers and asking them, at random moments, whether they were happy right now. A hundred thousand of those pings later, he had an answer nobody ordered: the enemy of a good life is not suffering. It is **disorder in consciousness**.
 
-Mihaly Csikszentmihalyi called it *psychic entropy* — information entering your mind that conflicts with your intentions. Worry about the meeting. Envy of the friend. Resentment of the partner. Fear of the invoice. Boredom with the task. Each one seizes attention the way a fire alarm seizes a building, and here is the cost that matters: **disorganized attention cannot be spent on anything.** A mind full of noise cannot work, cannot love, cannot pray, cannot even properly rest. It just churns.
+He called it *psychic entropy* — information entering your mind that conflicts with your intentions. Worry about the meeting. Envy of the friend. Resentment of the partner. Fear of the invoice. Boredom with the task. Each one seizes attention the way a fire alarm seizes a building, and here is the cost that matters: **disorganized attention cannot be spent on anything.** A mind full of noise cannot work, cannot love, cannot pray, cannot even properly rest. It just churns.
 
-The opposite state he called order in consciousness: attention fully committed to one intention, with nothing left over to generate noise. You have felt it — the hour that passed like a minute, the task that used all of you. Note what was absent in that hour: the worry, the envy, the churn. Not defeated. *Unfunded.* Entropy needs idle attention to run on, and there was none available.
+The opposite state he called order in consciousness — the subject of <button class="ref" data-ref="flow">the book he is famous for</button>: attention fully committed to one intention, with nothing left over to generate noise. You have felt it — the hour that passed like a minute, the task that used all of you. Note what was absent in that hour: the worry, the envy, the churn. Not defeated. *Unfunded.* Entropy needs idle attention to run on, and there was none available.
 
 Once you see this, you see everything differently. Attention is not one of your resources. It is the *only* resource — the currency in which every other good is denominated. Your relationships are made of the attention you pay them. Your skills are compressed attention. Your faith is attention turned toward God; the scholars called the wandering of the heart in prayer exactly what it is, a theft. Even your self — what you call your personality — is the residue of what you have attended to for years. Tell me where your attention goes and I will tell you who you are becoming. There is no second answer.
 

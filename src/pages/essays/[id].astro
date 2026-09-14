@@ -6,6 +6,7 @@ import EssayRow from '../../components/EssayRow.astro';
 import { threadLabel, formatDate } from '../../lib/threads';
 import SeriesBanner from '../../components/SeriesBanner.astro';
 import SeriesNav from '../../components/SeriesNav.astro';
+import RefPanels from '../../components/RefPanels.astro';
 
 export async function getStaticPaths() {
   const essays = await publishedEssays();
@@ -93,6 +94,8 @@ const readNext = series && (prevPart || nextPart) ? [] : pool.slice(0, 2);
   >
     <Content />
   </article>
+
+  <RefPanels />
 
   {series && <SeriesNav series={series} prev={prevPart} next={nextPart} />}
 

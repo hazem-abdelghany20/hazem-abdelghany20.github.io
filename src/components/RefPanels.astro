@@ -1,0 +1,270 @@
+---
+/* Side reading. Any `<button class="ref" data-ref="key">` in the prose gets a
+   hover gloss and opens a panel with the full note. The data is inlined at
+   build time; there is no fetch and no framework. */
+import { REFS } from '../lib/refs';
+
+// Only ship the entries this page actually marks up would be nicer, but the
+// whole registry is a few KB and every chapter of a book hits several of them.
+const data = REFS;
+---
+
+<script is:inline set:html={`window.__REFS = ${JSON.stringify(data)};`} />
+
+<div class="refpanel" id="refpanel" hidden>
+  <div class="refpanel-backdrop" data-refclose></div>
+  <aside class="refpanel-card" role="dialog" aria-modal="true" aria-labelledby="refpanel-title" dir="ltr" lang="en">
+    <button class="refpanel-close" data-refclose aria-label="Close side reading">✕</button>
+    <div class="refpanel-scroll">
+      <span class="refpanel-kind" id="refpanel-kind"></span>
+      <figure class="refpanel-figure" id="refpanel-figure" hidden>
+        <img id="refpanel-img" src="" alt="" />
+        <figcaption id="refpanel-credit"></figcaption>
+      </figure>
+      <div class="refpanel-plate" id="refpanel-plate" hidden>
+        <span class="refpanel-plate-title" id="refpanel-plate-title"></span>
+        <span class="refpanel-plate-rule"></span>
+        <span class="refpanel-plate-meta" id="refpanel-plate-meta"></span>
+      </div>
+      <h2 class="refpanel-title" id="refpanel-title"></h2>
+      <p class="refpanel-meta" id="refpanel-meta"></p>
+      <div class="refpanel-body" id="refpanel-body"></div>
+      <p class="refpanel-start" id="refpanel-start" hidden></p>
+    </div>
+  </aside>
+</div>
+
+<script is:inline>
+  (function () {
+    var REFS = window.__REFS || {};
+    var panel = document.getElementById('refpanel');
+    if (!panel) return;
+    var card = panel.querySelector('.refpanel-card');
+    var lastFocus = null;
+
+    var el = {
+      kind: document.getElementById('refpanel-kind'),
+      figure: document.getElementById('refpanel-figure'),
+      img: document.getElementById('refpanel-img'),
+      credit: document.getElementById('refpanel-credit'),
+      plate: document.getElementById('refpanel-plate'),
+      plateTitle: document.getElementById('refpanel-plate-title'),
+      plateMeta: document.getElementById('refpanel-plate-meta'),
+      title: document.getElementById('refpanel-title'),
+      meta: document.getElementById('refpanel-meta'),
+      body: document.getElementById('refpanel-body'),
+      start: document.getElementById('refpanel-start'),
+    };
+
+    var KIND = { person: 'Side reading · the person', book: 'Side reading · the book', term: 'Side reading · the term' };
+
+    function open(key, trigger) {
+      var r = REFS[key];
+      if (!r) return;
+      lastFocus = trigger || null;
+      el.kind.textContent = KIND[r.kind] || 'Side reading';
+      el.title.textContent = r.title;
+      el.meta.textContent = r.meta;
+      el.body.innerHTML = r.body.map(function (p) { return '<p>' + p + '</p>'; }).join('');
+
+      if (r.image && r.image.src) {
+        el.img.src = r.image.src;
+        el.img.alt = r.image.alt || r.title;
+        el.credit.innerHTML = r.image.credit || '';
+        el.credit.hidden = !r.image.credit;
+        el.figure.hidden = false;
+        el.plate.hidden = true;
+      } else if (r.kind === 'book') {
+        el.plateTitle.textContent = r.title;
+        el.plateMeta.textContent = r.meta;
+        el.plate.hidden = false;
+        el.figure.hidden = true;
+      } else {
+        el.figure.hidden = true;
+        el.plate.hidden = true;
+      }
+
+      if (r.start) { el.start.innerHTML = '<span class="lbl">Where to start</span>' + r.start; el.start.hidden = false; }
+      else { el.start.hidden = true; }
+
+      panel.hidden = false;
+      document.documentElement.style.overflow = 'hidden';
+      setTimeout(function () {
+        panel.classList.add('is-open');
+        card.querySelector('.refpanel-scroll').scrollTop = 0;
+        panel.querySelector('.refpanel-close').focus();
+      }, 10);
+    }
+
+    function close() {
+      panel.classList.remove('is-open');
+      document.documentElement.style.overflow = '';
+      setTimeout(function () { panel.hidden = true; }, 200);
+      if (lastFocus) lastFocus.focus();
+    }
+
+    // Gloss text comes from the registry, not the markup.
+    function decorate() {
+      document.querySelectorAll('button.ref[data-ref]').forEach(function (b) {
+        if (b.dataset.tipReady) return;
+        var r = REFS[b.getAttribute('data-ref')];
+        if (!r) { b.classList.add('ref-missing'); return; }
+        b.dataset.tipReady = '1';
+        b.setAttribute('data-tip', r.tagline);
+        b.setAttribute('type', 'button');
+        b.setAttribute('aria-label', b.textContent.trim() + ' — side reading: ' + r.title);
+        // A marker near the top of the viewport gets its gloss underneath it.
+        if (b.getBoundingClientRect().top < 200) b.classList.add('ref-tip-below');
+      });
+    }
+    decorate();
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', decorate);
+
+    // Delegated, so it survives anything that re-renders the article.
+    document.addEventListener('click', function (e) {
+      var t = e.target;
+      if (t.closest && t.closest('[data-refclose]')) { close(); return; }
+      var b = t.closest ? t.closest('button.ref[data-ref]') : null;
+      if (b) { e.preventDefault(); open(b.getAttribute('data-ref'), b); }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !panel.hidden) close();
+    });
+  })();
+</script>
+
+<style is:global>
+  /* ---- the marker in the prose ---- */
+  button.ref {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    position: relative;
+    border-bottom: 1px dashed var(--accent);
+    text-underline-offset: 3px;
+  }
+  button.ref::after {
+    content: '↗';
+    font-size: .72em;
+    line-height: 1;
+    color: var(--accent);
+    margin-inline-start: .18em;
+    vertical-align: super;
+  }
+  button.ref:hover, button.ref:focus-visible { color: var(--accent); }
+  button.ref:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+  /* hover gloss */
+  button.ref::before {
+    content: attr(data-tip);
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    width: max-content;
+    max-width: 320px;
+    background: var(--bg);
+    color: var(--ink);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    padding: 10px 13px;
+    font-size: 13.5px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: start;
+    white-space: normal;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .16s ease, transform .16s ease;
+    z-index: 40;
+    box-shadow: 0 10px 30px rgba(0,0,0,.18);
+  }
+  button.ref.ref-tip-below::before {
+    bottom: auto;
+    top: calc(100% + 10px);
+    transform: translateX(-50%) translateY(-4px);
+  }
+  @media (hover: hover) {
+    button.ref:hover::before, button.ref:focus-visible::before {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  }
+
+  /* ---- the panel ---- */
+  .refpanel { position: fixed; inset: 0; z-index: 200; }
+  .refpanel-backdrop {
+    position: absolute; inset: 0;
+    background: rgba(0,0,0,.5);
+    opacity: 0; transition: opacity .2s ease;
+  }
+  .refpanel.is-open .refpanel-backdrop { opacity: 1; }
+  .refpanel-card {
+    position: absolute; top: 0; right: 0; bottom: 0;
+    width: min(520px, 100%);
+    background: var(--bg);
+    border-left: 1px solid var(--line);
+    transform: translateX(18px);
+    opacity: 0;
+    transition: transform .22s ease, opacity .22s ease;
+    display: flex; flex-direction: column;
+  }
+  .refpanel.is-open .refpanel-card { transform: none; opacity: 1; }
+  .refpanel-scroll { overflow-y: auto; padding: 62px 40px 56px 40px; -webkit-overflow-scrolling: touch; }
+  .refpanel-close {
+    position: absolute; top: 16px; right: 18px;
+    background: none; border: 0; cursor: pointer;
+    font-size: 15px; line-height: 1; color: var(--muted); padding: 8px;
+  }
+  .refpanel-close:hover { color: var(--accent); }
+  .refpanel-kind {
+    display: block;
+    font-size: 10.5px; font-weight: 600; letter-spacing: 1.8px;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 20px;
+  }
+  .refpanel-figure { margin: 0 0 22px 0; }
+  .refpanel-figure img {
+    display: block; width: 100%; height: auto;
+    max-height: 320px; object-fit: cover; object-position: 50% 22%;
+    border: 1px solid var(--line); filter: saturate(.85);
+  }
+  .refpanel-figure figcaption { margin-top: 8px; font-size: 11.5px; line-height: 1.5; color: var(--faint); }
+  .refpanel-figure figcaption a { color: var(--faint); text-decoration: underline; }
+  .refpanel-plate {
+    display: flex; flex-direction: column; gap: 14px;
+    border: 1px solid var(--line); background: var(--fig-surface);
+    padding: 34px 30px; margin-bottom: 22px;
+  }
+  .refpanel-plate-title { font-size: 22px; line-height: 1.25; color: var(--ink); }
+  .refpanel-plate-rule { width: 34px; height: 1px; background: var(--accent); }
+  .refpanel-plate-meta { font-size: 12px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted); }
+  .refpanel-title { font-size: 27px; font-weight: 500; line-height: 1.2; margin: 0 0 8px 0; }
+  .refpanel-meta { margin: 0 0 26px 0; font-size: 13px; letter-spacing: .4px; color: var(--muted); }
+  .refpanel-body p { margin: 0 0 1.05em 0; font-size: 16px; line-height: 1.72; color: var(--ink-2); }
+  .refpanel-body strong { color: var(--ink); font-weight: 600; }
+  .refpanel-start {
+    margin: 26px 0 0 0; padding: 14px 16px;
+    border: 1px solid var(--line); border-left: 3px solid var(--accent);
+    background: var(--fig-surface);
+    font-size: 14.5px; line-height: 1.6; color: var(--ink-2);
+  }
+  .refpanel-start .lbl {
+    display: block; font-size: 10px; font-weight: 600; letter-spacing: 1.6px;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 6px;
+  }
+
+  @media (max-width: 620px) {
+    .refpanel-card {
+      top: auto; left: 0; height: 88vh; width: 100%;
+      border-left: 0; border-top: 1px solid var(--line);
+      transform: translateY(24px);
+    }
+    .refpanel-scroll { padding: 54px 22px 44px 22px; }
+    button.ref::before { display: none; }
+  }
+</style>
