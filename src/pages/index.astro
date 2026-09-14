@@ -61,21 +61,31 @@ const threadCount = (key) => {
   <section class="essays">
     <div class="section-head">
       <div style="display: flex; align-items: baseline; gap: 14px;">
-        <h2 class="kicker">Selected Essays</h2>
-        <span dir="rtl" lang="ar" class="section-head-ar">مقالات مختارة</span>
+        <h2 class="kicker">Books</h2>
+        <span dir="rtl" lang="ar" class="section-head-ar">كتب</span>
       </div>
-      <a href="/essays/" class="meta">All essays →</a>
+      <a href="/books/" class="meta">All books →</a>
     </div>
     {seriesCards.map(({ s, count }) => (
       <a class="home-series" href={seriesHref(s.key)}>
         <div class="home-series-top">
-          <span class="tag">Series in progress</span>
-          <span class="meta">{count} {count === 1 ? 'part' : 'parts'}</span>
+          <span class="tag">Book · in progress</span>
+          <span class="meta">{count} of {s.parts} parts</span>
         </div>
         <h3 class="home-series-title">{s.title}</h3>
         <p class="home-series-sub">{s.subtitle}</p>
       </a>
     ))}
+  </section>
+
+  <section class="essays">
+    <div class="section-head">
+      <div style="display: flex; align-items: baseline; gap: 14px;">
+        <h2 class="kicker">Articles</h2>
+        <span dir="rtl" lang="ar" class="section-head-ar">مقالات</span>
+      </div>
+      <a href="/essays/" class="meta">All articles →</a>
+    </div>
     <div class="row-list">
       {essays.map((e, i) => <EssayRow essay={e} num={String(i + 1).padStart(2, '0')} />)}
     </div>

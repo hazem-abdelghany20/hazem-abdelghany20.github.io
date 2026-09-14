@@ -6,43 +6,53 @@ import { SERIES, seriesHref } from '../../lib/series';
 
 const all = await publishedEssays();
 
-// A series collapses to a single row. Otherwise nineteen parts of one book
-// bury everything else on the page.
+// This page is articles only — one-off pieces that stand on their own.
+// Book parts are not listed here; a book is a different kind of thing and
+// lives at /books/, otherwise nineteen parts of one book bury everything else.
 const standalone = all.filter((e) => !e.data.series);
-const seriesCards = Object.values(SERIES)
-  .map((s) => {
-    const parts = all.filter((e) => e.data.series === s.key);
-    return { s, count: parts.length, latest: parts[0]?.data.date };
-  })
-  .filter((c) => c.count > 0);
+const books = Object.values(SERIES)
+  .map((s) => ({ s, count: all.filter((e) => e.data.series === s.key).length }))
+  .filter((b) => b.count > 0);
 ---
 
 <Base
-  title="Essays · مقالات — Hazem Abdelghany"
-  description="Everything Hazem Abdelghany has published, across five threads — building, faith, the body, the mind, and perspective. In Egyptian Arabic and English."
+  title="Articles · مقالات — Hazem Abdelghany"
+  description="Standalone articles by Hazem Abdelghany, across five threads — building, faith, the body, the mind, and perspective. In Egyptian Arabic and English. The long-form books live separately."
 >
 
   <header class="page-head">
-    <h1 class="page-title">Essays</h1>
+    <h1 class="page-title">Articles</h1>
     <span dir="rtl" lang="ar" class="page-title-ar">مقالات</span>
   </header>
 
-  {seriesCards.map(({ s, count }) => (
-    <a class="series-card" href={seriesHref(s.key)}>
-      <div class="series-card-top">
-        <span class="tag">Series</span>
-        <span class="meta">{count} {count === 1 ? 'part' : 'parts'}</span>
-      </div>
-      <h2 class="series-card-title">{s.title}</h2>
-      <p class="series-card-sub">{s.subtitle}</p>
-      <p class="series-card-blurb">{s.blurb}</p>
-      <span class="series-card-cta">Start reading →</span>
-    </a>
-  ))}
+  <p class="page-lede">
+    One-off pieces, each one standing on its own. The long-form work is in the
+    <a href="/books/">books</a>.
+  </p>
 
   <div class="row-list">
     {standalone.map((e, i) => <EssayRow essay={e} num={String(i + 1).padStart(2, '0')} />)}
   </div>
+
+  {books.length > 0 && (
+    <section class="also-books">
+      <div class="section-head">
+        <h2 class="kicker">Also — the books</h2>
+        <span dir="rtl" lang="ar" class="section-head-ar">الكتب</span>
+      </div>
+      {books.map(({ s, count }) => (
+        <a class="series-card" href={seriesHref(s.key)}>
+          <div class="series-card-top">
+            <span class="tag">Book</span>
+            <span class="meta">{count} of {s.parts} parts</span>
+          </div>
+          <h3 class="series-card-title">{s.title}</h3>
+          <p class="series-card-sub">{s.subtitle}</p>
+          <span class="series-card-cta">Start reading →</span>
+        </a>
+      ))}
+    </section>
+  )}
 </Base>
 
 <style>
@@ -50,10 +60,19 @@ const seriesCards = Object.values(SERIES)
     display: flex;
     align-items: baseline;
     gap: 20px;
-    padding: 88px 0 44px 0;
+    padding: 88px 0 20px 0;
   }
   .page-title { font-size: 44px; font-weight: 400; }
   .page-title-ar { font-size: 34px; font-weight: 700; color: var(--muted); }
+  .page-lede {
+    max-width: 62ch; margin: 0 0 40px 0;
+    font-size: 17px; line-height: 1.7; color: var(--muted);
+  }
+  .page-lede a { color: var(--accent); }
+
+  .also-books { border-top: 1px solid var(--line); margin-top: 72px; padding: 56px 0 0 0; }
+  .section-head { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 30px; }
+  .section-head-ar { font-size: 17px; color: var(--muted); }
 
   .series-card {
     display: block;

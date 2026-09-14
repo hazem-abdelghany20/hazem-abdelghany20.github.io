@@ -14,8 +14,8 @@ const t = threadLabel(thread as any);
 
 const all = (await publishedEssays()).filter((e) => e.data.thread === thread);
 
-// A series shows as one card, exactly as it does on the essays index —
-// otherwise a nineteen-part book is the entire thread page.
+// A book shows as one card rather than as its parts — otherwise a
+// nineteen-part book is the entire thread page.
 const standalone = all.filter((e) => !e.data.series);
 const seriesHere = Object.values(SERIES)
   .map((s) => ({ s, count: all.filter((e) => e.data.series === s.key).length }))
@@ -31,7 +31,7 @@ const total = standalone.length + seriesHere.length;
 >
 
   <header class="thread-head">
-    <a href="/essays/" class="back">← All essays</a>
+    <a href="/essays/" class="back">← All articles</a>
     <div class="thread-title-row">
       <h1 class="thread-title">{t.en}</h1>
       <span dir="rtl" lang="ar" class="thread-title-ar">{t.ar}</span>
@@ -49,8 +49,8 @@ const total = standalone.length + seriesHere.length;
       {seriesHere.map(({ s, count }) => (
         <a class="thread-series" href={seriesHref(s.key)}>
           <div class="thread-series-top">
-            <span class="tag">Series</span>
-            <span class="meta">{count} {count === 1 ? 'part' : 'parts'}</span>
+            <span class="tag">Book</span>
+            <span class="meta">{count} of {s.parts} parts</span>
           </div>
           <h2 class="thread-series-title">{s.title}</h2>
           <p class="thread-series-sub">{s.subtitle}</p>

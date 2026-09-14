@@ -8,6 +8,7 @@ export async function GET({ site }: { site: URL }) {
 
   const urls = [
     { loc: '/', pri: '1.0' },
+    { loc: '/books/', pri: '0.9' },
     { loc: '/essays/', pri: '0.9' },
     { loc: '/about/', pri: '0.7' },
     ...Object.values(SERIES).map((s) => ({ loc: seriesHref(s.key), pri: '0.9' })),
