@@ -4,10 +4,11 @@ import { seriesDef, seriesHref, type SeriesKey } from '../lib/series';
 
 interface Props {
   series: SeriesKey;
+  lang?: 'en' | 'ar';
   prev?: CollectionEntry<'essays'>;
   next?: CollectionEntry<'essays'>;
 }
-const { series, prev, next } = Astro.props;
+const { series, prev, next, lang = 'en' } = Astro.props;
 const s = seriesDef(series);
 ---
 
@@ -20,7 +21,7 @@ const s = seriesDef(series);
       </a>
     )}
   </div>
-  <a class="series-nav-home" href={seriesHref(s.key)}>All parts</a>
+  <a class="series-nav-home" href={seriesHref(s.key)}>{lang === 'ar' ? 'كل الأجزاء' : 'All parts'}</a>
   <div class="series-nav-side series-nav-right">
     {next && (
       <a href={`/essays/${next.id}/`}>

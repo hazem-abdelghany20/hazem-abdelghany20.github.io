@@ -54,7 +54,7 @@ const readNext = series && (prevPart || nextPart) ? [] : pool.slice(0, 2);
 
   <header class="essay-head">
     {series && essay.data.partLabel && (
-      <SeriesBanner series={series} partLabel={essay.data.partLabel} />
+      <SeriesBanner series={series} partLabel={essay.data.partLabel} lang={essay.data.lang} />
     )}
     <a class="essay-kicker" href={`/threads/${essay.data.thread}/`}>
       <span dir="rtl" lang="ar" style="font-size: 17px; color: var(--accent);">{thread.ar}</span>
@@ -102,7 +102,7 @@ const readNext = series && (prevPart || nextPart) ? [] : pool.slice(0, 2);
 
   <RefPanels />
 
-  {series && <SeriesNav series={series} prev={prevPart} next={nextPart} />}
+  {series && <SeriesNav series={series} prev={prevPart} next={nextPart} lang={essay.data.lang} />}
 
   {readNext.length > 0 && (
     <section class="read-next">
