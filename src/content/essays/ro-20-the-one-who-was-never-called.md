@@ -5,6 +5,7 @@ lang: en
 thread: faith
 minutes: 3
 description: "Twenty years of training and no arena. The most likely failure mode for a young man today."
+translationOf: "ro-20-the-one-who-was-never-called-ar"
 series: riding-out
 part: 21
 partLabel: "Part V · Chapter 20"

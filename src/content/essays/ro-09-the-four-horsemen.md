@@ -5,6 +5,7 @@ lang: en
 thread: mind
 minutes: 4
 description: "Boredom, envy, resentment, fear. Each a specific way attention gets disordered, each with its own counter."
+translationOf: "ro-09-the-four-horsemen-ar"
 series: riding-out
 part: 10
 partLabel: "Part II · Chapter 9"

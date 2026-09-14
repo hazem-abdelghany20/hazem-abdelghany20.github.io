@@ -5,6 +5,7 @@ lang: en
 thread: building
 minutes: 3
 description: "Systems over decisions. Every day is a vote for who you are."
+translationOf: "ro-08-the-day-is-the-unit-ar"
 series: riding-out
 part: 9
 partLabel: "Part II · Chapter 8"

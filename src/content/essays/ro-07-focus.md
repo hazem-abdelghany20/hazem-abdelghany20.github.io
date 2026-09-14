@@ -5,6 +5,7 @@ lang: en
 thread: mind
 minutes: 3
 description: "A skill, not a state. Daily maintenance, and the whetstone."
+translationOf: "ro-07-focus-ar"
 series: riding-out
 part: 8
 partLabel: "Part II · Chapter 7"

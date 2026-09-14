@@ -5,6 +5,7 @@ lang: en
 thread: perspective
 minutes: 4
 description: "Comparison, envy, and the lie of the visible scoreboard."
+translationOf: "ro-17-the-dumber-man-who-won-ar"
 series: riding-out
 part: 18
 partLabel: "Part IV · Chapter 17"

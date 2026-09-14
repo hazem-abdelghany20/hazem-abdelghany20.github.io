@@ -5,6 +5,7 @@ lang: en
 thread: faith
 minutes: 4
 description: "You don't know it, so stop negotiating with it. Your fate is not addressed to you, so it is not your business."
+translationOf: "ro-25-fate-ar"
 series: riding-out
 part: 26
 partLabel: "Part V · Chapter 25"

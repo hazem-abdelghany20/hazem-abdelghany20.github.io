@@ -5,6 +5,7 @@ lang: en
 thread: mind
 minutes: 3
 description: "Emotion is instrumentation, not weather. Anger is a boundary moved. Envy is what you actually want — which is why you hate it."
+translationOf: "ro-04-emotion-ar"
 series: riding-out
 part: 5
 partLabel: "Part I · Chapter 4"

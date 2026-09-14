@@ -5,6 +5,7 @@ lang: en
 thread: mind
 minutes: 3
 description: "Disorder in consciousness is the real enemy, not suffering. Disorganized attention can't be spent on anything."
+translationOf: "ro-02-attention-ar"
 series: riding-out
 part: 3
 partLabel: "Part I · Chapter 2"

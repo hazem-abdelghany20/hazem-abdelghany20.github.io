@@ -5,6 +5,7 @@ lang: en
 thread: body
 minutes: 3
 description: "The verb half of trainability. Metal reshapes under heat; comfortable repetition rewires nothing."
+translationOf: "ro-10-training-ar"
 series: riding-out
 part: 11
 partLabel: "Part II · Chapter 10"

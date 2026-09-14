@@ -5,6 +5,7 @@ lang: en
 thread: building
 minutes: 4
 description: "The wrong war fought excellently. Direction beats intensity."
+translationOf: "ro-12-choosing-the-hill-ar"
 series: riding-out
 part: 13
 partLabel: "Part III · Chapter 12"

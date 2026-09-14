@@ -5,6 +5,7 @@ lang: en
 thread: faith
 minutes: 5
 description: "The last human freedom, and Frankl's scale."
+translationOf: "ro-19-meaning-when-it-doesn-t-pay-ar"
 series: riding-out
 part: 20
 partLabel: "Part IV · Chapter 19"

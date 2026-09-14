@@ -5,6 +5,7 @@ lang: en
 thread: faith
 minutes: 3
 description: "Full effort, loss from behind."
+translationOf: "ro-22-the-one-betrayed-by-his-own-side-ar"
 series: riding-out
 part: 23
 partLabel: "Part V · Chapter 22"

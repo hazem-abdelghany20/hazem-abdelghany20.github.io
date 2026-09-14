@@ -5,6 +5,7 @@ lang: en
 thread: faith
 minutes: 3
 description: "Not killed — broke. Lost the will. Burnout as a real ending, not a detour."
+translationOf: "ro-21-the-one-who-broke-ar"
 series: riding-out
 part: 22
 partLabel: "Part V · Chapter 21"

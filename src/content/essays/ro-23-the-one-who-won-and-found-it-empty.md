@@ -5,6 +5,7 @@ lang: en
 thread: faith
 minutes: 3
 description: "Arrival, and the silence after it."
+translationOf: "ro-23-the-one-who-won-and-found-it-empty-ar"
 series: riding-out
 part: 24
 partLabel: "Part V · Chapter 23"

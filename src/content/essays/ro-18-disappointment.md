@@ -5,6 +5,7 @@ lang: en
 thread: perspective
 minutes: 4
 description: "The business that didn't work. The year the body took. The thing you built that nobody wanted. Everyone's life, not just yours."
+translationOf: "ro-18-disappointment-ar"
 series: riding-out
 part: 19
 partLabel: "Part IV · Chapter 18"

@@ -5,6 +5,7 @@ lang: en
 thread: perspective
 minutes: 4
 description: "You can't do it alone, and you can't control them either."
+translationOf: "ro-15-other-people-ar"
 series: riding-out
 part: 16
 partLabel: "Part III · Chapter 15"

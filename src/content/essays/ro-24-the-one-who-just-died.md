@@ -5,6 +5,7 @@ lang: en
 thread: faith
 minutes: 4
 description: "Full effort, zero output, no lesson. The chapter that refuses to console — if every case resolves, the book is lying."
+translationOf: "ro-24-the-one-who-just-died-ar"
 series: riding-out
 part: 25
 partLabel: "Part V · Chapter 24"

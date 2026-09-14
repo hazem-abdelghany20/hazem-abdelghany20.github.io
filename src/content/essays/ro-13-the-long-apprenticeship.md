@@ -5,6 +5,7 @@ lang: en
 thread: building
 minutes: 4
 description: "Mastery on a ten-year clock, and what you plan a campaign with."
+translationOf: "ro-13-the-long-apprenticeship-ar"
 series: riding-out
 part: 14
 partLabel: "Part III · Chapter 13"

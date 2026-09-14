@@ -5,6 +5,7 @@ lang: en
 thread: faith
 minutes: 4
 description: "A rule of life. Constraint as the thing that makes freedom usable."
+translationOf: "ro-11-the-code-ar"
 series: riding-out
 part: 12
 partLabel: "Part II · Chapter 11"

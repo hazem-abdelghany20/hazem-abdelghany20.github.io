@@ -5,6 +5,7 @@ lang: en
 thread: mind
 minutes: 3
 description: "Being alone with yourself without reaching for something. The most degraded capacity of 2026."
+translationOf: "ro-05-solitude-ar"
 series: riding-out
 part: 6
 partLabel: "Part I · Chapter 5"

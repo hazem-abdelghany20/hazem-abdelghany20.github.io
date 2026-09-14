@@ -5,6 +5,7 @@ lang: en
 thread: building
 minutes: 4
 description: "The anti-cope chapter. Detachment from outcome is not detachment from feedback — judge effort on the day's clock, output on the decade's, never the reverse."
+translationOf: "ro-14-the-ledger-you-can-keep-ar"
 series: riding-out
 part: 15
 partLabel: "Part III · Chapter 14"

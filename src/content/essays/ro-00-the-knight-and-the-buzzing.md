@@ -5,6 +5,7 @@ lang: en
 thread: perspective
 minutes: 4
 description: "An 11th-century man with lice, a sword and a 35-year life expectancy may have been happier than you. If happiness were downstream of comfort, he loses on every axis. He doesn't."
+translationOf: "ro-00-the-knight-and-the-buzzing-ar"
 series: riding-out
 part: 1
 partLabel: "Prologue"

@@ -5,6 +5,7 @@ lang: en
 thread: body
 minutes: 11
 description: "The machine attention runs on. Sleep, fuel, movement, breath — and the case, with the research, that voluntary discomfort is a nutrient we have engineered out of our diet."
+translationOf: "ro-01-the-body-ar"
 series: riding-out
 part: 2
 partLabel: "Part I · Chapter 1"

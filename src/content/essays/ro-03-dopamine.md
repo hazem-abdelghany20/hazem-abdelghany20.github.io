@@ -5,6 +5,7 @@ lang: en
 thread: mind
 minutes: 2
 description: "Motivation as a system to be governed, not a feeling to be obeyed."
+translationOf: "ro-03-dopamine-ar"
 series: riding-out
 part: 4
 partLabel: "Part I · Chapter 3"

@@ -5,6 +5,7 @@ lang: en
 thread: perspective
 minutes: 2
 description: "The effort was already the reward. Not as consolation — because it was the only part that was ever yours."
+translationOf: "ro-26-riding-out-anyway-ar"
 series: riding-out
 part: 27
 partLabel: "Epilogue"

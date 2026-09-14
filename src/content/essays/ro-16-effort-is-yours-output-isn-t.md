@@ -5,6 +5,7 @@ lang: en
 thread: perspective
 minutes: 4
 description: "The thesis, stated fully, and the math of luck."
+translationOf: "ro-16-effort-is-yours-output-isn-t-ar"
 series: riding-out
 part: 17
 partLabel: "Part IV · Chapter 16"

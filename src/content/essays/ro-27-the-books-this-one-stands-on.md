@@ -5,6 +5,7 @@ lang: en
 thread: perspective
 minutes: 2
 description: "Where the ideas came from, named."
+translationOf: "ro-27-the-books-this-one-stands-on-ar"
 series: riding-out
 part: 28
 partLabel: "Sources"

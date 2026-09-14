@@ -5,6 +5,7 @@ lang: en
 thread: mind
 minutes: 4
 description: "Not a tool — the readout. What it looks like when the rest align, and the disqualifier: flow is content-neutral. Men enter it gambling."
+translationOf: "ro-06-flow-ar"
 series: riding-out
 part: 7
 partLabel: "Part I · Chapter 6"
