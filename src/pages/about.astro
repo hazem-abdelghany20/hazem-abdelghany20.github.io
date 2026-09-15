@@ -1,25 +1,231 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const timeline = [
+  {
+    year: '2022',
+    title: 'Teaching came first',
+    body: [
+      `While finishing computer software engineering at the German University in Cairo, I began working as a mathematics tutor.`,
+      `It was my first sustained experience of taking something complex, finding the idea underneath it, and helping another person see it clearly. That instinct—to understand, simplify, and teach—would keep appearing in nearly everything I built afterward.`,
+      `Later that year, I created an online-course website for Dr. Walaa Elgammal and began working independently as a freelance web developer. This was the year I moved from studying systems to building real ones.`,
+    ],
+  },
+  {
+    year: '2023',
+    title: 'From lessons to products',
+    body: [
+      `I joined iSchool as a software programming instructor, teaching young students how to code. At the same time, I taught mathematics remotely through Continuous Education Academy and continued taking on freelance development work.`,
+      `I also spent time working in marketing. That widened my view of building: good technology is not enough. You also need to understand people, communicate value, and make something fit naturally into their lives.`,
+      `What looked like several unrelated jobs was really one education—technology, teaching, communication, and human behavior all happening at once.`,
+    ],
+  },
+  {
+    year: '2024',
+    title: 'Building for the mind',
+    body: [
+      `I started leading Welmnt, an AI-powered platform focused on student mental health and emotional well-being.`,
+      `The work brought several parts of my life together: education, psychology, technology, and product building. It also forced me to think beyond academic achievement. A student can perform well on paper while struggling internally, and most schools are not equipped to see or support that struggle.`,
+      `The deeper question became: how can we use technology without losing sight of the human being it is supposed to serve?`,
+    ],
+  },
+  {
+    year: '2025',
+    title: 'Catalyst',
+    body: [
+      `I became CEO of Catalyst.`,
+      `Catalyst grew from an idea into a technology-education company helping professionals across Egypt and the Arab world learn software engineering and AI in Arabic. The aim is practical: help people learn faster, build smarter, and compete globally.`,
+      `Courses in backend engineering, AI for developers, and no-code AI began reaching thousands of students. But Catalyst is not only a course business. It is an attempt to build the kind of technical education I believe should exist—direct, useful, ambitious, and connected to real work.`,
+    ],
+  },
+  {
+    year: '2026',
+    title: 'Building with leverage',
+    body: [
+      `I joined AstraForm Technologies as CTO while continuing to lead Catalyst and build software across different industries.`,
+      `By this point, AI had changed how I worked completely. I no longer saw it as a tool sitting beside the work. It became part of the way I think, design, code, research, and operate.`,
+      `I now build almost everything with agentic AI—not to remove myself from the process, but to spend more of my time on judgment, direction, and the problems worth solving. This is still the beginning of that chapter.`,
+    ],
+  },
+];
+
+const threads = [
+  {
+    number: '01',
+    name: 'Building',
+    ar: 'البناء',
+    href: '/threads/building/',
+    body: `Building is how I turn questions into something testable. Companies, products, courses, software, and personal systems are all versions of the same act: imagining that something could work better, then accepting responsibility for making it real.`,
+  },
+  {
+    number: '02',
+    name: 'Faith',
+    ar: 'الإيمان',
+    href: '/threads/faith/',
+    body: `Faith is the anchor everything else hangs on. It gives ambition its boundaries, difficulty its meaning, and time its proper scale.`,
+  },
+  {
+    number: '03',
+    name: 'Body',
+    ar: 'الجسد',
+    href: '/threads/body/',
+    body: `Training teaches honesty. The weight moves or it doesn’t. The body adapts or it doesn’t. Rebuilding after an ACL injury has made patience, recovery, and limitation more real to me than motivation ever could.`,
+  },
+  {
+    number: '04',
+    name: 'Mind',
+    ar: 'العقل',
+    href: '/threads/mind/',
+    body: `I’m interested in psychology, attention, emotional health, and the stories people construct about themselves. The mind shapes every experience, but it is often the part of life we understand least.`,
+  },
+  {
+    number: '05',
+    name: 'Perspective',
+    ar: 'النظرة',
+    href: '/threads/perspective/',
+    body: `Facts matter, but the frame around them matters too. Perspective is where I explore the assumptions beneath how we work, live, succeed, and decide what is enough.`,
+  },
+];
+
+const beliefs = [
+  'Faith should constrain ambition, not decorate it.',
+  'Technology should make people more capable, not more passive.',
+  'A strong body changes the experience of having a mind.',
+  'Teaching is one of the fastest ways to discover what you do not understand.',
+  'AI should increase the amount of yourself in your work—not remove it.',
+  'A good system creates freedom. A bad one turns life into administration.',
+  'Most meaningful things take longer than the internet makes them appear to.',
+];
 ---
 
-<Base title="About · عنّي — Hazem Abdelghany">
-
+<Base
+  title="About · عنّي — Hazem Abdelghany"
+  description="Hazem Abdelghany is a builder from Cairo working across companies, AI, education, faith, the body, and the mind."
+>
   <header class="page-head">
     <h1 class="page-title">About</h1>
     <span dir="rtl" lang="ar" class="page-title-ar">عنّي</span>
   </header>
 
-  <div class="prose" style="max-width: 680px;">
-    <p>
-      I'm Hazem — from Cairo. I run <em>Catalyst</em>, an AI and software company, and co-build
-      <em>Mental Diet</em> with a psychiatrist. I code everything with agentic AI, train around a
-      rebuilt ACL, memorize Qur'an on Mondays, and keep my whole life in one system.
+  <section class="opening" aria-labelledby="short-version">
+    <p class="eyebrow" id="short-version">The short version</p>
+    <p class="opening-statement">
+      I’m Hazem Abdelghany—a builder from Cairo trying to build companies, a strong body, a
+      disciplined mind, and a life anchored by faith.
     </p>
-    <p>
-      The essays here are how I think — drafted with AI, but the thinking is mine. Some are in
-      Egyptian Arabic, some in English; each one lives in the language of its natural reader.
+    <p class="opening-note">
+      I studied computer engineering, started my career teaching, and gradually found my way into
+      software, product design, AI, and entrepreneurship. Today, most of my work sits somewhere
+      between technology and education—but this site is about the whole picture, not only the
+      professional one.
     </p>
-  </div>
+  </section>
+
+  <section class="about-section story" aria-labelledby="longer-version">
+    <div class="section-label">
+      <h2 class="kicker" id="longer-version">The longer version</h2>
+      <span dir="rtl" lang="ar">الحكاية</span>
+    </div>
+    <div class="story-copy prose">
+      <p>Before I was building companies, I was teaching.</p>
+      <p>
+        Teaching forced me to do something I still value today: understand an idea deeply enough
+        to make it useful to someone else. It showed me that knowing something and communicating
+        it are completely different skills.
+      </p>
+      <p>
+        From there, I moved into web development. At first, the projects were small: a course
+        website, freelance work, and whatever gave me a real problem to solve. Each project pulled
+        me further away from simply learning technology and closer to using it to build things
+        people could actually depend on.
+      </p>
+      <p>Over time, the questions became larger.</p>
+      <p>
+        How should students learn technical skills? How can schools support the person behind the
+        grades? What happens when AI allows a small, ambitious team to build at a scale that
+        previously required an entire company?
+      </p>
+      <p>
+        Those questions eventually became products, companies, courses, and experiments. They also
+        became the five threads running through this site: building, faith, the body, the mind, and
+        perspective.
+      </p>
+      <blockquote>
+        They might look like separate interests. To me, they are different sides of the same
+        project: building a life deliberately.
+      </blockquote>
+    </div>
+  </section>
+
+  <section class="about-section" aria-labelledby="road-so-far">
+    <div class="section-label section-label-wide">
+      <h2 class="kicker" id="road-so-far">The road so far</h2>
+      <span dir="rtl" lang="ar">الطريق لحد دلوقتي</span>
+    </div>
+    <div class="timeline">
+      {timeline.map((item) => (
+        <article class="timeline-entry">
+          <time>{item.year}</time>
+          <div class="timeline-copy">
+            <h3>{item.title}</h3>
+            {item.body.map((paragraph) => <p>{paragraph}</p>)}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="about-section" aria-labelledby="five-threads">
+    <div class="section-label section-label-wide">
+      <h2 class="kicker" id="five-threads">Five threads, one life</h2>
+      <span dir="rtl" lang="ar">الخيوط الخمسة</span>
+    </div>
+    <div class="thread-list">
+      {threads.map((thread) => (
+        <a class="thread-entry" href={thread.href}>
+          <span class="thread-number">{thread.number}</span>
+          <div class="thread-name">
+            <h3>{thread.name}</h3>
+            <span dir="rtl" lang="ar">{thread.ar}</span>
+          </div>
+          <p>{thread.body}</p>
+          <span class="thread-arrow" aria-hidden="true">→</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="about-section beliefs" aria-labelledby="beliefs">
+    <div class="section-label">
+      <h2 class="kicker" id="beliefs">Things I believe</h2>
+      <span dir="rtl" lang="ar">اللي مؤمن بيه</span>
+    </div>
+    <ol class="belief-list">
+      {beliefs.map((belief) => <li>{belief}</li>)}
+    </ol>
+  </section>
+
+  <section class="about-section closing" aria-labelledby="why-this-site">
+    <div class="section-label">
+      <h2 class="kicker" id="why-this-site">Why this site exists</h2>
+      <span dir="rtl" lang="ar">ليه المكان ده؟</span>
+    </div>
+    <div class="closing-copy prose">
+      <p>The internet encourages everyone to become one clear, marketable thing.</p>
+      <p class="closing-line">I’m not very interested in doing that.</p>
+      <p>
+        My work in AI affects how I think about education. Teaching affects how I build products.
+        Faith affects how I define success. Injury affects how I understand patience. Psychology
+        affects how I lead, work, and relate to people.
+      </p>
+      <p>This site is where those parts are allowed to exist together.</p>
+      <p>
+        Some pieces are written in English. Others belong naturally in Egyptian Arabic. Some will
+        become books; others may remain unfinished thoughts.
+      </p>
+      <p class="last-line">The language changes. The questions are the same.</p>
+    </div>
+  </section>
 </Base>
 
 <style>
@@ -27,8 +233,203 @@ import Base from '../layouts/Base.astro';
     display: flex;
     align-items: baseline;
     gap: 20px;
-    padding: 88px 0 44px 0;
+    padding: 88px 0 54px;
   }
   .page-title { font-size: 44px; font-weight: 400; }
   .page-title-ar { font-size: 34px; font-weight: 700; color: var(--muted); }
+
+  .opening {
+    max-width: 920px;
+    padding-bottom: 96px;
+  }
+  .eyebrow {
+    margin: 0 0 22px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2.3px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .opening-statement {
+    max-width: 900px;
+    margin: 0;
+    font-size: clamp(31px, 4vw, 48px);
+    line-height: 1.24;
+    letter-spacing: -0.35px;
+  }
+  .opening-note {
+    max-width: 690px;
+    margin: 34px 0 0;
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--ink-2);
+  }
+
+  .about-section {
+    border-top: 1px solid var(--line);
+    padding: 68px 0 84px;
+  }
+  .story,
+  .beliefs,
+  .closing {
+    display: grid;
+    grid-template-columns: minmax(180px, 1fr) minmax(0, 2fr);
+    gap: 64px;
+  }
+  .section-label {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 9px;
+  }
+  .section-label span {
+    font-size: 20px;
+    color: var(--muted);
+  }
+  .section-label-wide {
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    padding-bottom: 40px;
+  }
+  .story-copy,
+  .closing-copy {
+    max-width: 720px;
+  }
+  .story-copy > p:first-child {
+    font-size: 27px;
+    line-height: 1.45;
+  }
+
+  .timeline-entry {
+    display: grid;
+    grid-template-columns: minmax(120px, 1fr) minmax(0, 4fr);
+    gap: 42px;
+    border-top: 1px solid var(--line);
+    padding: 30px 0 48px;
+  }
+  .timeline-entry:last-child { padding-bottom: 0; }
+  .timeline-entry time {
+    color: var(--accent);
+    font-size: 17px;
+    font-style: italic;
+  }
+  .timeline-copy { max-width: 720px; }
+  .timeline-copy h3 {
+    margin: -3px 0 18px;
+    font-size: 29px;
+    line-height: 1.3;
+  }
+  .timeline-copy p {
+    margin: 0 0 18px;
+    font-size: 18px;
+    line-height: 1.72;
+    color: var(--ink-2);
+  }
+  .timeline-copy p:last-child { margin-bottom: 0; }
+
+  .thread-list { border-bottom: 1px solid var(--line); }
+  .thread-entry {
+    display: grid;
+    grid-template-columns: 52px minmax(130px, 0.8fr) minmax(0, 2fr) 24px;
+    align-items: start;
+    gap: 28px;
+    border-top: 1px solid var(--line);
+    padding: 27px 0;
+    color: var(--ink);
+  }
+  .thread-number {
+    font-size: 14px;
+    font-style: italic;
+    color: var(--faint);
+  }
+  .thread-name h3 {
+    margin: -3px 0 2px;
+    font-size: 24px;
+    transition: color 0.16s ease;
+  }
+  .thread-name span { color: var(--muted); font-size: 18px; }
+  .thread-entry p {
+    max-width: 660px;
+    margin: -2px 0 0;
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--ink-2);
+  }
+  .thread-arrow {
+    color: var(--faint);
+    transition: color 0.16s ease, transform 0.16s ease;
+  }
+  .thread-entry:hover .thread-name h3,
+  .thread-entry:hover .thread-arrow { color: var(--accent); }
+  .thread-entry:hover .thread-arrow { transform: translateX(4px); }
+
+  .belief-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: beliefs;
+  }
+  .belief-list li {
+    counter-increment: beliefs;
+    position: relative;
+    border-top: 1px solid var(--line);
+    padding: 20px 0 20px 48px;
+    font-size: 21px;
+    line-height: 1.5;
+  }
+  .belief-list li:last-child { border-bottom: 1px solid var(--line); }
+  .belief-list li::before {
+    content: counter(beliefs, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 24px;
+    font-size: 12px;
+    font-style: italic;
+    color: var(--faint);
+  }
+
+  .closing { padding-bottom: 24px; }
+  .closing-line {
+    font-size: 27px;
+    font-style: italic;
+    color: var(--accent);
+  }
+  .last-line { font-style: italic; }
+
+  @media (max-width: 760px) {
+    .page-head { padding: 68px 0 42px; }
+    .opening { padding-bottom: 68px; }
+    .about-section { padding: 52px 0 64px; }
+    .story,
+    .beliefs,
+    .closing { grid-template-columns: 1fr; gap: 34px; }
+    .section-label-wide {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      padding-bottom: 30px;
+    }
+    .timeline-entry {
+      grid-template-columns: 72px minmax(0, 1fr);
+      gap: 20px;
+    }
+    .thread-entry {
+      grid-template-columns: 36px minmax(0, 1fr) 20px;
+      gap: 18px;
+    }
+    .thread-entry p {
+      grid-column: 2 / -1;
+      margin-top: -12px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .opening-statement { font-size: 30px; }
+    .opening-note { font-size: 17px; }
+    .timeline-entry { grid-template-columns: 1fr; gap: 8px; }
+    .timeline-copy h3 { font-size: 26px; }
+    .timeline-copy p { font-size: 17px; }
+    .belief-list li { font-size: 19px; }
+  }
 </style>
