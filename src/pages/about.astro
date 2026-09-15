@@ -13,6 +13,7 @@ const timeline = [
   },
   {
     year: '2023',
+    mark: { src: '/work/ischool.png', label: 'iSchool', width: 105, height: 30 },
     title: 'From lessons to products',
     body: [
       `I joined iSchool as a software programming instructor, teaching young students how to code. At the same time, I taught mathematics remotely through Continuous Education Academy and continued taking on freelance development work.`,
@@ -22,6 +23,7 @@ const timeline = [
   },
   {
     year: '2024',
+    mark: { src: '/work/welmnt.svg', label: 'Welmnt', width: 42, height: 40 },
     title: 'Building for the mind',
     body: [
       `I started leading Welmnt, an AI-powered platform focused on student mental health and emotional well-being.`,
@@ -31,6 +33,7 @@ const timeline = [
   },
   {
     year: '2025',
+    mark: { src: '/work/catalyst.svg', label: 'Catalyst', width: 121, height: 29 },
     title: 'Catalyst',
     body: [
       `I became CEO of Catalyst.`,
@@ -40,6 +43,7 @@ const timeline = [
   },
   {
     year: '2026',
+    mark: { src: '/work/astraform.png', label: 'AstraForm Technologies', width: 157, height: 36 },
     title: 'Building with leverage',
     body: [
       `I joined AstraForm Technologies as CTO while continuing to lead Catalyst and build software across different industries.`,
@@ -165,7 +169,17 @@ const beliefs = [
     <div class="timeline">
       {timeline.map((item) => (
         <article class="timeline-entry">
-          <time>{item.year}</time>
+          <div class="timeline-meta">
+            <time>{item.year}</time>
+            {item.mark && (
+              <span
+                class="org-mark"
+                role="img"
+                aria-label={`${item.mark.label} logo`}
+                style={`--mark: url('${item.mark.src}'); --mark-width: ${item.mark.width}px; --mark-height: ${item.mark.height}px;`}
+              />
+            )}
+          </div>
           <div class="timeline-copy">
             <h3>{item.title}</h3>
             {item.body.map((paragraph) => <p>{paragraph}</p>)}
@@ -328,6 +342,29 @@ const beliefs = [
   }
   .timeline-copy p:last-child { margin-bottom: 0; }
 
+  .timeline-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22px;
+  }
+  .org-mark {
+    display: block;
+    width: var(--mark-width, 110px);
+    max-width: 100%;
+    height: var(--mark-height, 30px);
+    background-color: var(--muted);
+    opacity: 0.9;
+    -webkit-mask-image: var(--mark);
+    mask-image: var(--mark);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: left center;
+    mask-position: left center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+  }
+
   .thread-list { border-bottom: 1px solid var(--line); }
   .thread-entry {
     display: grid;
@@ -411,8 +448,17 @@ const beliefs = [
       padding-bottom: 30px;
     }
     .timeline-entry {
-      grid-template-columns: 72px minmax(0, 1fr);
-      gap: 20px;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 14px;
+    }
+    .timeline-meta {
+      flex-direction: row;
+      align-items: center;
+      gap: 18px;
+    }
+    .org-mark {
+      width: calc(var(--mark-width, 110px) * 0.82);
+      height: calc(var(--mark-height, 30px) * 0.82);
     }
     .thread-entry {
       grid-template-columns: 36px minmax(0, 1fr) 20px;
