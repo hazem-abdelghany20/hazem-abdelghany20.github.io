@@ -2,38 +2,45 @@
 import { THREADS } from '../lib/threads';
 import { liveLinks } from '../lib/site';
 
+interface Props { lang?: 'en' | 'ar' }
+const { lang = 'en' } = Astro.props;
+const isAr = lang === 'ar';
 const links = liveLinks();
 const year = new Date().getFullYear();
 ---
 
 <footer class="footer">
   <div class="footer-top">
-    <nav class="footer-threads" aria-label="Threads">
-      <span class="kicker">Threads</span>
+    <nav class="footer-threads" aria-label={isAr ? 'الخيوط' : 'Threads'}>
+      <span class="kicker">{isAr ? 'الخيوط' : 'Threads'}</span>
       <ul>
         {THREADS.map((t) => (
           <li>
             <a href={`/threads/${t.key}/`}>
-              {t.en} <span class="ar" dir="rtl" lang="ar">{t.ar}</span>
+              {isAr ? (
+                <>{t.ar} <span class="en" dir="ltr" lang="en">{t.en}</span></>
+              ) : (
+                <>{t.en} <span class="ar" dir="rtl" lang="ar">{t.ar}</span></>
+              )}
             </a>
           </li>
         ))}
       </ul>
     </nav>
 
-    <nav class="footer-site" aria-label="Site">
-      <span class="kicker">Site</span>
+    <nav class="footer-site" aria-label={isAr ? 'الموقع' : 'Site'}>
+      <span class="kicker">{isAr ? 'الموقع' : 'Site'}</span>
       <ul>
-        <li><a href="/books/">Books</a></li>
-        <li><a href="/essays/">Articles</a></li>
-        <li><a href="/about/">About</a></li>
-        <li><a href="/rss.xml">RSS</a></li>
+        <li><a href="/books/">{isAr ? 'الكتب' : 'Books'}</a></li>
+        <li><a href="/essays/">{isAr ? 'المقالات' : 'Articles'}</a></li>
+        <li><a href={isAr ? '/ar/about/' : '/about/'}>{isAr ? 'عنّي' : 'About'}</a></li>
+        <li><a href="/rss.xml">{isAr ? 'الخلاصة' : 'RSS'}</a></li>
       </ul>
     </nav>
 
     {links.length > 0 && (
-      <nav class="footer-elsewhere" aria-label="Elsewhere">
-        <span class="kicker">Elsewhere</span>
+      <nav class="footer-elsewhere" aria-label={isAr ? 'أماكن تانية' : 'Elsewhere'}>
+        <span class="kicker">{isAr ? 'أماكن تانية' : 'Elsewhere'}</span>
         <ul>
           {links.map((l) => (
             <li>
@@ -49,11 +56,11 @@ const year = new Date().getFullYear();
 
   <div class="footer-base">
     <div style="display: flex; align-items: baseline; gap: 10px;">
-      <span class="meta">Cairo, Egypt</span>
+      <span class="meta">{isAr ? 'القاهرة، مصر' : 'Cairo, Egypt'}</span>
       <span class="dot">·</span>
-      <span dir="rtl" lang="ar" style="font-size: 15px; color: var(--muted);">القاهرة</span>
+      <span dir={isAr ? 'ltr' : 'rtl'} lang={isAr ? 'en' : 'ar'} style="font-size: 15px; color: var(--muted);">{isAr ? 'Cairo' : 'القاهرة'}</span>
     </div>
-    <span class="meta">© {year} Hazem Abdelghany</span>
+    <span class="meta">© {year} {isAr ? 'حازم عبدالغني' : 'Hazem Abdelghany'}</span>
   </div>
 </footer>
 
@@ -71,6 +78,8 @@ const year = new Date().getFullYear();
   .footer-top a { display: inline-block; padding: 9px 0; font-size: 16px; color: var(--ink-2); }
   .footer-top a:hover { color: var(--accent); }
   .footer-top .ar { color: var(--faint); font-size: 15px; }
+  .footer-top .en { color: var(--faint); font-family: var(--font-en); font-size: 13px; margin-inline-start: 3px; }
+  :global(html[dir='rtl']) .kicker { letter-spacing: 0; text-transform: none; font-size: 16px; font-weight: 700; }
   .footer-base {
     display: flex;
     justify-content: space-between;

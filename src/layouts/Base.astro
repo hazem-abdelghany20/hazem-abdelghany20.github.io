@@ -16,6 +16,8 @@ interface Props {
   noindex?: boolean;
   /** Thread name, for article structured data. */
   section?: string;
+  /** Equivalent editions of this page in other languages. */
+  alternates?: Array<{ lang: string; href: string }>;
 }
 
 const {
@@ -26,6 +28,7 @@ const {
   type = 'website',
   noindex = false,
   section,
+  alternates = [],
 } = Astro.props;
 
 const site = Astro.site ?? new URL('https://hazemabdelghany.com');
@@ -71,6 +74,9 @@ const person = {
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="alternate" type="application/rss+xml" title="Hazem Abdelghany — Essays" href="/rss.xml" />
+    {alternates.map((alternate) => (
+      <link rel="alternate" hreflang={alternate.lang} href={new URL(alternate.href, site).href} />
+    ))}
 
     <meta property="og:type" content={type} />
     <meta property="og:title" content={title} />
@@ -107,13 +113,13 @@ const person = {
     </script>
   </head>
   <body>
-    <a class="skip-link" href="#main">Skip to content</a>
+    <a class="skip-link" href="#main">{lang === 'ar' ? 'روح للمحتوى' : 'Skip to content'}</a>
     <div class="wrap">
-      <Nav />
+      <Nav lang={lang} />
       <main id="main">
         <slot />
       </main>
-      <Footer />
+      <Footer lang={lang} />
     </div>
   </body>
 </html>

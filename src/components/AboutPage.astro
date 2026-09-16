@@ -1,0 +1,522 @@
+---
+import Base from '../layouts/Base.astro';
+
+interface Props { lang?: 'en' | 'ar' }
+const { lang = 'en' } = Astro.props;
+const isAr = lang === 'ar';
+
+const marks = {
+  ischool: { src: '/work/ischool.png', label: 'iSchool', width: 105, height: 30 },
+  welmnt: { src: '/work/welmnt.svg', label: 'Welmnt', width: 42, height: 40 },
+  catalyst: { src: '/work/catalyst.svg', label: 'Catalyst', width: 121, height: 29 },
+  astraform: { src: '/work/astraform.png', label: 'AstraForm Technologies', width: 157, height: 36 },
+};
+
+const english = {
+  title: 'About',
+  titleOther: 'عنّي',
+  shortLabel: 'The short version',
+  statement: `I’m Hazem Abdelghany—a builder from Cairo trying to build companies, a strong body, a disciplined mind, and a life anchored by faith.`,
+  note: `I studied computer engineering, started my career teaching, and gradually found my way into software, product design, AI, and entrepreneurship. Today, most of my work sits somewhere between technology and education—but this site is about the whole picture, not only the professional one.`,
+  storyLabel: 'The longer version',
+  storyOther: 'الحكاية',
+  story: [
+    `Before I was building companies, I was teaching.`,
+    `Teaching forced me to do something I still value today: understand an idea deeply enough to make it useful to someone else. It showed me that knowing something and communicating it are completely different skills.`,
+    `From there, I moved into web development. At first, the projects were small: a course website, freelance work, and whatever gave me a real problem to solve. Each project pulled me further away from simply learning technology and closer to using it to build things people could actually depend on.`,
+    `Over time, the questions became larger.`,
+    `How should students learn technical skills? How can schools support the person behind the grades? What happens when AI allows a small, ambitious team to build at a scale that previously required an entire company?`,
+    `Those questions eventually became products, companies, courses, and experiments. They also became the five threads running through this site: building, faith, the body, the mind, and perspective.`,
+  ],
+  quote: `They might look like separate interests. To me, they are different sides of the same project: building a life deliberately.`,
+  timelineLabel: 'The road so far',
+  timelineOther: 'الطريق لحد دلوقتي',
+  timeline: [
+    {
+      year: '2022',
+      title: 'Teaching came first',
+      body: [
+        `While finishing computer software engineering at the German University in Cairo, I began working as a mathematics tutor.`,
+        `It was my first sustained experience of taking something complex, finding the idea underneath it, and helping another person see it clearly. That instinct—to understand, simplify, and teach—would keep appearing in nearly everything I built afterward.`,
+        `Later that year, I created an online-course website for Dr. Walaa Elgammal and began working independently as a freelance web developer. This was the year I moved from studying systems to building real ones.`,
+      ],
+    },
+    {
+      year: '2023', mark: marks.ischool, title: 'From lessons to products',
+      body: [
+        `I joined iSchool as a software programming instructor, teaching young students how to code. At the same time, I taught mathematics remotely through Continuous Education Academy and continued taking on freelance development work.`,
+        `I also spent time working in marketing. That widened my view of building: good technology is not enough. You also need to understand people, communicate value, and make something fit naturally into their lives.`,
+        `What looked like several unrelated jobs was really one education—technology, teaching, communication, and human behavior all happening at once.`,
+      ],
+    },
+    {
+      year: '2024', mark: marks.welmnt, title: 'Building for the mind',
+      body: [
+        `I started leading Welmnt, an AI-powered platform focused on student mental health and emotional well-being.`,
+        `The work brought several parts of my life together: education, psychology, technology, and product building. It also forced me to think beyond academic achievement. A student can perform well on paper while struggling internally, and most schools are not equipped to see or support that struggle.`,
+        `The deeper question became: how can we use technology without losing sight of the human being it is supposed to serve?`,
+      ],
+    },
+    {
+      year: '2025', mark: marks.catalyst, title: 'Catalyst',
+      body: [
+        `I became CEO of Catalyst.`,
+        `Catalyst grew from an idea into a technology-education company helping professionals across Egypt and the Arab world learn software engineering and AI in Arabic. The aim is practical: help people learn faster, build smarter, and compete globally.`,
+        `Courses in backend engineering, AI for developers, and no-code AI began reaching thousands of students. But Catalyst is not only a course business. It is an attempt to build the kind of technical education I believe should exist—direct, useful, ambitious, and connected to real work.`,
+      ],
+    },
+    {
+      year: '2026', mark: marks.astraform, title: 'Building with leverage',
+      body: [
+        `I joined AstraForm Technologies as CTO while continuing to lead Catalyst and build software across different industries.`,
+        `By this point, AI had changed how I worked completely. I no longer saw it as a tool sitting beside the work. It became part of the way I think, design, code, research, and operate.`,
+        `I now build almost everything with agentic AI—not to remove myself from the process, but to spend more of my time on judgment, direction, and the problems worth solving. This is still the beginning of that chapter.`,
+      ],
+    },
+  ],
+  threadsLabel: 'Five threads, one life',
+  threadsOther: 'الخيوط الخمسة',
+  threads: [
+    { number: '01', name: 'Building', secondary: 'البناء', href: '/threads/building/', body: `Building is how I turn questions into something testable. Companies, products, courses, software, and personal systems are all versions of the same act: imagining that something could work better, then accepting responsibility for making it real.` },
+    { number: '02', name: 'Faith', secondary: 'الإيمان', href: '/threads/faith/', body: `Faith is the anchor everything else hangs on. It gives ambition its boundaries, difficulty its meaning, and time its proper scale.` },
+    { number: '03', name: 'Body', secondary: 'الجسد', href: '/threads/body/', body: `Training teaches honesty. The weight moves or it doesn’t. The body adapts or it doesn’t. Rebuilding after an ACL injury has made patience, recovery, and limitation more real to me than motivation ever could.` },
+    { number: '04', name: 'Mind', secondary: 'العقل', href: '/threads/mind/', body: `I’m interested in psychology, attention, emotional health, and the stories people construct about themselves. The mind shapes every experience, but it is often the part of life we understand least.` },
+    { number: '05', name: 'Perspective', secondary: 'النظرة', href: '/threads/perspective/', body: `Facts matter, but the frame around them matters too. Perspective is where I explore the assumptions beneath how we work, live, succeed, and decide what is enough.` },
+  ],
+  beliefsLabel: 'Things I believe',
+  beliefsOther: 'اللي مؤمن بيه',
+  beliefs: [
+    'Faith should constrain ambition, not decorate it.',
+    'Technology should make people more capable, not more passive.',
+    'A strong body changes the experience of having a mind.',
+    'Teaching is one of the fastest ways to discover what you do not understand.',
+    'AI should increase the amount of yourself in your work—not remove it.',
+    'A good system creates freedom. A bad one turns life into administration.',
+    'Most meaningful things take longer than the internet makes them appear to.',
+  ],
+  closingLabel: 'Why this site exists',
+  closingOther: 'ليه المكان ده؟',
+  closing: [
+    `The internet encourages everyone to become one clear, marketable thing.`,
+    `I’m not very interested in doing that.`,
+    `My work in AI affects how I think about education. Teaching affects how I build products. Faith affects how I define success. Injury affects how I understand patience. Psychology affects how I lead, work, and relate to people.`,
+    `This site is where those parts are allowed to exist together.`,
+    `Some pieces are written in English. Others belong naturally in Egyptian Arabic. Some will become books; others may remain unfinished thoughts.`,
+    `The language changes. The questions are the same.`,
+  ],
+};
+
+const arabic = {
+  title: 'عنّي',
+  titleOther: 'About',
+  shortLabel: 'المختصر',
+  statement: `أنا حازم عبدالغني—بنّاء من القاهرة بحاول أبني شركات، وجسم قوي، وعقل منضبط، وحياة أساسها الإيمان.`,
+  note: `درست هندسة الكمبيوتر، وبدأت حياتي المهنية بالتدريس، وبعدها لقيت طريقي بالتدريج للبرمجيات وتصميم المنتجات والذكاء الاصطناعي وريادة الأعمال. دلوقتي أغلب شغلي موجود في المساحة ما بين التكنولوجيا والتعليم—بس الموقع ده عن الصورة كاملة، مش عن الشغل بس.`,
+  storyLabel: 'الحكاية كاملة',
+  storyOther: 'The longer version',
+  story: [
+    `قبل ما أبني شركات، كنت بعلّم.`,
+    `التدريس خلّاني أعمل حاجة لسه مهمة بالنسبالي لحد النهارده: أفهم الفكرة بعمق كفاية عشان أعرف أخليها مفيدة لحد تاني. واتعلمت إن إنك تعرف حاجة، وإنك تعرف توصلها، مهارتين مختلفتين تمامًا.`,
+    `من هنا دخلت عالم تطوير الويب. في الأول كانت المشاريع صغيرة: موقع لكورس، شغل حر، وأي مشروع يحطني قدام مشكلة حقيقية محتاجة حل. كل مشروع كان بيبعدني خطوة عن مجرد تعلّم التكنولوجيا، ويقربني من استخدامها في بناء حاجات ناس فعلًا تعتمد عليها.`,
+    `ومع الوقت، الأسئلة كبرت.`,
+    `إزاي المفروض الناس تتعلم المهارات التقنية؟ إزاي المدارس تدعم الإنسان اللي ورا الدرجات؟ وإيه اللي يحصل لما الذكاء الاصطناعي يدي فريق صغير وطموح قدرة بناء كانت زمان محتاجة شركة كاملة؟`,
+    `الأسئلة دي اتحولت مع الوقت لمنتجات وشركات وكورسات وتجارب. وهي كمان بقت الخيوط الخمسة اللي ماشية في الموقع ده: البناء، والإيمان، والجسد، والعقل، والنظرة.`,
+  ],
+  quote: `ممكن يبانوا اهتمامات منفصلة. بالنسبالي، هما جوانب مختلفة من نفس المشروع: إني أبني حياة عن قصد.`,
+  timelineLabel: 'الطريق لحد دلوقتي',
+  timelineOther: 'The road so far',
+  timeline: [
+    {
+      year: '2022',
+      title: 'البداية كانت بالتدريس',
+      body: [
+        `وأنا بكمّل دراسة هندسة البرمجيات في الجامعة الألمانية بالقاهرة، بدأت أشتغل مدرّس رياضيات.`,
+        `دي كانت أول تجربة مستمرة ليا مع إني آخد حاجة معقدة، أوصل للفكرة اللي تحتها، وأساعد شخص تاني يشوفها بوضوح. الغريزة دي—إني أفهم، وأبسّط، وأعلّم—فضلت تظهر بعد كده في تقريبًا كل حاجة بنيتها.`,
+        `وفي آخر السنة عملت موقع كورسات أونلاين للدكتورة ولاء الجمال، وبدأت أشتغل بشكل مستقل كمطوّر ويب. دي كانت السنة اللي انتقلت فيها من دراسة الأنظمة لبناء أنظمة حقيقية.`,
+      ],
+    },
+    {
+      year: '2023', mark: marks.ischool, title: 'من الشرح للمنتجات',
+      body: [
+        `انضمّيت لـ iSchool كمدرّس برمجة، وكنت بعلّم طلبة صغيرين إزاي يكتبوا كود. وفي نفس الوقت كنت بدرس رياضيات عن بُعد مع Continuous Education Academy، وكملت شغلي الحر في تطوير الويب.`,
+        `واشتغلت كمان فترة في التسويق. التجربة دي وسّعت فكرتي عن البناء: التكنولوجيا الكويسة لوحدها مش كفاية. لازم تفهم الناس، وتعرف توصل القيمة، وتخلي اللي بتبنيه يدخل حياتهم بشكل طبيعي.`,
+        `الشغلانات اللي كانت باينة متفرقة كانت في الحقيقة تعليم واحد: تكنولوجيا، وتدريس، وتواصل، وسلوك بشري—كلهم بيحصلوا في نفس الوقت.`,
+      ],
+    },
+    {
+      year: '2024', mark: marks.welmnt, title: 'بناء يهتم بالعقل',
+      body: [
+        `بدأت أقود Welmnt، وهي منصة مدعومة بالذكاء الاصطناعي وتركّز على الصحة النفسية والرفاه العاطفي للطلبة.`,
+        `الشغل جمع أجزاء كتير من حياتي: التعليم، وعلم النفس، والتكنولوجيا، وبناء المنتجات. وخلّاني أفكر أبعد من التفوق الدراسي. ممكن طالب يكون ناجح جدًا على الورق وهو بيعاني من جوّه، ومعظم المدارس مش مجهّزة إنها تشوف المعاناة دي أو تدعمها.`,
+        `السؤال الأعمق بقى: إزاي نستخدم التكنولوجيا من غير ما ننسى الإنسان اللي المفروض تخدمه؟`,
+      ],
+    },
+    {
+      year: '2025', mark: marks.catalyst, title: 'كاتاليست',
+      body: [
+        `بقيت الرئيس التنفيذي لـ Catalyst.`,
+        `Catalyst كبرت من فكرة لشركة تعليم تكنولوجي بتساعد المحترفين في مصر والعالم العربي يتعلموا هندسة البرمجيات والذكاء الاصطناعي بالعربي. الهدف عملي: الناس تتعلم أسرع، وتبني أذكى، وتنافس عالميًا.`,
+        `كورسات الباك إند والذكاء الاصطناعي للمطورين والـ no-code AI بدأت توصل لآلاف الطلبة. لكن Catalyst مش مجرد شركة كورسات؛ هي محاولة لبناء نوع التعليم التقني اللي مؤمن إنه لازم يكون موجود—مباشر، ومفيد، وطموح، ومتصل بالشغل الحقيقي.`,
+      ],
+    },
+    {
+      year: '2026', mark: marks.astraform, title: 'بناء بقوة مضاعفة',
+      body: [
+        `انضمّيت لـ AstraForm Technologies كمدير تقني، مع استمراري في قيادة Catalyst وبناء برمجيات في مجالات مختلفة.`,
+        `في الوقت ده كان الذكاء الاصطناعي غيّر طريقة شغلي بالكامل. ما بقيتش شايفه أداة جنب الشغل؛ بقى جزء من طريقة تفكيري وتصميمي وكتابتي للكود وبحثي وإدارتي.`,
+        `دلوقتي ببني تقريبًا كل حاجة بمساعدة وكلاء الذكاء الاصطناعي—مش عشان أشيل نفسي من العملية، لكن عشان أحط وقت أكبر في الحكم والتوجيه والمشاكل اللي فعلًا تستاهل تتحل. ولسه الفصل ده في أوله.`,
+      ],
+    },
+  ],
+  threadsLabel: 'خمس خيوط، حياة واحدة',
+  threadsOther: 'Five threads, one life',
+  threads: [
+    { number: '01', name: 'البناء', secondary: 'Building', href: '/threads/building/', body: `البناء هو طريقتي في تحويل الأسئلة لحاجة ينفع نجربها. الشركات والمنتجات والكورسات والبرمجيات والأنظمة الشخصية كلها أشكال لنفس الفعل: تتخيل إن في حاجة ممكن تشتغل أحسن، وبعدها تتحمّل مسؤولية إنك تخليها حقيقية.` },
+    { number: '02', name: 'الإيمان', secondary: 'Faith', href: '/threads/faith/', body: `الإيمان هو المرساة اللي كل حاجة تانية متعلقة بيها. بيدي الطموح حدوده، والصعوبة معناها، والوقت حجمه الحقيقي.` },
+    { number: '03', name: 'الجسد', secondary: 'Body', href: '/threads/body/', body: `التمرين بيعلّم الصراحة. يا الوزن بيتحرّك يا لأ. يا الجسم بيتكيّف يا لأ. والرجوع بعد إصابة الرباط الصليبي علّمني عن الصبر والتعافي والحدود أكتر بكتير من أي كلام عن التحفيز.` },
+    { number: '04', name: 'العقل', secondary: 'Mind', href: '/threads/mind/', body: `مهتم بعلم النفس، والانتباه، والصحة العاطفية، والحكايات اللي الناس بتبنيها عن نفسها. العقل بيشكّل كل تجربة، ومع ذلك غالبًا هو أقل جزء في حياتنا بنفهمه.` },
+    { number: '05', name: 'النظرة', secondary: 'Perspective', href: '/threads/perspective/', body: `الحقائق مهمة، لكن الإطار اللي حواليها مهم هو كمان. هنا بستكشف الافتراضات اللي تحت طريقتنا في الشغل والعيش والنجاح وتحديد إمتى يكون اللي عندنا كفاية.` },
+  ],
+  beliefsLabel: 'اللي مؤمن بيه',
+  beliefsOther: 'Things I believe',
+  beliefs: [
+    'الإيمان لازم يحط حدود للطموح، مش يبقى مجرد زينة حواليه.',
+    'التكنولوجيا المفروض تخلي الناس أقدر، مش أكثر اعتمادًا عليها.',
+    'الجسم القوي بيغيّر تجربة إنك تعيش بعقل.',
+    'التدريس من أسرع الطرق اللي تكتشف بيها إيه اللي لسه مش فاهمه.',
+    'الذكاء الاصطناعي المفروض يزوّد حضورك في شغلك، مش يمسحه.',
+    'النظام الكويس بيخلق حرية. النظام السيئ بيحوّل الحياة لإدارة مستمرة.',
+    'أغلب الحاجات اللي ليها معنى بتاخد وقت أطول بكتير من اللي الإنترنت بيخلّيه يبان.',
+  ],
+  closingLabel: 'ليه المكان ده موجود؟',
+  closingOther: 'Why this site exists',
+  closing: [
+    `الإنترنت بيشجّع كل واحد يبقى حاجة واحدة واضحة وسهلة التسويق.`,
+    `أنا مش مهتم أعمل كده.`,
+    `شغلي في الذكاء الاصطناعي بيأثر على تفكيري في التعليم. التدريس بيأثر على طريقة بنائي للمنتجات. الإيمان بيأثر على تعريفي للنجاح. الإصابة بتأثر على فهمي للصبر. وعلم النفس بيأثر على قيادتي وشغلي وعلاقتي بالناس.`,
+    `الموقع ده هو المكان اللي الأجزاء دي مسموح لها تعيش فيه مع بعض.`,
+    `في حاجات مكتوبة بالإنجليزي، وحاجات مكانها الطبيعي المصري. بعضها ممكن يبقى كتب، وبعضها ممكن يفضل أفكار ما اكتملتش.`,
+    `اللغة بتتغيّر. الأسئلة هي هي.`,
+  ],
+};
+
+const c = isAr ? arabic : english;
+const title = isAr ? 'عنّي · About — حازم عبدالغني' : 'About · عنّي — Hazem Abdelghany';
+const description = isAr
+  ? 'حازم عبدالغني بنّاء من القاهرة، بيشتغل على الشركات والذكاء الاصطناعي والتعليم والإيمان والجسد والعقل.'
+  : 'Hazem Abdelghany is a builder from Cairo working across companies, AI, education, faith, the body, and the mind.';
+---
+
+<Base
+  {title}
+  {description}
+  {lang}
+  alternates={[{ lang: 'en', href: '/about/' }, { lang: 'ar-EG', href: '/ar/about/' }, { lang: 'x-default', href: '/about/' }]}
+>
+  <div class:list={['about-page', isAr && 'is-ar']}>
+    <header class="page-head">
+      <h1 class="page-title">{c.title}</h1>
+      <span class="page-title-other" dir={isAr ? 'ltr' : 'rtl'} lang={isAr ? 'en' : 'ar'}>{c.titleOther}</span>
+      <nav class="language-switch" aria-label={isAr ? 'لغة الصفحة' : 'Page language'}>
+        {isAr ? <a href="/about/" lang="en" hreflang="en">EN</a> : <span aria-current="page">EN</span>}
+        <span class="language-divider" aria-hidden="true">/</span>
+        {isAr ? <span aria-current="page">عربي</span> : <a href="/ar/about/" lang="ar" dir="rtl" hreflang="ar-EG">عربي</a>}
+      </nav>
+    </header>
+
+    <section class="opening" aria-labelledby="short-version">
+      <p class="eyebrow" id="short-version">{c.shortLabel}</p>
+      <p class="opening-statement">{c.statement}</p>
+      <p class="opening-note">{c.note}</p>
+    </section>
+
+    <section class="about-section story" aria-labelledby="longer-version">
+      <div class="section-label">
+        <h2 class="section-kicker" id="longer-version">{c.storyLabel}</h2>
+        <span dir={isAr ? 'ltr' : 'rtl'} lang={isAr ? 'en' : 'ar'}>{c.storyOther}</span>
+      </div>
+      <div class:list={['story-copy', 'prose', isAr && 'prose-ar']}>
+        {c.story.map((paragraph) => <p>{paragraph}</p>)}
+        <blockquote>{c.quote}</blockquote>
+      </div>
+    </section>
+
+    <section class="about-section" aria-labelledby="road-so-far">
+      <div class="section-label section-label-wide">
+        <h2 class="section-kicker" id="road-so-far">{c.timelineLabel}</h2>
+        <span dir={isAr ? 'ltr' : 'rtl'} lang={isAr ? 'en' : 'ar'}>{c.timelineOther}</span>
+      </div>
+      <div class="timeline">
+        {c.timeline.map((item) => (
+          <article class="timeline-entry">
+            <div class="timeline-meta">
+              <time dir="ltr">{item.year}</time>
+              {item.mark && (
+                <span
+                  class="org-mark"
+                  role="img"
+                  aria-label={isAr ? `شعار ${item.mark.label}` : `${item.mark.label} logo`}
+                  style={`--mark: url('${item.mark.src}'); --mark-width: ${item.mark.width}px; --mark-height: ${item.mark.height}px;`}
+                />
+              )}
+            </div>
+            <div class="timeline-copy">
+              <h3>{item.title}</h3>
+              {item.body.map((paragraph) => <p>{paragraph}</p>)}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="about-section" aria-labelledby="five-threads">
+      <div class="section-label section-label-wide">
+        <h2 class="section-kicker" id="five-threads">{c.threadsLabel}</h2>
+        <span dir={isAr ? 'ltr' : 'rtl'} lang={isAr ? 'en' : 'ar'}>{c.threadsOther}</span>
+      </div>
+      <div class="thread-list">
+        {c.threads.map((thread) => (
+          <a class="thread-entry" href={thread.href}>
+            <span class="thread-number" dir="ltr">{thread.number}</span>
+            <div class="thread-name">
+              <h3>{thread.name}</h3>
+              <span dir={isAr ? 'ltr' : 'rtl'} lang={isAr ? 'en' : 'ar'}>{thread.secondary}</span>
+            </div>
+            <p>{thread.body}</p>
+            <span class="thread-arrow" aria-hidden="true">{isAr ? '←' : '→'}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="about-section beliefs" aria-labelledby="beliefs">
+      <div class="section-label">
+        <h2 class="section-kicker" id="beliefs">{c.beliefsLabel}</h2>
+        <span dir={isAr ? 'ltr' : 'rtl'} lang={isAr ? 'en' : 'ar'}>{c.beliefsOther}</span>
+      </div>
+      <ol class="belief-list">
+        {c.beliefs.map((belief) => <li>{belief}</li>)}
+      </ol>
+    </section>
+
+    <section class="about-section closing" aria-labelledby="why-this-site">
+      <div class="section-label">
+        <h2 class="section-kicker" id="why-this-site">{c.closingLabel}</h2>
+        <span dir={isAr ? 'ltr' : 'rtl'} lang={isAr ? 'en' : 'ar'}>{c.closingOther}</span>
+      </div>
+      <div class:list={['closing-copy', 'prose', isAr && 'prose-ar']}>
+        {c.closing.map((paragraph, index) => (
+          <p class:list={[index === 1 && 'closing-line', index === c.closing.length - 1 && 'last-line']}>{paragraph}</p>
+        ))}
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .page-head {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    padding: 88px 0 54px;
+  }
+  .page-title { font-size: 44px; font-weight: 400; }
+  .is-ar .page-title { font-size: 46px; font-weight: 700; }
+  .page-title-other { font-size: 34px; font-weight: 700; color: var(--muted); }
+  .is-ar .page-title-other { font-family: var(--font-en); font-size: 28px; font-weight: 400; }
+  .language-switch {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-inline-start: auto;
+    font-family: var(--font-en);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.2px;
+    color: var(--muted);
+  }
+  .language-switch a { display: inline-block; padding: 10px 2px; color: var(--muted); }
+  .language-switch a:hover { color: var(--accent); }
+  .language-switch [aria-current='page'] { color: var(--accent); }
+  .language-switch [lang='ar'] { font-size: 15px; letter-spacing: 0; }
+  .language-divider { color: var(--hairline); }
+
+  .opening { max-width: 920px; padding-bottom: 96px; }
+  .eyebrow,
+  .section-kicker {
+    margin: 0;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2.3px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .eyebrow { margin-bottom: 22px; }
+  .is-ar .eyebrow,
+  .is-ar .section-kicker {
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .opening-statement {
+    max-width: 900px;
+    margin: 0;
+    font-size: clamp(31px, 4vw, 48px);
+    line-height: 1.24;
+    letter-spacing: -0.35px;
+  }
+  .is-ar .opening-statement { max-width: 940px; font-size: clamp(34px, 4.25vw, 52px); line-height: 1.65; letter-spacing: 0; }
+  .opening-note {
+    max-width: 690px;
+    margin: 34px 0 0;
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--ink-2);
+  }
+  .is-ar .opening-note { font-size: 21px; line-height: 1.95; }
+
+  .about-section { border-top: 1px solid var(--line); padding: 68px 0 84px; }
+  .story,
+  .beliefs,
+  .closing {
+    display: grid;
+    grid-template-columns: minmax(180px, 1fr) minmax(0, 2fr);
+    gap: 64px;
+  }
+  .section-label { display: flex; flex-direction: column; align-items: flex-start; gap: 9px; }
+  .section-label span { font-size: 20px; color: var(--muted); }
+  .is-ar .section-label span { font-family: var(--font-en); font-size: 14px; }
+  .section-label-wide {
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    padding-bottom: 40px;
+  }
+  .story-copy,
+  .closing-copy { max-width: 720px; }
+  .story-copy > p:first-child { font-size: 27px; line-height: 1.45; }
+  .is-ar .story-copy > p:first-child { font-size: 30px; line-height: 1.8; }
+  .is-ar .prose blockquote {
+    padding: 6px 28px 6px 0;
+    border-left: 0;
+    border-right: 2px solid var(--accent);
+    font-style: normal;
+  }
+
+  .timeline-entry {
+    display: grid;
+    grid-template-columns: minmax(120px, 1fr) minmax(0, 4fr);
+    gap: 42px;
+    border-top: 1px solid var(--line);
+    padding: 30px 0 48px;
+  }
+  .timeline-entry:last-child { padding-bottom: 0; }
+  .timeline-entry time { color: var(--accent); font-family: var(--font-en); font-size: 17px; font-style: italic; }
+  .timeline-copy { max-width: 720px; }
+  .timeline-copy h3 { margin: -3px 0 18px; font-size: 29px; line-height: 1.3; }
+  .is-ar .timeline-copy h3 { font-size: 31px; font-weight: 700; line-height: 1.55; }
+  .timeline-copy p { margin: 0 0 18px; font-size: 18px; line-height: 1.72; color: var(--ink-2); }
+  .is-ar .timeline-copy p { font-size: 21px; line-height: 1.95; }
+  .timeline-copy p:last-child { margin-bottom: 0; }
+  .timeline-meta { display: flex; flex-direction: column; align-items: flex-start; gap: 22px; }
+  .org-mark {
+    display: block;
+    width: var(--mark-width, 110px);
+    max-width: 100%;
+    height: var(--mark-height, 30px);
+    background-color: var(--muted);
+    opacity: 0.9;
+    -webkit-mask-image: var(--mark);
+    mask-image: var(--mark);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: left center;
+    mask-position: left center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+  }
+  .is-ar .org-mark { -webkit-mask-position: right center; mask-position: right center; }
+
+  .thread-list { border-bottom: 1px solid var(--line); }
+  .thread-entry {
+    display: grid;
+    grid-template-columns: 52px minmax(130px, 0.8fr) minmax(0, 2fr) 24px;
+    align-items: start;
+    gap: 28px;
+    border-top: 1px solid var(--line);
+    padding: 27px 0;
+    color: var(--ink);
+  }
+  .thread-number { font-family: var(--font-en); font-size: 14px; font-style: italic; color: var(--faint); }
+  .thread-name h3 { margin: -3px 0 2px; font-size: 24px; transition: color 0.16s ease; }
+  .is-ar .thread-name h3 { font-size: 27px; font-weight: 700; }
+  .thread-name span { color: var(--muted); font-size: 18px; }
+  .is-ar .thread-name span { font-family: var(--font-en); font-size: 14px; }
+  .thread-entry p { max-width: 660px; margin: -2px 0 0; font-size: 16px; line-height: 1.65; color: var(--ink-2); }
+  .is-ar .thread-entry p { font-size: 19px; line-height: 1.85; }
+  .thread-arrow { color: var(--faint); transition: color 0.16s ease, transform 0.16s ease; }
+  .thread-entry:hover .thread-name h3,
+  .thread-entry:hover .thread-arrow { color: var(--accent); }
+  .thread-entry:hover .thread-arrow { transform: translateX(4px); }
+  .is-ar .thread-entry:hover .thread-arrow { transform: translateX(-4px); }
+
+  .belief-list { margin: 0; padding: 0; list-style: none; counter-reset: beliefs; }
+  .belief-list li {
+    counter-increment: beliefs;
+    position: relative;
+    border-top: 1px solid var(--line);
+    padding: 20px 0;
+    padding-inline-start: 48px;
+    font-size: 21px;
+    line-height: 1.5;
+  }
+  .is-ar .belief-list li { font-size: 23px; line-height: 1.8; }
+  .belief-list li:last-child { border-bottom: 1px solid var(--line); }
+  .belief-list li::before {
+    content: counter(beliefs, decimal-leading-zero);
+    position: absolute;
+    inset-inline-start: 0;
+    top: 24px;
+    font-family: var(--font-en);
+    font-size: 12px;
+    font-style: italic;
+    color: var(--faint);
+  }
+  .closing { padding-bottom: 24px; }
+  .closing-line { font-size: 27px; font-style: italic; color: var(--accent); }
+  .is-ar .closing-line { font-size: 29px; font-style: normal; }
+  .last-line { font-style: italic; }
+  .is-ar .last-line { font-style: normal; }
+
+  @media (max-width: 760px) {
+    .page-head { padding: 68px 0 42px; gap: 13px; flex-wrap: wrap; }
+    .page-title { font-size: 39px; }
+    .is-ar .page-title { font-size: 41px; }
+    .page-title-other { font-size: 28px; }
+    .language-switch { width: 100%; margin-inline-start: 0; padding-top: 4px; }
+    .opening { padding-bottom: 68px; }
+    .about-section { padding: 52px 0 64px; }
+    .story,
+    .beliefs,
+    .closing { grid-template-columns: 1fr; gap: 34px; }
+    .section-label-wide { flex-direction: column; align-items: flex-start; gap: 8px; padding-bottom: 30px; }
+    .timeline-entry { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+    .timeline-meta { flex-direction: row; align-items: center; gap: 18px; }
+    .org-mark { width: calc(var(--mark-width, 110px) * 0.82); height: calc(var(--mark-height, 30px) * 0.82); }
+    .thread-entry { grid-template-columns: 36px minmax(0, 1fr) 20px; gap: 18px; }
+    .thread-entry p { grid-column: 2 / -1; margin-top: -12px; }
+  }
+
+  @media (max-width: 480px) {
+    .opening-statement { font-size: 30px; }
+    .is-ar .opening-statement { font-size: 33px; }
+    .opening-note { font-size: 17px; }
+    .is-ar .opening-note { font-size: 20px; }
+    .timeline-copy h3 { font-size: 26px; }
+    .timeline-copy p { font-size: 17px; }
+    .is-ar .timeline-copy p { font-size: 20px; }
+    .belief-list li { font-size: 19px; }
+    .is-ar .belief-list li { font-size: 21px; }
+  }
+</style>

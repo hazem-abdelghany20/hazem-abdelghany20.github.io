@@ -1,4 +1,7 @@
 ---
+interface Props { lang?: 'en' | 'ar' }
+const { lang = 'en' } = Astro.props;
+const isAr = lang === 'ar';
 ---
 <nav class="nav">
   <a href="/" class="nav-name">
@@ -7,10 +10,20 @@
     <span class="en">HAZEM ABDELGHANY</span>
   </a>
   <div class="nav-links">
-    <a href="/books/">Books <span class="ar" dir="rtl" lang="ar">كتب</span></a>
-    <a href="/essays/">Articles <span class="ar" dir="rtl" lang="ar">مقالات</span></a>
-    <a href="/about/">About <span class="ar" dir="rtl" lang="ar">عنّي</span></a>
-    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+    {isAr ? (
+      <>
+        <a href="/books/">كتب <span class="en" dir="ltr" lang="en">Books</span></a>
+        <a href="/essays/">مقالات <span class="en" dir="ltr" lang="en">Articles</span></a>
+        <a href="/ar/about/">عنّي <span class="en" dir="ltr" lang="en">About</span></a>
+      </>
+    ) : (
+      <>
+        <a href="/books/">Books <span class="ar" dir="rtl" lang="ar">كتب</span></a>
+        <a href="/essays/">Articles <span class="ar" dir="rtl" lang="ar">مقالات</span></a>
+        <a href="/about/">About <span class="ar" dir="rtl" lang="ar">عنّي</span></a>
+      </>
+    )}
+    <button class="theme-toggle" id="theme-toggle" aria-label={isAr ? 'غيّر لون الموقع' : 'Toggle dark mode'}>
       <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path>
       </svg>

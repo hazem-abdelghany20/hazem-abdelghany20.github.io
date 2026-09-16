@@ -101,6 +101,7 @@ a.meta, a.back { display: inline-block; padding: 11px 0; }
 .nav-links a { font-size: 15px; color: var(--ink); }
 .nav-links a:hover { color: var(--accent); }
 .nav-links a .ar { color: var(--muted); font-size: 15px; }
+.nav-links a .en { color: var(--muted); font-family: var(--font-en); font-size: 12px; margin-inline-start: 3px; }
 .theme-toggle {
   display: inline-flex; align-items: center; justify-content: center;
   width: 34px; height: 34px; flex: none; border: 1px solid var(--line); border-radius: 999px;
