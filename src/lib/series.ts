@@ -64,7 +64,7 @@ export const SERIES: Record<SeriesKey, SeriesDef> = {
     slug: 'riding-out',
     title: 'Riding Out',
     titleParts: ['Riding', 'Out', ''],
-    ar: 'الخروج للمعركة',
+    ar: 'اركب وكمّل',
     subtitle: 'Why the harder, simpler life was the happier one — and how to get it back',
     blurb:
       'An 11th-century man with lice, a sword and a 35-year life expectancy may have been happier than you. Same goals, harsher life, fewer distractions. If happiness were downstream of comfort, he loses on every axis. He doesn’t. This book is about what it is downstream of instead.',
