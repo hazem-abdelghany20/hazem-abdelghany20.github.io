@@ -23,7 +23,14 @@ const isAr = lang === 'ar';
         <a href="/about/">About <span class="ar" dir="rtl" lang="ar">عنّي</span></a>
       </>
     )}
-    <button class="theme-toggle" id="theme-toggle" aria-label={isAr ? 'غيّر لون الموقع' : 'Toggle dark mode'}>
+    <button
+      class="theme-toggle"
+      id="theme-toggle"
+      aria-label={isAr ? 'استخدم الوضع الداكن' : 'Switch to dark mode'}
+      aria-pressed="false"
+      data-label-dark={isAr ? 'استخدم الوضع الداكن' : 'Switch to dark mode'}
+      data-label-light={isAr ? 'استخدم الوضع الفاتح' : 'Switch to light mode'}
+    >
       <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path>
       </svg>
@@ -36,9 +43,17 @@ const isAr = lang === 'ar';
 </nav>
 
 <script is:inline>
-  document.getElementById('theme-toggle').addEventListener('click', function () {
+  var themeToggle = document.getElementById('theme-toggle');
+  function syncThemeToggle() {
+    var isDark = document.documentElement.dataset.theme === 'dark';
+    themeToggle.setAttribute('aria-pressed', String(isDark));
+    themeToggle.setAttribute('aria-label', themeToggle.dataset[isDark ? 'labelLight' : 'labelDark']);
+  }
+  syncThemeToggle();
+  themeToggle.addEventListener('click', function () {
     var next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
     document.documentElement.dataset.theme = next;
     try { localStorage.setItem('theme', next); } catch (e) {}
+    syncThemeToggle();
   });
 </script>

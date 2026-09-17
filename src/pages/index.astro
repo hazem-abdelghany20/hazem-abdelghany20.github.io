@@ -26,16 +26,26 @@ const threadCount = (key) => {
 <Base>
 
   <section class="hero">
-    <div class="hero-mark" dir="rtl" lang="ar">إزاي؟</div>
-    <h1 class="hero-statement">
-      This is where I <em>think out loud</em> — about building, faith, the body, and the mind.
-    </h1>
-    <p class="hero-ar" dir="rtl" lang="ar">هنا بفكّر بصوت عالي — بالعربي وبالإنجليزي، في كل حاجة بعيشها.</p>
-    <p class="hero-bio">
-      Founder at Catalyst. Muslim. Athlete mid-rebuild. Student of the mind. This site is the whole
-      picture — not the highlight reel.
-    </p>
-    <hr class="rule" />
+    <div class="hero-copy">
+      <div class="hero-mark">A place for deeper conversations</div>
+      <h1 class="hero-statement">
+        This is where I <em>think out loud</em> — about building, faith, the body, and the mind.
+      </h1>
+      <p class="hero-ar" dir="rtl" lang="ar">هنا بفكّر بصوت عالي — عن البناء، والإيمان، والجسد، والعقل.</p>
+      <p class="hero-bio">
+        Founder at Catalyst. Muslim. Athlete mid-rebuild. Student of the mind. This site is the whole
+        picture — not the highlight reel.
+      </p>
+      <div class="hero-foot">
+        <hr class="rule" />
+        <span>Cairo · 2026</span>
+      </div>
+    </div>
+    <figure class="hero-visual" aria-label="A writer's desk overlooking Cairo and the Nile">
+      <img class="hero-image hero-image-light" src="/images/brand/hero-cairo-light.webp" alt="A notebook and books beside a Cairo window overlooking the Nile in daylight" width="1440" height="960" fetchpriority="high" />
+      <img class="hero-image hero-image-dark" src="/images/brand/hero-cairo-dark.webp" alt="The same Cairo desk and Nile view at blue hour" width="1440" height="960" />
+      <figcaption>Same river. A deeper conversation.</figcaption>
+    </figure>
   </section>
 
   <section class="threads">
@@ -46,8 +56,13 @@ const threadCount = (key) => {
     <div class="threads-grid">
       {THREADS.map((t, i) => (
         <a class="thread" href={`/threads/${t.key}/`}>
-          <span class="row-num">{String(i + 1).padStart(2, '0')}</span>
-          <span class="thread-ar" dir="rtl" lang="ar">{t.ar}</span>
+          <div class="thread-image-frame">
+            <img class="thread-image" src={`/images/threads/${t.key}.webp`} alt="" width="960" height="720" loading="lazy" />
+          </div>
+          <div class="thread-title-line">
+            <span class="row-num">{String(i + 1).padStart(2, '0')}</span>
+            <span class="thread-ar" dir="rtl" lang="ar">{t.ar}</span>
+          </div>
           <span class="tag">{t.en}</span>
           <span class="thread-blurb">{t.blurb}</span>
           <span class="thread-count">
@@ -66,16 +81,23 @@ const threadCount = (key) => {
       </div>
       <a href="/books/" class="meta">All books →</a>
     </div>
-    {seriesCards.map(({ s, count }) => (
-      <a class="home-series" href={seriesHref(s.key)}>
-        <div class="home-series-top">
-          <span class="tag">Book · in progress</span>
-          <span class="meta">{count} of {s.parts} parts</span>
-        </div>
-        <h3 class="home-series-title">{s.title}</h3>
-        <p class="home-series-sub">{s.subtitle}</p>
-      </a>
-    ))}
+    <div class="home-books-grid">
+      {seriesCards.map(({ s, count }) => (
+        <a class="home-series" href={seriesHref(s.key)}>
+          <img class="home-series-cover" src={s.cover} alt={`Cover of ${s.title}`} width="800" height="1200" loading="lazy" />
+          <div class="home-series-copy">
+            <div class="home-series-top">
+              <span class="tag">{s.category}</span>
+              <span class="home-series-category-ar" dir="rtl" lang="ar">{s.categoryAr}</span>
+            </div>
+            <h3 class="home-series-title">{s.title}</h3>
+            <p class="home-series-title-ar" dir="rtl" lang="ar">{s.ar}</p>
+            <p class="home-series-sub">{s.subtitle}</p>
+            <span class="meta">{count} of {s.parts} parts · Start reading →</span>
+          </div>
+        </a>
+      ))}
+    </div>
   </section>
 
   <section class="essays">
@@ -110,25 +132,41 @@ const threadCount = (key) => {
 
 <style>
   .hero {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: minmax(0, 0.92fr) minmax(420px, 1.08fr);
+    gap: clamp(40px, 6vw, 82px);
     align-items: center;
-    gap: 26px;
-    text-align: center;
-    max-width: 920px;
-    margin: 0 auto;
-    padding: 110px 0 100px 0;
+    padding: 82px 0 74px;
   }
-  .hero-mark { font-size: 22px; color: var(--accent); }
+  .hero-copy { display: flex; flex-direction: column; align-items: flex-start; gap: 22px; }
+  .hero-mark {
+    font-size: 11px; font-weight: 500; letter-spacing: 2.4px;
+    text-transform: uppercase; color: var(--muted);
+  }
   .hero-statement {
-    font-size: clamp(34px, 4.2vw, 52px);
+    font-size: clamp(40px, 4.4vw, 64px);
     font-weight: 400;
-    line-height: 1.2;
-    letter-spacing: -0.5px;
+    line-height: 1.04;
+    letter-spacing: -1.2px;
   }
   .hero-statement em { color: var(--accent); }
-  .hero-ar { margin: 0; font-size: clamp(22px, 2.4vw, 28px); line-height: 1.8; color: var(--ink-2); }
-  .hero-bio { margin: 0; font-size: 16px; line-height: 1.6; color: var(--muted); max-width: 640px; }
+  .hero-ar { margin: 0; font-size: clamp(20px, 2vw, 25px); line-height: 1.75; color: var(--ink-2); }
+  .hero-bio { margin: 0; font-size: 16px; line-height: 1.6; color: var(--muted); max-width: 48ch; }
+  .hero-foot { display: flex; align-items: center; gap: 14px; color: var(--faint); font-size: 11px; font-style: italic; }
+  .hero-visual {
+    position: relative; aspect-ratio: 3 / 2; margin: 0; overflow: hidden;
+    background: var(--fig-surface); border: 1px solid var(--line);
+  }
+  .hero-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity 1.05s cubic-bezier(.22,.61,.36,1), filter 1.05s ease; }
+  .hero-image-light { opacity: 1; }
+  .hero-image-dark { opacity: 0; }
+  :global(:root[data-theme='dark']) .hero-image-light { opacity: 0; }
+  :global(:root[data-theme='dark']) .hero-image-dark { opacity: 1; }
+  .hero-visual figcaption {
+    position: absolute; inset-inline-end: 16px; bottom: 14px; z-index: 2;
+    max-width: 18ch; color: #f7f1e7; font-size: 13px; line-height: 1.35;
+    font-style: italic; text-align: end; text-shadow: 0 1px 8px rgba(0,0,0,.5);
+  }
 
   section.threads, section.essays, section.about {
     border-top: 1px solid var(--line);
@@ -145,9 +183,18 @@ const threadCount = (key) => {
   .threads-grid {
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 36px;
+    gap: 18px;
   }
-  .thread { display: flex; flex-direction: column; gap: 12px; }
+  .thread { display: flex; flex-direction: column; gap: 9px; color: var(--ink); }
+  .thread-image-frame { aspect-ratio: 4 / 3; overflow: hidden; background: var(--fig-surface); border: 1px solid var(--line); }
+  .thread-image {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    filter: saturate(.82) contrast(.95) sepia(.08);
+    transition: filter .8s ease, transform .45s ease;
+  }
+  :global(:root[data-theme='dark']) .thread-image { filter: brightness(.58) saturate(.72) contrast(1.12) sepia(.12) hue-rotate(166deg); }
+  .thread:hover .thread-image { transform: scale(1.025); }
+  .thread-title-line { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
   .thread .thread-ar, .thread .thread-blurb { transition: color 0.18s ease; }
   .thread:hover .thread-ar { color: var(--accent); }
   .thread-count {
@@ -155,18 +202,26 @@ const threadCount = (key) => {
     text-transform: uppercase; color: var(--faint); margin-top: 2px;
   }
   .thread:hover .thread-count { color: var(--accent); }
-  .thread-ar { font-weight: 700; font-size: 30px; color: var(--ink); align-self: start; }
-  .thread-blurb { font-size: 15px; font-style: italic; line-height: 1.55; color: var(--muted); }
+  .thread-ar { font-weight: 700; font-size: 25px; color: var(--ink); }
+  .thread-blurb { font-size: 14px; font-style: italic; line-height: 1.45; color: var(--muted); }
 
-  .home-series {
-    display: block; border: 1px solid var(--line); background: var(--fig-surface);
-    padding: 24px 26px; margin-bottom: 26px;
-  }
+  .home-books-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 42px; }
+  .home-series { display: grid; grid-template-columns: minmax(145px, .72fr) minmax(0, 1.28fr); gap: 28px; color: var(--ink); }
   .home-series:hover { border-color: var(--accent); }
-  .home-series-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
-  .home-series-title { font-size: 25px; font-weight: 500; color: var(--ink); }
+  .home-series-cover {
+    width: 100%; height: auto; aspect-ratio: 2 / 3; object-fit: cover; display: block;
+    border: 1px solid var(--line); box-shadow: 0 12px 26px rgba(38,34,27,.09);
+    transition: filter .8s ease, transform .35s ease, box-shadow .35s ease;
+  }
+  :global(:root[data-theme='dark']) .home-series-cover { filter: brightness(.72) saturate(.84) contrast(1.05); box-shadow: 0 14px 34px rgba(0,0,0,.34); }
+  .home-series:hover .home-series-cover { transform: translateY(-4px); }
+  .home-series-copy { align-self: center; display: flex; flex-direction: column; align-items: flex-start; gap: 9px; }
+  .home-series-top { display: flex; flex-direction: column; gap: 3px; margin-bottom: 4px; }
+  .home-series-category-ar { color: var(--muted); font-size: 15px; }
+  .home-series-title { font-size: 29px; font-weight: 500; color: var(--ink); line-height: 1.08; }
   .home-series:hover .home-series-title { color: var(--accent); }
-  .home-series-sub { margin: 6px 0 0 0; font-size: 15px; font-style: italic; color: var(--muted); }
+  .home-series-title-ar { margin: 0; color: var(--accent); font-size: 21px; }
+  .home-series-sub { margin: 3px 0 7px; font-size: 15px; font-style: italic; line-height: 1.5; color: var(--muted); }
 
   .about { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 64px; }
   .about-head { display: flex; flex-direction: column; gap: 10px; }
@@ -175,11 +230,15 @@ const threadCount = (key) => {
   .about-body p { margin: 0; font-size: 20px; line-height: 1.65; }
 
   @media (max-width: 900px) {
-    .hero { padding: 72px 0 64px 0; }
+    .hero { grid-template-columns: 1fr; padding: 64px 0; }
+    .hero-copy { max-width: 720px; }
     .threads-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .home-books-grid { grid-template-columns: 1fr; }
     .about { grid-template-columns: 1fr; gap: 24px; }
   }
   @media (max-width: 560px) {
     .threads-grid { grid-template-columns: 1fr; }
+    .home-series { grid-template-columns: 112px minmax(0, 1fr); gap: 18px; }
+    .home-series-title { font-size: 24px; }
   }
 </style>

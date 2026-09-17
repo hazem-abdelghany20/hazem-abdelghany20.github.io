@@ -8,6 +8,9 @@ export type SeriesDef = {
   /** Rendered as the landing-page headline; the middle word takes the accent. */
   titleParts: [string, string, string];
   ar: string;
+  category: string;
+  categoryAr: string;
+  cover: string;
   subtitle: string;
   blurb: string;
   /** Planned length of the finished series, not how many are published yet. */
@@ -24,10 +27,13 @@ export const SERIES: Record<SeriesKey, SeriesDef> = {
   'bedrock-and-weather': {
     key: 'bedrock-and-weather',
     slug: 'bedrock-and-weather',
-    title: 'Bedrock and Weather',
-    titleParts: ['Bedrock', 'and', 'Weather'],
-    ar: 'الصخر والطقس',
-    subtitle: 'A field guide to how fortunes are actually built',
+    title: 'The Conditions of Fortune',
+    titleParts: ['The', 'Conditions', 'of Fortune'],
+    ar: 'شروط الثراء',
+    category: 'The Wealth Book',
+    categoryAr: 'كتاب عن الثروة',
+    cover: '/images/books/the-conditions-of-fortune.webp',
+    subtitle: 'What builds wealth, what luck supplies, and what survives the evidence',
     blurb:
       'Ten fortunes taken apart to the mechanism. Five frameworks tested until they broke. And an honest line drawn between what every wealthy person had — and what was only the weather they happened to be standing in.',
     parts: 19,
@@ -62,10 +68,13 @@ export const SERIES: Record<SeriesKey, SeriesDef> = {
   'riding-out': {
     key: 'riding-out',
     slug: 'riding-out',
-    title: 'Riding Out',
-    titleParts: ['Riding', 'Out', ''],
-    ar: 'اركب وكمّل',
-    subtitle: 'Why the harder, simpler life was the happier one — and how to get it back',
+    title: 'The Effort Is Yours',
+    titleParts: ['The Effort', 'Is Yours', ''],
+    ar: 'عليكَ السعي',
+    category: 'The Life Book',
+    categoryAr: 'كتاب عن الحياة',
+    cover: '/images/books/the-effort-is-yours.webp',
+    subtitle: 'How to live fully when the outcome was never yours to control',
     blurb:
       'An 11th-century man with lice, a sword and a 35-year life expectancy may have been happier than you. Same goals, harsher life, fewer distractions. If happiness were downstream of comfort, he loses on every axis. He doesn’t. This book is about what it is downstream of instead.',
     parts: 28,

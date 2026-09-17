@@ -1,16 +1,17 @@
 /* ---------- theme tokens ----------
-   Light = Warm Editorial (paper + oxblood)
-   Dark  = Black Card (warm black + burnt orange) */
+   Light = Cairo paper (parchment + oxblood)
+   Dark  = Nocturne archive (midnight + oxidized copper) */
 :root {
   color-scheme: light;
-  --bg: #faf7f1;
-  --ink: #26221b;
-  --ink-2: #4a443a;
-  --muted: #6e675c;
-  --faint: #6b6255;   /* text-bearing: 5.6:1 on --bg */
-  --hairline: #b8ae9e; /* decoration only: rules, dots, borders */
-  --line: #e8e2d6;
-  --accent: #7d3b2a;
+  --bg: #f7f1e7;
+  --ink: #25211b;
+  --ink-2: #4d453a;
+  --muted: #6e6458;
+  --faint: #6b6054;
+  --hairline: #b7a996;
+  --line: #ded3c3;
+  --accent: #8e3f32;
+  --teal: #2f6862;
 
   --font-en: 'Newsreader', Georgia, 'Times New Roman', serif;
   --font-ar: 'Amiri', 'Times New Roman', serif;
@@ -19,26 +20,28 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
     color-scheme: dark;
-    --bg: #0e0d0b;
-    --ink: #f5f2ec;
-    --ink-2: #c9c3b8;
-    --muted: #8a857c;
-    --faint: #9a9388;   /* text-bearing: 6.0:1 on --bg */
-    --hairline: #3a3730;
-    --line: #2a2822;
-    --accent: #d96b3b;
+    --bg: #0b1020;
+    --ink: #f1e8d8;
+    --ink-2: #d0c3b1;
+    --muted: #9b8f80;
+    --faint: #aaa08f;
+    --hairline: #435068;
+    --line: #263247;
+    --accent: #b56b45;
+    --teal: #7a8c7a;
   }
 }
 :root[data-theme='dark'] {
   color-scheme: dark;
-  --bg: #0e0d0b;
-  --ink: #f5f2ec;
-  --ink-2: #c9c3b8;
-  --muted: #8a857c;
-  --faint: #9a9388;
-  --hairline: #3a3730;
-  --line: #2a2822;
-  --accent: #d96b3b;
+  --bg: #0b1020;
+  --ink: #f1e8d8;
+  --ink-2: #d0c3b1;
+  --muted: #9b8f80;
+  --faint: #aaa08f;
+  --hairline: #435068;
+  --line: #263247;
+  --accent: #b56b45;
+  --teal: #7a8c7a;
 }
 
 /* ---------- base ---------- */
@@ -60,7 +63,7 @@ body {
   font-size: 17px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  transition: background-color 0.25s ease, color 0.25s ease;
+  transition: background-color 0.72s ease, color 0.72s ease;
 }
 a { color: var(--accent); text-decoration: none; }
 a:hover { color: var(--ink); }
@@ -98,13 +101,13 @@ a.meta, a.back { display: inline-block; padding: 11px 0; }
 .nav-name .ar { font-weight: 700; font-size: 20px; }
 .nav-name .en { font-size: 11px; font-weight: 500; letter-spacing: 2.5px; color: var(--muted); }
 .nav-links { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
-.nav-links a { font-size: 15px; color: var(--ink); }
+.nav-links a { font-size: 15px; color: var(--ink); padding: 8px 0; }
 .nav-links a:hover { color: var(--accent); }
 .nav-links a .ar { color: var(--muted); font-size: 15px; }
 .nav-links a .en { color: var(--muted); font-family: var(--font-en); font-size: 12px; margin-inline-start: 3px; }
 .theme-toggle {
   display: inline-flex; align-items: center; justify-content: center;
-  width: 34px; height: 34px; flex: none; border: 1px solid var(--line); border-radius: 999px;
+  width: 40px; height: 40px; flex: none; border: 1px solid var(--line); border-radius: 999px;
   background: none; color: var(--muted); cursor: pointer; padding: 0;
 }
 .theme-toggle:hover { color: var(--accent); border-color: var(--faint); }
@@ -161,6 +164,9 @@ a.meta, a.back { display: inline-block; padding: 11px 0; }
   .row { flex-direction: column; align-items: flex-start; gap: 6px; }
   .row[dir='rtl'] { align-items: flex-end; }
 }
+@media (max-width: 560px) {
+  .nav-links { gap: 14px; }
+}
 
 /* Everything else an essay can contain. Without these an image, table or code
    block in the next essay overflows the column with a clean build. */
@@ -184,24 +190,24 @@ a.meta, a.back { display: inline-block; padding: 11px 0; }
   --c1: #c05a2e;  /* terracotta */
   --c2: #00809b;  /* teal */
   --c3: #a8832a;  /* gold */
-  --grid: #e8e2d6;
-  --fig-surface: #f4efe6;
+  --grid: #ded3c3;
+  --fig-surface: #efe6d9;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
     --c1: #d2673a;
     --c2: #1f9fbc;
     --c3: #b38e2e;
-    --grid: #2a2822;
-    --fig-surface: #16150f;
+    --grid: #263247;
+    --fig-surface: #121a2a;
   }
 }
 :root[data-theme='dark'] {
   --c1: #d2673a;
   --c2: #1f9fbc;
   --c3: #b38e2e;
-  --grid: #2a2822;
-  --fig-surface: #16150f;
+  --grid: #263247;
+  --fig-surface: #121a2a;
 }
 
 .fig {

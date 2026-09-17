@@ -15,7 +15,7 @@ const books = Object.values(SERIES)
 
 <Base
   title="Books · كتب — Hazem Abdelghany"
-  description="The long-form work: books written in parts and published as they're finished. Bedrock and Weather, and Riding Out."
+  description="The long-form work: The Conditions of Fortune and The Effort Is Yours, published in parts in English and Arabic."
 >
 
   <header class="page-head">
@@ -30,14 +30,21 @@ const books = Object.values(SERIES)
 
   {books.map(({ s, count }) => (
     <a class="book-card" href={seriesHref(s.key)}>
-      <div class="book-card-top">
-        <span class="tag">Book · {count} of {s.parts} parts published</span>
-        <span class="book-card-ar" dir="rtl" lang="ar">{s.ar}</span>
+      <img class="book-card-cover" src={s.cover} alt={`Cover of ${s.title}`} width="800" height="1200" />
+      <div class="book-card-copy">
+        <div class="book-card-top">
+          <div>
+            <span class="tag">{s.category}</span>
+            <span class="book-card-category-ar" dir="rtl" lang="ar">{s.categoryAr}</span>
+          </div>
+          <span class="meta">{count} of {s.parts} parts</span>
+        </div>
+        <h2 class="book-card-title">{s.title}</h2>
+        <p class="book-card-ar" dir="rtl" lang="ar">{s.ar}</p>
+        <p class="book-card-sub">{s.subtitle}</p>
+        <p class="book-card-blurb">{s.blurb}</p>
+        <span class="book-card-cta">Start reading →</span>
       </div>
-      <h2 class="book-card-title">{s.title}</h2>
-      <p class="book-card-sub">{s.subtitle}</p>
-      <p class="book-card-blurb">{s.blurb}</p>
-      <span class="book-card-cta">Start reading →</span>
     </a>
   ))}
 </Base>
@@ -61,21 +68,44 @@ const books = Object.values(SERIES)
   .page-lede a { color: var(--accent); }
 
   .book-card {
-    display: block;
-    border: 1px solid var(--line);
-    padding: 30px 32px 28px 32px;
-    margin-bottom: 40px;
-    background: var(--fig-surface);
+    display: grid;
+    grid-template-columns: minmax(190px, 280px) minmax(0, 1fr);
+    gap: clamp(28px, 5vw, 58px);
+    align-items: center;
+    border-top: 1px solid var(--line);
+    padding: 46px 0;
+    color: var(--ink);
   }
-  .book-card:hover { border-color: var(--accent); }
+  .book-card:last-child { border-bottom: 1px solid var(--line); }
+  .book-card-cover {
+    width: 100%; height: auto; aspect-ratio: 2 / 3; object-fit: cover; display: block;
+    border: 1px solid var(--line); box-shadow: 0 18px 38px rgba(38,34,27,.12);
+    transition: transform .35s ease, filter .8s ease, box-shadow .35s ease;
+  }
+  :global(:root[data-theme='dark']) .book-card-cover {
+    filter: brightness(.72) saturate(.84) contrast(1.05);
+    box-shadow: 0 20px 44px rgba(0,0,0,.38);
+  }
+  .book-card:hover .book-card-cover { transform: translateY(-5px); }
+  .book-card-copy { max-width: 650px; }
   .book-card-top { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 14px; }
-  .book-card-ar { font-size: 16px; font-weight: 700; color: var(--muted); }
-  .book-card-title { font-size: 32px; font-weight: 500; color: var(--ink); line-height: 1.15; }
+  .book-card-top > div { display: flex; flex-direction: column; gap: 3px; }
+  .book-card-category-ar { font-size: 15px; color: var(--muted); }
+  .book-card-ar { margin: 7px 0 0; font-size: 24px; font-weight: 700; color: var(--accent); }
+  .book-card-title { font-size: clamp(34px, 4.6vw, 52px); font-weight: 500; color: var(--ink); line-height: 1.03; }
   .book-card:hover .book-card-title { color: var(--accent); }
   .book-card-sub { margin: 8px 0 0 0; font-size: 15px; font-style: italic; color: var(--muted); }
   .book-card-blurb { margin: 16px 0 0 0; font-size: 16px; line-height: 1.6; color: var(--ink-2); max-width: 62ch; }
   .book-card-cta {
     display: inline-block; margin-top: 20px;
     font-size: 11px; font-weight: 500; letter-spacing: 1.8px; text-transform: uppercase; color: var(--accent);
+  }
+
+  @media (max-width: 680px) {
+    .book-card { grid-template-columns: 120px minmax(0, 1fr); gap: 20px; align-items: start; }
+    .book-card-top { flex-direction: column; gap: 7px; }
+    .book-card-title { font-size: 28px; }
+    .book-card-ar { font-size: 20px; }
+    .book-card-blurb { display: none; }
   }
 </style>
