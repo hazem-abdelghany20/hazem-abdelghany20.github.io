@@ -1,5 +1,18 @@
 export type SeriesKey = 'bedrock-and-weather' | 'riding-out';
 
+export type SeriesSection = {
+  number: string;
+  numberAr: string;
+  title: string;
+  titleAr: string;
+  subtitle: string;
+  subtitleAr: string;
+  image: string;
+  alt: string;
+  startPart: number;
+  endPart: number;
+};
+
 export type SeriesDef = {
   key: SeriesKey;
   /** URL slug. The landing page is /<slug>/ and is generated, not hand-written. */
@@ -21,6 +34,8 @@ export type SeriesDef = {
   front: { heading: string; body: string[] }[];
   /** Optional lead note, set apart above the front matter. */
   note?: { label: string; body: string[] };
+  /** Optional editorial dividers used to group the numbered entries. */
+  sections?: SeriesSection[];
 };
 
 export const SERIES: Record<SeriesKey, SeriesDef> = {
@@ -79,6 +94,68 @@ export const SERIES: Record<SeriesKey, SeriesDef> = {
       'An 11th-century man with lice, a sword and a 35-year life expectancy may have been happier than you. Same goals, harsher life, fewer distractions. If happiness were downstream of comfort, he loses on every axis. He doesn’t. This book is about what it is downstream of instead.',
     parts: 28,
     facts: ['Five parts', 'Twenty-five chapters', 'Effort is yours, output isn’t', 'Draft — v0.1'],
+    sections: [
+      {
+        number: 'I',
+        numberAr: 'الأول',
+        title: 'The Armory',
+        titleAr: 'العُدّة',
+        subtitle: 'What you have · the next hour · near-total control',
+        subtitleAr: 'اللي في إيدك · الساعة الجاية · سيطرة شبه كاملة',
+        image: '/images/books/the-effort-is-yours-parts/part-1-armory.webp',
+        alt: 'A lone knight preparing his equipment in a quiet armory at dawn',
+        startPart: 2,
+        endPart: 7,
+      },
+      {
+        number: 'II',
+        numberAr: 'التاني',
+        title: 'The Drill',
+        titleAr: 'التدريب',
+        subtitle: 'How to use it · the day · high control',
+        subtitleAr: 'تستخدمها إزاي · اليوم · سيطرة كبيرة',
+        image: '/images/books/the-effort-is-yours-parts/part-2-drill.webp',
+        alt: 'A lone knight practicing a deliberate sword drill in a stone yard at dawn',
+        startPart: 8,
+        endPart: 12,
+      },
+      {
+        number: 'III',
+        numberAr: 'التالت',
+        title: 'The Campaign',
+        titleAr: 'الحملة',
+        subtitle: 'The season · partial control',
+        subtitleAr: 'الموسم · سيطرة جزئية',
+        image: '/images/books/the-effort-is-yours-parts/part-3-campaign.webp',
+        alt: 'A traveler studying a map where mountain roads divide beneath a distant citadel',
+        startPart: 13,
+        endPart: 16,
+      },
+      {
+        number: 'IV',
+        numberAr: 'الرابع',
+        title: 'The Fog',
+        titleAr: 'الضباب',
+        subtitle: 'The lifetime · low control',
+        subtitleAr: 'العُمر · سيطرة قليلة',
+        image: '/images/books/the-effort-is-yours-parts/part-4-fog.webp',
+        alt: 'A traveler holding a small lamp where two mountain paths disappear into fog',
+        startPart: 17,
+        endPart: 20,
+      },
+      {
+        number: 'V',
+        numberAr: 'الخامس',
+        title: 'The Knights Who Don’t Come Back',
+        titleAr: 'الفرسان اللي ما بيرجعوش',
+        subtitle: 'Fate · zero control',
+        subtitleAr: 'القدر · مفيش سيطرة',
+        image: '/images/books/the-effort-is-yours-parts/part-5-knights.webp',
+        alt: 'A lone rider continuing toward the horizon past the equipment of absent travelers',
+        startPart: 21,
+        endPart: 26,
+      },
+    ],
     note: {
       label: 'A note before we start',
       body: [

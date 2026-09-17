@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import BookPartsList from '../components/BookPartsList.astro';
 import { SERIES, seriesHref, type SeriesKey } from '../lib/series';
 import { publishedEssays } from '../lib/essays';
 
@@ -75,30 +76,10 @@ const md = (t: string) => t.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
     {parts.length === 0 ? (
       <p class="bw-empty">The first part goes up shortly.</p>
     ) : (
-      <ol class="bw-list" data-list="en">
-        {parts.map((p) => (
-          <li>
-            <a href={`/essays/${p.id}/`}>
-              <span class="bw-part">{p.data.partLabel}</span>
-              <span class="bw-part-title">{p.data.title}</span>
-              <span class="bw-part-desc">{p.data.description}</span>
-            </a>
-          </li>
-        ))}
-      </ol>
+      <BookPartsList parts={parts} sections={s.sections} lang="en" />
     )}
     {partsAr.length > 0 && (
-      <ol class="bw-list bw-list-ar" data-list="ar" dir="rtl" lang="ar" hidden>
-        {partsAr.map((p) => (
-          <li>
-            <a href={`/essays/${p.id}/`}>
-              <span class="bw-part">{p.data.partLabel}</span>
-              <span class="bw-part-title">{p.data.title}</span>
-              <span class="bw-part-desc">{p.data.description}</span>
-            </a>
-          </li>
-        ))}
-      </ol>
+      <BookPartsList parts={partsAr} sections={s.sections} lang="ar" hidden />
     )}
   </section>
 
