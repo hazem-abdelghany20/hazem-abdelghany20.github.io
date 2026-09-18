@@ -5,9 +5,11 @@ lang: ar
 thread: mind
 minutes: 2
 description: "الدافع نظام محتاج توجيه، مش إحساس تمشي وراه. الحصان ضروري، بس لازم تفضل إنت ماسك اللجام."
+heroImage: "/images/books/the-effort-is-yours-chapters/dopamine.webp"
+heroAlt: "فارس بيوجه حصان قوي بعيد عن إغراءات الطريق وناحية طريق جبلي صعب"
 series: riding-out
-part: 4
-partLabel: "الجزء الأول · الفصل ٣"
+part: 5
+partLabel: "الجزء الأول · الفصل ٤"
 translationOf: "ro-03-dopamine"
 ---
 

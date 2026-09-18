@@ -181,6 +181,52 @@ a.meta, a.back { display: inline-block; padding: 11px 0; }
 .prose li::marker { color: var(--faint); }
 .prose hr { border: 0; border-top: 1px solid var(--line); margin: 36px 0; }
 
+/* Emotion dashboard: a small code-native illustration for each gauge. */
+.emotion-panel {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 10px 0 34px;
+  font-family: var(--font-en);
+}
+.prose-ar .emotion-panel { font-family: var(--font-ar); }
+.emotion-gauge {
+  --gauge: var(--accent);
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  gap: 12px;
+  align-items: center;
+  min-height: 72px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  background: var(--fig-surface);
+}
+.emotion-gauge::before {
+  content: '';
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background:
+    linear-gradient(112deg, transparent 47%, var(--ink) 48% 52%, transparent 53%) center / 58% 58% no-repeat,
+    conic-gradient(from 225deg, var(--gauge) 0 58%, var(--line) 58% 75%, transparent 75% 100%);
+  border: 1px solid var(--line);
+  box-sizing: border-box;
+}
+.emotion-gauge strong { display: block; font-size: 15px; line-height: 1.25; }
+.emotion-gauge span { display: block; margin-top: 3px; font-size: 12px; line-height: 1.4; color: var(--muted); }
+.prose-ar .emotion-gauge strong { font-size: 17px; }
+.prose-ar .emotion-gauge span { font-size: 14px; }
+.emotion-gauge.anger { --gauge: #a94f3d; }
+.emotion-gauge.fear { --gauge: #c28b36; }
+.emotion-gauge.sadness { --gauge: #5f7f91; }
+.emotion-gauge.envy { --gauge: #68815f; }
+.emotion-gauge.shame { --gauge: #765d78; }
+.emotion-gauge.boredom { --gauge: #8a8175; }
+.emotion-gauge.joy { --gauge: #d0a541; }
+@media (max-width: 560px) {
+  .emotion-panel { grid-template-columns: 1fr; }
+}
+
 /* ---------- figures & charts ----------
    Chart hues are their own scale, not the UI accent: each set was validated
    for lightness band, chroma floor, CVD separation, normal-vision separation

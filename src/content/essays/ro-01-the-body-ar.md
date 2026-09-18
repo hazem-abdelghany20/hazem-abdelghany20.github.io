@@ -5,6 +5,8 @@ lang: ar
 thread: body
 minutes: 11
 description: "الماكينة اللي الانتباه والإرادة والإيمان شغالين عليها. نوم وأكل وحركة ونَفَس — وليه عدم الراحة اللي تختاره بنفسك احتياج، مش عطل."
+heroImage: "/images/books/the-effort-is-yours-chapters/body.webp"
+heroAlt: "فارس شاب بيراجع جسمه وعدته جنب الأكل والمية والدرع وقت الفجر"
 series: riding-out
 part: 2
 partLabel: "الجزء الأول · الفصل ١"

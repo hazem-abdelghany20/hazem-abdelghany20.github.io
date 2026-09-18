@@ -5,10 +5,12 @@ lang: en
 thread: mind
 minutes: 3
 description: "Disorder in consciousness is the real enemy, not suffering. Disorganized attention can't be spent on anything."
+heroImage: "/images/books/the-effort-is-yours-chapters/attention.webp"
+heroAlt: "A knight choosing one illuminated blade while the rest of a dark armory fades away"
 translationOf: "ro-02-attention-ar"
 series: riding-out
-part: 3
-partLabel: "Part I · Chapter 2"
+part: 4
+partLabel: "Part I · Chapter 3"
 ---
 
 Here is the most useful sentence I know. It comes from <button class="ref" data-ref="csikszentmihalyi">Mihaly Csikszentmihalyi</button> — a Hungarian psychologist, born in 1934, who lost two brothers to the war and then spent fifty years handing people pagers and asking them, at random moments, whether they were happy right now. A hundred thousand of those pings later, he had an answer nobody ordered: the enemy of a good life is not suffering. It is **disorder in consciousness**.

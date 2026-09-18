@@ -10,6 +10,8 @@ const essays = defineCollection({
     thread: z.enum(['building', 'faith', 'body', 'mind', 'perspective']),
     minutes: z.number().optional(),
     description: z.string().optional(),
+    heroImage: z.string().optional(),
+    heroAlt: z.string().optional(),
     draft: z.boolean().default(false),
     // id of this essay's version in the other language, when one exists
     translationOf: z.string().optional(),

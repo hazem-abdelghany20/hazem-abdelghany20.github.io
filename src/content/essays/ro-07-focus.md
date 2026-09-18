@@ -2,6 +2,7 @@
 title: "Focus"
 date: 2026-09-13
 lang: en
+draft: true
 thread: mind
 minutes: 3
 description: "A skill, not a state. Daily maintenance, and the whetstone."

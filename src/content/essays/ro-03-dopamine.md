@@ -5,10 +5,12 @@ lang: en
 thread: mind
 minutes: 2
 description: "Motivation as a system to be governed, not a feeling to be obeyed."
+heroImage: "/images/books/the-effort-is-yours-chapters/dopamine.webp"
+heroAlt: "A knight guiding a powerful horse away from bright roadside temptations and toward a mountain path"
 translationOf: "ro-03-dopamine-ar"
 series: riding-out
-part: 4
-partLabel: "Part I · Chapter 3"
+part: 5
+partLabel: "Part I · Chapter 4"
 ---
 
 Now meet the part of you that lies.

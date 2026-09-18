@@ -105,7 +105,7 @@ export const SERIES: Record<SeriesKey, SeriesDef> = {
         image: '/images/books/the-effort-is-yours-parts/part-1-armory.webp',
         alt: 'A lone knight preparing his equipment in a quiet armory at dawn',
         startPart: 2,
-        endPart: 7,
+        endPart: 8,
       },
       {
         number: 'II',
@@ -116,7 +116,7 @@ export const SERIES: Record<SeriesKey, SeriesDef> = {
         subtitleAr: 'تستخدمها إزاي · اليوم · سيطرة كبيرة',
         image: '/images/books/the-effort-is-yours-parts/part-2-drill.webp',
         alt: 'A lone knight practicing a deliberate sword drill in a stone yard at dawn',
-        startPart: 8,
+        startPart: 9,
         endPart: 12,
       },
       {

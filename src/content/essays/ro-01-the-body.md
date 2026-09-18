@@ -5,6 +5,8 @@ lang: en
 thread: body
 minutes: 11
 description: "The machine attention runs on. Sleep, fuel, movement, breath — and the case, with the research, that voluntary discomfort is a nutrient we have engineered out of our diet."
+heroImage: "/images/books/the-effort-is-yours-chapters/body.webp"
+heroAlt: "A young knight checking his body and equipment beside food, water, armor, and a bedroll at dawn"
 translationOf: "ro-01-the-body-ar"
 series: riding-out
 part: 2

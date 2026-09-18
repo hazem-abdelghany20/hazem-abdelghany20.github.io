@@ -92,6 +92,19 @@ const readNext = series && (prevPart || nextPart) ? [] : pool.slice(0, 2);
     </div>
   </header>
 
+  {essay.data.heroImage && (
+    <figure class="essay-hero">
+      <img
+        src={essay.data.heroImage}
+        alt={essay.data.heroAlt ?? ''}
+        width="1536"
+        height="1024"
+        loading="eager"
+        decoding="async"
+      />
+    </figure>
+  )}
+
   <article
     class:list={['prose', isAr && 'prose-ar']}
     dir={isAr ? 'rtl' : undefined}
@@ -135,6 +148,18 @@ const readNext = series && (prevPart || nextPart) ? [] : pool.slice(0, 2);
   .essay-meta { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; justify-content: center; }
 
   article { max-width: 680px; margin: 0 auto; }
+
+  .essay-hero {
+    width: min(100%, 980px);
+    margin: 0 auto 56px;
+  }
+  .essay-hero img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 3px;
+    box-shadow: 0 20px 56px color-mix(in srgb, var(--ink) 15%, transparent);
+  }
 
   .read-next { max-width: 880px; margin: 88px auto 0 auto; }
   .section-head { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 14px; }
