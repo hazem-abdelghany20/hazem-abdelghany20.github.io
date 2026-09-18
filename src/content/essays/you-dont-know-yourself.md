@@ -8,7 +8,7 @@ description: "You can't recognise your own recorded voice. You can't picture you
 heroImage: "/images/essays/tazkiya-series/you-dont-know-yourself-river.webp"
 heroAlt: "A man seen from behind, kneeling at the edge of the Nile at dusk, his reflection broken by ripples"
 translationOf: "you-dont-know-yourself-ar"
-draft: true
+draft: false
 ---
 
 Play back a recording of your own voice and you'll say the same thing everyone says: *that's not me.*

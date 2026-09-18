@@ -8,7 +8,7 @@ description: "God swears eleven times in a row to tell you one thing: the projec
 heroImage: "/images/essays/tazkiya-series/tazkiya-sculptor.webp"
 heroAlt: "A sculptor in a dim workshop chiselling a human figure out of rough stone under a single lamp, stone chips across the floor"
 translationOf: "tazkiya-ar"
-draft: true
+draft: false
 ---
 
 Surat al-Shams opens with the longest run of oaths in the Qur'an. By the sun and its morning light. By the moon. By the day, by the night. By the sky and the One who built it. By the earth and the One who spread it. By the soul, and the One who proportioned it, and inspired it with its wickedness and its piety.

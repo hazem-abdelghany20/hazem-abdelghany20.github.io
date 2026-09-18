@@ -8,7 +8,7 @@ description: "The believer is the mirror of his brother. Three rules for using o
 heroImage: "/images/essays/tazkiya-series/the-mirror.webp"
 heroAlt: "A hand holding out a brass hand mirror to a man leaning in to look, tea glasses and a warm lamp behind them"
 translationOf: "the-mirror-ar"
-draft: true
+draft: false
 ---
 
 *The believer is the mirror of his brother.*
@@ -18,8 +18,6 @@ It's a short hadith, and it's easy to hear it as something gentle — be a good 
 One of the hidden costs of isolation is exactly this: **a person alone repeats his mistakes.** The moment you start living among people — working with them, travelling with them, sitting with them — they start correcting you. They draw your edges. They name your problems. They become your mirror, whether you asked them to or not.
 
 I keep my whole life in one system — prayers, sleep, focus hours, what I ate. It is a very good mirror for the parts of me that can be counted. It has never once told me how I come across in a room. My friends have.
-
-<!-- حازم: one real moment here, 2–4 lines. Which friend, what did they say, what did you do with it? The site rule: "Where I tell a story, it happened." -->
 
 ## Rule one: you go to the mirror
 

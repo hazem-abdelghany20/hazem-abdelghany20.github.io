@@ -8,7 +8,7 @@ description: "مش بتعرف صوتك لما تسمعه متسجّل. مش قا
 heroImage: "/images/essays/tazkiya-series/you-dont-know-yourself-river.webp"
 heroAlt: "راجل من ضهره، قاعد على ركبه على حافة النيل وقت المغرب، وانعكاسه مكسور بموج المية"
 translationOf: "you-dont-know-yourself"
-draft: true
+draft: false
 ---
 
 شغّل تسجيل لصوتك، وهتقول نفس الجملة اللي الكل بيقولها: *ده مش صوتي.*
